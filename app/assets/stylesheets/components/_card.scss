@@ -1,0 +1,21 @@
+.card {
+  margin: 0px 15px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  height: 200px;
+}
+
+.card h1 {
+  font-size: 16px;
+  margin: 0 8px;
+}
+.card p {
+  font-size: 12px;
+  color: grey;
+  margin: 0 8px;
+}
+
+.card img {
+  height: 75%;
+}
