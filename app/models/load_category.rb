@@ -1,0 +1,2 @@
+class LoadCategory < ApplicationRecord
+end
