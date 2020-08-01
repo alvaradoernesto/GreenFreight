@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="form">
+    <%= simple_form_for @load do |f| %>
+      <%= f.input :start_date, placeholder: "Start date", label: false %>
+      <%= f.input :end_date, placeholder: "End date", label: false %>
+      <%= f.input :hour_range, placeholder: "Hour range", label: false %>
+      <%= f.input :weight, placeholder: "Weight", label: false %>
+      <%= f.input :volume, placeholder: "Volume", label: false %>
+      <%= f.input :status, placeholder: "Status", label: false %>
+      <%= f.input :price, placeholder: "Price", label: false %>
+      <%= f.button :submit, "Add new load", class: "btn btn-primary"%>
+    <% end %>
+  </div>
+</div>
