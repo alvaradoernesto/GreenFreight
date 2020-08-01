@@ -1,0 +1,2 @@
+class TrucksController < ApplicationController
+end
