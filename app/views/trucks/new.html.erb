@@ -1,0 +1,16 @@
+<div class="container">
+  <h2>Alta camiones</h2>
+  <div class="form">
+    <%= simple_form_for @truck do |f| %>
+      <%= f.input :truck_name, placeholder: "Diesel 1", label: 'Nombre identificador' %>
+      <%= f.input :truck_category, placeholder: "Diesel", label: 'Tipo de camión' %>
+      <%= f.input :truck_license, placeholder: "XX 123 XX", label: 'Patente' %>
+      <%= f.input :driver_name, placeholder: "Roberto Bolaños", label: 'Conductor' %>
+      <%= f.input :driver_license, placeholder: "xxxxxxx", label: 'Licencia' %>
+      <%= f.input :truck_load_categories, placeholder: "Palletizados", label: 'Tipos de carga aceptados' %>
+      <%= f.input :capacity, placeholder: "84", label: 'Capacidad' %>
+      <%= f.input :price_per_km, placeholder: "100", label: 'Tarifa estimada por km' %>
+      <%= f.button :submit, "Confirmar alta", class: "btn btn-primary"%>
+    <% end %>
+  </div>
+</div>
