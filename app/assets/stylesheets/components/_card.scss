@@ -1,21 +1,59 @@
 .card {
-  margin: 0px 15px;
+  margin: 10px 15px;
   background-color: white;
-  border-radius: 5px;
+  border-radius: 15px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  height: 200px;
+  height: 300px;
+  overflow: hidden;
 }
-
+.card .card-info {
+  margin: 15px 30px;
+}
 .card h1 {
   font-size: 16px;
-  margin: 0 8px;
+  opacity: 0.9;
+  font-style: bold;
+  font-family: Nunito;
 }
 .card p {
-  font-size: 12px;
+  font-size: 16px;
   color: grey;
-  margin: 0 8px;
+  font-family: Nunito;
 }
 
 .card img {
+  width: 100%;
   height: 75%;
+  object-fit: cover;
+}
+
+.small-card {
+  margin: 10px 15px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  height: width;
+  overflow: hidden;
+}
+
+.small-card img {
+  width: 100%;
+  height: 70%;
+  object-fit: cover;
+}
+
+.small-card h1 {
+  font-size: 16px;
+  opacity: 0.9;
+  font-style: bold;
+  font-family: Nunito;
+}
+.small-card p {
+  font-size: 16px;
+  color: grey;
+  font-family: Nunito;
+}
+
+.small-card .card-info {
+  margin: 15px 30px;
 }
