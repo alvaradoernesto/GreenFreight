@@ -1,0 +1,2 @@
+class TruckLoadCategory < ApplicationRecord
+end

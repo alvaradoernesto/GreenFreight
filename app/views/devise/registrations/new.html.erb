@@ -30,6 +30,7 @@
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "role" }%>
+      <%= link_to "Nuevo camión", new_truck_path, class: "btn btn-warning" %>
     </div>
 
     <div class="form-actions">
@@ -39,6 +40,4 @@
       <%= render "devise/shared/links" %>
     </div>
   <% end %>
-
-
 </div>
