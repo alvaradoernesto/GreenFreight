@@ -1,11 +1,16 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "#", class: "navbar-brand" do %>
-    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+<div class="navbar sticky-top navbar-expand-sm navbar-light navbar-lewagon">
+  <%= link_to "/", class: "navbar-brand" do %>
+    <div class="row">
+        <h1 class="logo">Green Freight</h1>
+    </div>
     <% end %>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" href="#">Transportista</a>
+        <a class="nav-item nav-link" href="#">Loader</a>
+      </div>
+    </div>
 
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
