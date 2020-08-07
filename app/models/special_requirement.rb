@@ -1,3 +1,3 @@
 class SpecialRequirement < ApplicationRecord
-  belongs_to :load
+  has_many :load
 end
