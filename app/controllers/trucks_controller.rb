@@ -8,7 +8,8 @@ class TrucksController < ApplicationController
     @truck.user = current_user
     @truck_load_category = TruckLoadCategory.new(
       load_category: LoadCategory.find_by(name: params[:load_category]),
-      truck: @truck)
+      truck: @truck
+    )
     if @truck_load_category.save
       if @truck.save
         redirect_to truck_path(@truck)
