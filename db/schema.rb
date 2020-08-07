@@ -39,12 +39,14 @@ ActiveRecord::Schema.define(version: 2020_08_01_192850) do
 
   create_table "loads", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "freight_id", null: false
+    t.bigint "freight_id"
     t.date "start_date"
     t.date "end_date"
     t.string "hour_range"
-    t.bigint "load_category_id", null: false
-    t.bigint "special_requirement_id", null: false
+    t.string "start_point"
+    t.string "end_point"
+    t.bigint "load_category_id"
+    t.bigint "special_requirement_id"
     t.integer "weight"
     t.integer "volume"
     t.string "status"

@@ -34,6 +34,14 @@ user = User.new(
 )
 user.save!
 
+user = User.new(
+  email: "admin@admin.com",
+  password: "123456"
+)
+user.save!
+
+
+
 
 puts "Creating New Loads"
 
