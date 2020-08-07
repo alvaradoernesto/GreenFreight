@@ -1,4 +1,4 @@
 class Freight < ApplicationRecord
   belongs_to :truck
-  has_many :loads
+  belongs_to :load
 end
