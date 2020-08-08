@@ -1,5 +1,5 @@
 class SpecialRequirement < ApplicationRecord
-  has_many :load
+  has_many :loads
 
   validates :name, inclusion: {in: ["Apto alimentos", "Carga peligrosa", "Dimensiones especiales", "Frágil", "Ninguno", "Otros", "Refrigerado"]}
 end
