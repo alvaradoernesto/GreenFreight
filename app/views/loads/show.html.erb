@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>My Loads</h1>
+  <h1> User: <%= @load.user.name %></h1>
+  <h1> Start date: <%= @load.start_date %></h1>
+  <h1> End date: <%= @load.end_date %></h1>
+  <h1> Range hour: <%= @load.hour_range %></h1>
+  <h1> Start point: <%= @load.start_point %></h1>
+  <h1> End point: <%= @load.end_point %></h1>
+  <h1> Weight: <%= @load.weight %></h1>
+  <h1> Volume: <%= @load.volume %></h1>
+  <h1> Status: <%= @load.status %></h1>
+  <h1> Price: <%= @load.price %></h1>
+
+  <%= link_to "Edit", edit_load_path, class: "btn-gradient" %>
+
+</div>

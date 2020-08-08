@@ -1,0 +1,63 @@
+<div class="container">
+  <h2>Confirmación de viaje</h2>
+  <div class="form">
+    <%= simple_form_for @freight do |f| %>
+      <div class="row">
+        <div class="col-sm">
+          <%= f.input :start_date, label: 'Fecha' %>
+        </div>
+        <div class="col-sm">
+          <%= f.input :start_date, label: 'Hora inicial' %>
+        </div>
+        <div class="col-sm">
+          <%= f.input :end_date, label: 'Hora final' %>
+        </div>
+        <div class="col-sm">
+          <%= f.input :start_point, label: 'Origen' %>
+        </div>
+        <div class="col-sm">
+          <%= f.input :end_point, label: 'Destino' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <%= f.input :truck, label: 'Tipo de carga' %>
+        </div>
+        <div class="col-sm-3">
+          <%= f.input :truck, label: 'Requerimientos especiales' %>
+        </div>
+        <div class="col-sm-3">
+          <%= f.input :truck, label: 'Asignar camión' %>
+        </div>
+        <div class="col-sm-3">
+          <%= f.input :truck, label: 'Conductor' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm">
+          <%= f.input :distance, label: 'Distancia total' %>
+        </div>
+        <div class="col-sm">
+          <%= f.input :capacity, label: 'Capacidad utilizada' %>
+        </div>
+        <div class="col-sm">
+          <%= f.input :emissions, label: 'Emisiones' %>
+        </div>
+        <div class="col-sm">
+          <%= f.input :price, label: 'Tarifa $/km/m3' %>
+        </div>
+        <div class="col-sm">
+          <%= f.input :price, label: 'Precio total' %>
+        </div>
+        <div class="col-sm">
+          <div class="row">
+            <%= f.button :submit, "Confirmar viaje", class: "btn green-button"%>
+          </div>
+          <div class="row">
+            <%= f.button :submit, "Agregar cargas", class: "btn green-button"%>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

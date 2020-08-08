@@ -9,8 +9,8 @@ class TrucksController < ApplicationController
     @truck_load_category = TruckLoadCategory.new(
       load_category: LoadCategory.find_by(name: params[:truck][:load_category_ids].reject(&:blank?)),
       truck: @truck)
-    if @truck_load_category.save!
-      if @truck.save!
+    if @truck_load_category.save
+      if @truck.save
         redirect_to truck_path(@truck)
       else
         render :new
