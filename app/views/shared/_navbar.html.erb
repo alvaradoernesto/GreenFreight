@@ -5,13 +5,18 @@
     </div>
     <% end %>
 
+
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-item nav-link" href="#">Transportista</a>
-        <a class="nav-item nav-link" href="#">Loader</a>
+    <% if user_signed_in? && current_user.role == "Transportista" %>
+        <a class="nav-item nav-link" href="#">View loads</a>
+        <a class="nav-item nav-link" href="#">View my freights</a>
+    <% elsif user_signed_in? && current_user.role == "Cargador" %>
+        <a class="nav-item nav-link" href="#">Create new load</a>
+        <a class="nav-item nav-link" href="#">View my loads</a>
+    <% end %>
       </div>
     </div>
-
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
