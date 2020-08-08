@@ -1,6 +1,7 @@
 class LoadsController < ApplicationController
   def index
-    @load = Load.all
+    @q = Load.ransack(params[:q])
+    @loads = @q.result(distinct: true)
   end
 
   def show
