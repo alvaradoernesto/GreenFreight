@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :loads
   resources :trucks, only: [:new, :create]
   resources :freights, only: [:new, :create]
+  resources :users, only: [:show, :index]
 end
