@@ -1,3 +1,4 @@
 class LoadCategory < ApplicationRecord
-  belongs_to :load
+  has_many :loads
+  has_many :truck_load_categories
 end
