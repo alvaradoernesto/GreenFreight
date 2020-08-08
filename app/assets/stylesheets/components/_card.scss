@@ -57,3 +57,9 @@
 .small-card .card-info {
   margin: 15px 30px;
 }
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
