@@ -9,8 +9,9 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
     <% if user_signed_in? && current_user.role == "Transportista" %>
-        <a class="nav-item nav-link" href="#">View loads</a>
-        <a class="nav-item nav-link" href="#">View my freights</a>
+        <a class="nav-item nav-link" href="/loads">Loads available</a>
+        <a class="nav-item nav-link" href="#">My Freights</a>
+        <a class="nav-item nav-link" href="#">My trucks</a>
     <% elsif user_signed_in? && current_user.role == "Cargador" %>
         <a class="nav-item nav-link" href="#">Create new load</a>
         <a class="nav-item nav-link" href="#">View my loads</a>
