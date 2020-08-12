@@ -1,8 +1,8 @@
 <div class="container">
  <br>
- <h1>Tus camiones</h1>
+ <h1>Your trucks</h1>
  <br>
- <table class="table">
+ <table class="table table-hover">
       <thead class="thead-dark">
         <tr>
           <th scope="col">Truck name</th>
@@ -12,19 +12,25 @@
           <th scope="col">Driver license</th>
           <th scope="col">Truck license</th>
           <th scope="col">Truck category</th>
+          <th scope="col">Load category</th>
         </tr>
       </thead>
       <tbody>
         <% @trucks.each do |truck| %>
-        <tr>
-          <td><%= truck.truck_name %></td>
-          <td><%= truck.price_per_km %></td>
-          <td><%= truck.capacity %></td>
-          <td><%= truck.driver_name %></td>
-          <td><%= truck.driver_license %></td>
-          <td><%= truck.truck_license %></td>
-          <td><%= truck.truck_category.name %></td>
-        </tr>
+          <tr>
+            <td><%= truck.truck_name %></td>
+            <td><%= truck.price_per_km %></td>
+            <td><%= truck.capacity %></td>
+            <td><%= truck.driver_name %></td>
+            <td><%= truck.driver_license %></td>
+            <td><%= truck.truck_license %></td>
+            <td><%= truck.truck_category.name %>
+            <td rowspan="<%= truck.load_categories.count %>">
+            <% truck.load_categories.each do |cat| %>
+              <%= cat.name %>
+            <% end %>
+            </td>
+          </tr>
         <% end %>
       </tbody>
  </table>
