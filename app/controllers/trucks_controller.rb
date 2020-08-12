@@ -15,7 +15,7 @@ class TrucksController < ApplicationController
              truck_id: @truck.id)
           @load_cat.save!
         end
-        redirect_to truck_path(@truck)
+        redirect_to '/mytrucks'
       else
         render :new
       end
@@ -23,6 +23,10 @@ class TrucksController < ApplicationController
 
   def show
     @truck = Truck.find(params[:id])
+  end
+
+  def mytrucks
+    @trucks = Truck.where(user: current_user)
   end
 
   private
