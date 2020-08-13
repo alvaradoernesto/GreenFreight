@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+skip_before_action :verify_authenticity_token
 def create
     @chatroom = Chatroom.find(params[:chatroom_id])
     @message = Message.new(message_params)
@@ -14,6 +15,8 @@ def create
       render_to_string(partial: "message", locals: { message: @message })
     )
   end
+
+  private
 
   def message_params
     params.require(:message).permit(:content)
