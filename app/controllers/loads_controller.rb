@@ -20,6 +20,7 @@ class LoadsController < ApplicationController
 
   def show
     @load = Load.find(params[:id])
+    @addresses = Load.addresses.geocoded
   end
 
   def new

@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_12_184059) do
+ActiveRecord::Schema.define(version: 2020_08_12_223300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "location"
+    t.float "latitude"
+    t.float "longitude"
+    t.bigint "load_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["load_id"], name: "index_addresses_on_load_id"
+  end
 
   create_table "chatrooms", force: :cascade do |t|
     t.string "name"
@@ -49,8 +59,6 @@ ActiveRecord::Schema.define(version: 2020_08_12_184059) do
     t.date "start_date"
     t.date "end_date"
     t.string "hour_range"
-    t.string "start_point"
-    t.string "end_point"
     t.bigint "load_category_id"
     t.bigint "special_requirement_id"
     t.integer "weight"
@@ -128,6 +136,7 @@ ActiveRecord::Schema.define(version: 2020_08_12_184059) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "addresses", "loads"
   add_foreign_key "freights", "trucks"
   add_foreign_key "loads", "freights"
   add_foreign_key "loads", "load_categories"
