@@ -1,5 +1,19 @@
 class LoadsController < ApplicationController
   def index
+    # if params[:query].present?
+    #   sql_query = " \
+    #     load.start_point @@ :query \
+    #     AND load.end_point @@ :query \
+    #     AND load.start_date @@ :query \
+    #     AND load.end_date @@ :query \
+    #     AND load.hour_range @@ :query \
+    #     AND load.load_category_id @@ :query \
+    #     AND load.special_requirement_id @@ :query \
+    #   "
+    #   @loads = Load.where(sql_query, query: "%#{params[:query]}%")
+    # else
+    #   @loads = Load.where(status: "Nueva")
+    # end
     @q = Load.ransack(params[:q])
     @loads = @q.result(distinct: true)
   end
