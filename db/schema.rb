@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_08_180304) do
+ActiveRecord::Schema.define(version: 2020_08_12_223300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "location"
+    t.float "latitude"
+    t.float "longitude"
+    t.bigint "load_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["load_id"], name: "index_addresses_on_load_id"
+  end
+
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "freights", force: :cascade do |t|
     t.string "start_point"
@@ -43,8 +59,6 @@ ActiveRecord::Schema.define(version: 2020_08_08_180304) do
     t.date "start_date"
     t.date "end_date"
     t.string "hour_range"
-    t.string "start_point"
-    t.string "end_point"
     t.bigint "load_category_id"
     t.bigint "special_requirement_id"
     t.integer "weight"
@@ -57,6 +71,16 @@ ActiveRecord::Schema.define(version: 2020_08_08_180304) do
     t.index ["load_category_id"], name: "index_loads_on_load_category_id"
     t.index ["special_requirement_id"], name: "index_loads_on_special_requirement_id"
     t.index ["user_id"], name: "index_loads_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "chatroom_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "special_requirements", force: :cascade do |t|
@@ -107,15 +131,19 @@ ActiveRecord::Schema.define(version: 2020_08_08_180304) do
     t.string "address"
     t.string "role"
     t.string "name"
+    t.string "nickname"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "addresses", "loads"
   add_foreign_key "freights", "trucks"
   add_foreign_key "loads", "freights"
   add_foreign_key "loads", "load_categories"
   add_foreign_key "loads", "special_requirements"
   add_foreign_key "loads", "users"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "truck_load_categories", "load_categories"
   add_foreign_key "truck_load_categories", "trucks"
   add_foreign_key "trucks", "truck_categories"
