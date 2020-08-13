@@ -6,4 +6,7 @@ Rails.application.routes.draw do
   resources :trucks, only: [:new, :create, :show]
   resources :freights, only: [:new, :create]
   resources :users, only: [:show, :index]
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
+  end
 end
