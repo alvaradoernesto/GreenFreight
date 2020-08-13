@@ -1,6 +1,7 @@
 <div class="container">
-  <h2>Alta camiones</h2>
-  <div class="form">
+  <br>
+  <h2>New truck</h2>
+<!--   <div class="form">
     <%= form_with(model: @truck, local: true) do |form| %>
       <h4>Tasks</h4>
       <div data-controller="nested-form">
@@ -17,15 +18,22 @@
         </div>
       </div>
     <% end %>
-  </div>
+  </div> -->
     <%= simple_form_for @truck do |f| %>
       <%= f.input :truck_name, placeholder: "Diesel 1", label: 'Nombre identificador' %>
-      <%= f.select :truck_category, collection: ["Camion", "Camioneta"] %>
       <%= f.input :truck_license, placeholder: "XX 123 XX", label: 'Patente' %>
       <%= f.input :driver_name, placeholder: "Roberto Bolaños", label: 'Conductor' %>
       <%= f.input :driver_license, placeholder: "xxxxxxx", label: 'Licencia' %>
-      <%= f.input :capacity, placeholder: "84", label: 'Capacidad' %>
+      <%= f.input :capacity, placeholder: "84", label: 'Capacidad (m3)' %>
       <%= f.input :price_per_km, placeholder: "100", label: 'Tarifa estimada por km' %>
-      <%= f.button :submit, "Confirmar alta", class: "btn btn-primary"%>
+      <%= f.association :truck_category %>
+      <%= f.label "Load category" %>
+      <div>
+        <%= f.fields_for :truck_load_categories, @truck_load_category do |t| %>
+          <%= t.collection_select(:id, LoadCategory.all, :id, :name,  {:prompt => "Please Select a Sector"}, {:multiple => true}) %>
+        <% end %>
+      </div>
+      <%= f.button :submit, "Confirmar alta", class: "btn btn-primary mt-2"%>
     <% end %>
 </div>
+
