@@ -169,14 +169,13 @@ puts "Creating Trucks"
   end
 end
 
-puts "Creating Truck Load Categories -- no anda!!!"
+puts "Creating Truck Load Categories"
 
-# Truck.all.each do |t|
-#   rand(1..3).times do
-#     truck_load_category = TruckLoadCategory.new(truck: t, load_category: LoadCategory.all.sample)
-#     truck_load_category.save
-#   end
-# end
+Truck.all.each do |truck|
+     truck_load_category = TruckLoadCategory.new(truck: truck,
+     load_category: LoadCategory.all.sample)
+     truck_load_category.save
+end
 
 puts "Creating Loads"
 
