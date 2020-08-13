@@ -68,5 +68,31 @@
   </div>
   <div class="container">
     <h1>Selecciona las cargas</h1>
+    <div class="col-sm-12">
+      <div class="row">
+        <% @loads.each do |load| %>
+          <div class="col-6">
+            <div class="card-trip m-2">
+              <%= image_tag "default-load.png", height: 300, width: 400, crop: :fill %>
+                <div class= "form-inputs">
+                  <div class="container">
+                    <div class="form-row white-box">
+                      <div class="form-group col-md-6">
+                        <label>Origen</label>
+                        <h2><%= load.start_point %></h2>
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label>Destino</label>
+                        <h2><%= load.end_point %></h2>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
+
