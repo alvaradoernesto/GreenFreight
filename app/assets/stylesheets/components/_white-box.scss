@@ -3,6 +3,7 @@
   background-color: #FFFFFF;
   padding: 5px;
   margin: 15px 0px;
+  border-color: #D1D1D1
 }
 
 .white-box label {
@@ -12,7 +13,7 @@
   color: #46AF44;
 }
 
-.white-box input {
+.white-box input, p {
   display: block;
   width: 100%;
   line-height: 1.5;

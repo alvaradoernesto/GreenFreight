@@ -9,11 +9,11 @@
               <div class="form-row white-box">
                 <div class="form-group col-md-6">
                   <label>Origen</label>
-                  <%= f.search_field :start_point_cont, placeholder: "¿Desde dónde sale?" %>
+                  <p>¿Desde dónde sale?</p>
                 </div>
                 <div class="form-group col-md-6">
                   <label>Destino</label>
-                  <%= f.search_field :end_point_cont, placeholder: "¿Hasta dónde va?" %>
+                  <p>¿Hasta dónde va?</p>
                 </div>
               </div>
             </div>
@@ -68,30 +68,54 @@
   </div>
   <div class="container">
     <h1>Selecciona las cargas</h1>
-    <div class="col-sm-12">
-      <div class="row">
-        <% @loads.each do |load| %>
-          <div class="col-6">
-            <div class="card-trip m-2">
-              <%= image_tag "default-load.png", height: 300, width: 400, crop: :fill %>
-                <div class= "form-inputs">
-                  <div class="container">
-                    <div class="form-row white-box">
-                      <div class="form-group col-md-6">
-                        <label>Origen</label>
-                        <h2><%= load.start_point %></h2>
-                      </div>
-                      <div class="form-group col-md-6">
-                        <label>Destino</label>
-                        <h2><%= load.end_point %></h2>
-                      </div>
-                    </div>
-                  </div>
+    <div class="col-12">
+      <% @loads.each do |load| %>
+        <div class="load-card">
+          <%= image_tag "default-load.png", height: 300, width: 400, crop: :fill %>
+            <div class= "load-card-infos">
+              <div class="form-row white-box">
+                <div class="form-group col-md-6">
+                  <label>Origen</label>
+                  <p>Arávalo 2279, CABA</p>
                 </div>
+                <div class="form-group col-md-6">
+                  <label>Destino</label>
+                  <p>Rueda 755, Rosario</p>
+                </div>
+              </div>
+              <div class="form-row white-box">
+                <div class="form-group col-md-6">
+                  <label>Fecha mínima</label>
+                  <p>15/08/2020</p>
+                </div>
+                <div class="form-group col-md-6">
+                  <label>Fecha máxima</label>
+                  <p>20/08/2020</p>
+                </div>
+              </div>
+              <div class="form-row white-box">
+                <div class="form-group col-md-6">
+                  <label>Hora mínima</label>
+                  <p>9:00</p>
+                </div>
+                <div class="form-group col-md-6">
+                  <label>Hora máxima</label>
+                  <p>13:00</p>
+                </div>
+              </div>
+              <div class="form-row white-box">
+                <div class="form-group col-md-6">
+                  <label>Requerimientos especiales</label>
+                  <p>Refrigerado</p>
+                </div>
+                <div class="form-group col-md-6">
+                  <label>Tipo de carga</label>
+                  <p>Palletizado</p>
+                </div>
+              </div>
             </div>
-          </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
