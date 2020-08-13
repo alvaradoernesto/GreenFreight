@@ -2,6 +2,8 @@ class Freight < ApplicationRecord
   belongs_to :truck
   has_many :loads
 
+  validates :status, inclusion: {in: ["Nuevo", "En tránsito", "Finalizado", "Cancelado"]}
+
   def routing!
     self.start_point = loads.first.start_point
     self.end_point = loads.last.end_point

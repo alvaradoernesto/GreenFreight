@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :loads
-
+  validates :role, inclusion: {in: ["Transportista", "Cargador"]}
 end

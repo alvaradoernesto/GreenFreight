@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="container">
+    <h1>Buscador de cargas</h1>
+    <div class="row">
+      <div class="col-sm-6 form-box ">
+        <%= search_form_for @q do |f| %>
+          <div class= "form-inputs">
+            <div class="container">
+              <div class="form-row white-box">
+                <div class="form-group col-md-6">
+                  <label>Origen</label>
+                  <%= f.search_field :start_point_cont, placeholder: "¿Desde dónde sale?" %>
+                </div>
+                <div class="form-group col-md-6">
+                  <label>Destino</label>
+                  <%= f.search_field :end_point_cont, placeholder: "¿Hasta dónde va?" %>
+                </div>
+              </div>
+            </div>
+            <div class="container">
+              <div class="form-row white-box">
+                <div class="form-group col-md-6 input-daterange" id="datepicker">
+                  <label>Fecha máxima</label>
+                  <div class="input-daterange" id="datepicker">
+                    <%= f.search_field :start_date_cont, placeholder: "15/08/2020",'datepicker' => true %>
+                  </div>
+                </div>
+                <div class="form-group col-md-6">
+                  <label>Fecha mínima</label>
+                  <%= f.search_field :end_date_cont, placeholder: "20/08/2020",'datepicker' => true %>
+                </div>
+              </div>
+            </div>
+            <div class="container">
+              <div class="form-row white-box">
+                <div class="form-group col-md-6">
+                  <label>Hora mínima</label>
+                  <%= f.search_field :hour_range_cont, placeholder: "07:00" %>
+                </div>
+                <div class="form-group col-md-6">
+                  <label>Hora máxima</label>
+                  <%= f.search_field :hour_range_cont, placeholder: "19:00" %>
+                </div>
+              </div>
+            </div>
+            <div class="container">
+              <div class="form-row white-box">
+                <div class="form-group col-md-6">
+                  <label>Tipo de carga</label>
+                  <%= f.search_field :load_category_id_cont, placeholder: "Palletizado", collection: LoadCategory.all %>
+                </div>
+                <div class="form-group col-md-6">
+                  <label>Requerimientos especiales</label>
+                  <%= f.search_field :special_requirement_id_cont, placeholder: "Frágil" %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center">
+            <%= f.submit 'Ver opciones', class: "button green-button"%>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-sm-6">
+        <h3>Mapa</h3>
+      </div>
+    <div>
+  </div>
+  <div class="container">
+    <h1>Selecciona las cargas</h1>
+  </div>
+</div>

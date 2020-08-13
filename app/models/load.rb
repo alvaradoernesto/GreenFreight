@@ -4,4 +4,5 @@ class Load < ApplicationRecord
   has_many :load_category
   has_many :special_requirement
   has_many :addresses
+  validates :status, inclusion: {in: ["Nueva", "Asignada", "En tránsito", "Entregada", "Cancelada"]}
 end
