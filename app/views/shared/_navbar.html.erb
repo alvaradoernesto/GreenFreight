@@ -1,7 +1,7 @@
 <div class="navbar sticky-top navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to "/", class: "navbar-brand" do %>
     <div class="row">
-        <h1 class="logo">Green Freight</h1>
+        <h1 class="logo black-shadow">Green Freight</h1>
     </div>
     <% end %>
 
@@ -10,7 +10,7 @@
       <div class="navbar-nav">
         <% if user_signed_in? && current_user.role == "Transportista" %>
             <a class="nav-item nav-link" href="/loads">Loads available</a>
-            <a class="nav-item nav-link" href="#">My Freights</a>
+            <a class="nav-item nav-link" href="/freights/new">My Freights</a>
             <a class="nav-item nav-link" href="/mytrucks">My trucks</a>
             <a class="nav-item nav-link" href="/trucks/new">New truck</a>
             <a class="nav-item nav-link" href="/set_nick">Support</a>

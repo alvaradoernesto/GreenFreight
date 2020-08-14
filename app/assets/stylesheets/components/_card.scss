@@ -8,16 +8,18 @@
 }
 .card .card-info {
   margin: 15px 30px;
+  height: auto;
 }
 .card h1 {
   font-size: 16px;
   opacity: 0.9;
   font-style: bold;
   font-family: Nunito;
+  color: black;
 }
 .card p {
   font-size: 16px;
-  color: grey;
+  color: black;
   font-family: Nunito;
 }
 
@@ -33,7 +35,7 @@
   border-radius: 15px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   height: width;
-  overflow: hidden;
+  // overflow: hidden;
 }
 
 .small-card img {
@@ -47,6 +49,7 @@
   opacity: 0.9;
   font-style: bold;
   font-family: Nunito;
+  color: black;
 }
 .small-card p {
   font-size: 16px;
