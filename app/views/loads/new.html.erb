@@ -3,6 +3,12 @@
     <%= simple_form_for @load do |f| %>
       <%= f.input :start_date, placeholder: "Start date", label: false %>
       <%= f.input :end_date, placeholder: "End date", label: false %>
+      <%= f.simple_fields_for :start_point do |spf| %>
+      <%= spf.input :location %>
+      <% end %>
+      <%= f.simple_fields_for :end_point do |epf| %>
+      <%= epf.input :location %>
+      <% end %>
       <%= f.input :hour_range, placeholder: "Hour range", label: false %>
       <%= f.input :weight, placeholder: "Weight", label: false %>
       <%= f.input :volume, placeholder: "Volume", label: false %>
