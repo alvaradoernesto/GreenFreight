@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_12_223300) do
+ActiveRecord::Schema.define(version: 2020_08_15_154013) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,16 @@ ActiveRecord::Schema.define(version: 2020_08_12_223300) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "end_points", force: :cascade do |t|
+    t.string "location"
+    t.float "latitude"
+    t.float "longitude"
+    t.bigint "load_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["load_id"], name: "index_end_points_on_load_id"
   end
 
   create_table "freights", force: :cascade do |t|
@@ -89,6 +99,16 @@ ActiveRecord::Schema.define(version: 2020_08_12_223300) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "start_points", force: :cascade do |t|
+    t.string "location"
+    t.float "latitude"
+    t.float "longitude"
+    t.bigint "load_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["load_id"], name: "index_start_points_on_load_id"
+  end
+
   create_table "truck_categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -137,6 +157,7 @@ ActiveRecord::Schema.define(version: 2020_08_12_223300) do
   end
 
   add_foreign_key "addresses", "loads"
+  add_foreign_key "end_points", "loads"
   add_foreign_key "freights", "trucks"
   add_foreign_key "loads", "freights"
   add_foreign_key "loads", "load_categories"
@@ -144,6 +165,7 @@ ActiveRecord::Schema.define(version: 2020_08_12_223300) do
   add_foreign_key "loads", "users"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "start_points", "loads"
   add_foreign_key "truck_load_categories", "load_categories"
   add_foreign_key "truck_load_categories", "trucks"
   add_foreign_key "trucks", "truck_categories"
