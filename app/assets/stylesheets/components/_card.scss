@@ -1,68 +1,71 @@
 .card {
-  margin: 10px 15px;
-  background-color: white;
+  margin-top: -140px;
+  margin-right: 15px;
+  margin-bottom: 0px;
+  margin-left: 15px;
+  background-color: #edfded;
   border-radius: 15px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  height: 300px;
   overflow: hidden;
 }
 .card .card-info {
   margin: 15px 30px;
-  height: auto;
+  height: 220px;
 }
 .card h1 {
-  font-size: 16px;
+  font-size: 20px;
   opacity: 0.9;
+  color: #46AF44;
+  text-align: center;
   font-style: bold;
-  font-family: Nunito;
-  color: black;
 }
 .card p {
   font-size: 16px;
   color: black;
-  font-family: Nunito;
+  text-align: center;
+  padding: 10px 0;
 }
 
 .card img {
   width: 100%;
-  height: 75%;
-  object-fit: cover;
+  height: 200px;
 }
 
 .small-card {
   margin: 10px 15px;
-  background-color: white;
   border-radius: 15px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  height: width;
-  // overflow: hidden;
+  background-color: white;
 }
 
 .small-card img {
   width: 100%;
-  height: 70%;
+  height:160px;
   object-fit: cover;
+  border-radius: 15px 15px 0px 0px;
+  padding: 10px;
 }
 
-.small-card h1 {
-  font-size: 16px;
+.small-card h2 {
+  font-size: 20px;
   opacity: 0.9;
   font-style: bold;
-  font-family: Nunito;
-  color: black;
+  color: #46AF44;
+  text-align: center
 }
 .small-card p {
   font-size: 16px;
   color: grey;
-  font-family: Nunito;
+  text-align: center;
 }
 
 .small-card .card-info {
-  margin: 15px 30px;
+  height: 200px;
 }
 
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
+  align-items: flex-end;
 }

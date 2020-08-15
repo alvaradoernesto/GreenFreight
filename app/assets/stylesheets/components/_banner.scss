@@ -1,10 +1,10 @@
 .banner {
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   padding: 150px 0;
-  height: auto;
-  border-bottom-right-radius: 5%;
-  border-bottom-left-radius: 5%;
+  height: 600px;
+  object-fit: cover;
 }
 
 .banner h1 {
@@ -26,11 +26,26 @@
   font-style: italic;
 }
 
-.banner .cotizacion {
-  margin: 30px;
+.cotizacion {
   text-align: center;
   padding: 2px;
   border-radius: 4px;
   width: 60%;
   background-color: white;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.banner > .btn {
+  position: relative;
+  bottom: -80px;
+}
+
+.cotizacion .row {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.cot-box {
+  margin-bottom: -20px;
 }

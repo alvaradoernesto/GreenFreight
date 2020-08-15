@@ -1,6 +1,8 @@
 <div class="container">
   <div class="container">
-    <h1>Buscador de cargas</h1>
+    <br>
+    <h1 class="black-shadow">Buscador de cargas</h1>
+    <br>
     <div class="row">
       <div class="col-sm-6 form-box ">
         <%= search_form_for @q do |f| %>
@@ -44,12 +46,12 @@
               </div>
             </div>
             <div class="container">
-              <div class="form-row white-box">
-                <div class="form-group col-md-6">
+              <div class="form-row">
+                <div class="form-group col-md-6 white-box">
                   <label>Tipo de carga</label>
                   <%= f.search_field :load_category_id_cont, placeholder: "Palletizado", collection: LoadCategory.all %>
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-6 white-box">
                   <label>Requerimientos especiales</label>
                   <%= f.search_field :special_requirement_id_cont, placeholder: "Frágil" %>
                 </div>
@@ -67,53 +69,70 @@
     <div>
   </div>
   <div class="container">
-    <h1>Selecciona las cargas</h1>
-    <div class="col-12">
+    <br>
+    <h1 class="black-shadow">Selecciona las cargas</h1>
+    <br>
+    <div class="form-box">
       <% @loads.each do |load| %>
-        <div class="load-card">
-          <%= image_tag "default-load.png", height: 300, width: 400, crop: :fill %>
-            <div class= "load-card-infos">
-              <div class="form-row white-box">
-                <div class="form-group col-md-6">
-                  <label>Origen</label>
-                  <p>Arávalo 2279, CABA</p>
+        <div class="form-row">
+          <div class="load-card col-11">
+            <%= image_tag "default-load.png", height: 300, width: 400, crop: :fill %>
+              <div class= "load-card-infos">
+                <div class="form-row white-box">
+                  <div class="form-group col-md-6">
+                    <label>Origen</label>
+                    <p>Arávalo 2279, CABA</p>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label>Destino</label>
+                    <p>Rueda 755, Rosario</p>
+                  </div>
                 </div>
-                <div class="form-group col-md-6">
-                  <label>Destino</label>
-                  <p>Rueda 755, Rosario</p>
+                <div class="form-row white-box">
+                  <div class="form-group col-md-6">
+                    <label>Fecha mínima</label>
+                    <p><%= load.start_date %></p>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label>Fecha máxima</label>
+                    <p><%= load.end_date %></p>
+                  </div>
+                </div>
+                <div class="form-row white-box">
+                  <div class="form-group col-md-6">
+                    <label>Hora mínima</label>
+                    <p><%= load.hour_range %></p>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label>Hora máxima</label>
+                    <p><%= load.hour_range %></p>
+                  </div>
+                </div>
+                <div class="form-row white-box">
+                  <div class="form-group col-md-6">
+                    <label>Requerimientos especiales</label>
+                    <p><%= load.special_requirement.name %></p>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label>Tipo de carga</label>
+                    <p><%= load.load_category.name %></p>
+                  </div>
+                </div>
+                <div class="form-row white-box">
+                  <div class="form-group col-md-6">
+                    <label>Volumen</label>
+                    <p><%= load.volume %></p>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label>Peso</label>
+                    <p><%= load.weight %></p>
+                  </div>
                 </div>
               </div>
-              <div class="form-row white-box">
-                <div class="form-group col-md-6">
-                  <label>Fecha mínima</label>
-                  <p>15/08/2020</p>
-                </div>
-                <div class="form-group col-md-6">
-                  <label>Fecha máxima</label>
-                  <p>20/08/2020</p>
-                </div>
-              </div>
-              <div class="form-row white-box">
-                <div class="form-group col-md-6">
-                  <label>Hora mínima</label>
-                  <p>9:00</p>
-                </div>
-                <div class="form-group col-md-6">
-                  <label>Hora máxima</label>
-                  <p>13:00</p>
-                </div>
-              </div>
-              <div class="form-row white-box">
-                <div class="form-group col-md-6">
-                  <label>Requerimientos especiales</label>
-                  <p>Refrigerado</p>
-                </div>
-                <div class="form-group col-md-6">
-                  <label>Tipo de carga</label>
-                  <p>Palletizado</p>
-                </div>
-              </div>
-            </div>
+          </div>
+          <div class="col-1">
+            <i class="fas fa-clipboard-check"></i>
+          </div>
         </div>
       <% end %>
     </div>

@@ -1,9 +1,10 @@
 .white-box {
-  border-radius: 4px;
   background-color: #FFFFFF;
   padding: 5px;
   margin: 15px 0px;
-  border-color: #D1D1D1
+  font-size: 16px;
+  border: 1px solid #D1D1D1;
+  border-radius: 4px;
 }
 
 .white-box label {
@@ -21,3 +22,10 @@
   border-style: hidden;
 }
 
+.white-box .btn {
+  background: #46AF44;
+  color: #FFFFFF;
+  border-color: #46AF44;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  display:flex;
+}
