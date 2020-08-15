@@ -1,3 +1,3 @@
 class Picking < ApplicationRecord
-  has_many :loads
+  #has_many :loads
 end

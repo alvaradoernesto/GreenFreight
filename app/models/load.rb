@@ -5,7 +5,7 @@ class Load < ApplicationRecord
   belongs_to :freight, optional: true
   belongs_to :load_category
   belongs_to :special_requirement
-  belongs_to :picking
+  # belongs_to :picking
 
   has_many :addresses
   validates :status, inclusion: {in: STATUSES}
