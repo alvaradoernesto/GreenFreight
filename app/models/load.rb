@@ -9,4 +9,9 @@ class Load < ApplicationRecord
 
   has_many :addresses
   validates :status, inclusion: {in: STATUSES}
+  has_one :start_point
+  has_one :end_point
+  accepts_nested_attributes_for :start_point
+  accepts_nested_attributes_for :end_point
+  validates :status, inclusion: {in: ["Nueva", "Asignada", "En tránsito", "Entregada", "Cancelada"]}
 end

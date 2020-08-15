@@ -9,11 +9,21 @@ class LoadsController < ApplicationController
 
   def show
     @load = Load.find(params[:id])
-    @addresses = Load.addresses.geocoded
+    @addresses = [@load.start_point.location, @load.end_point.location]
+    @markers = @addresses.map do |address|
+      {
+        lat: address[0],
+        lng: address[1]
+      }
+    end
   end
 
   def new
     @load = Load.new
+    @load.build_start_point
+    @load.build_end_point
+    # @start_point = StartPoint.new
+    # @end_point = EndPoint.new
   end
 
   def create
@@ -47,6 +57,6 @@ class LoadsController < ApplicationController
 
   def load_params
     params.require(:load).permit(:user, :start_date, :end_date, :hour_range,
-                                 :start_point, :end_point, :weight, :volume, :status, :price)
+                                 :weight, :volume, :status, :price, start_point_attributes: [:location], end_point_attributes: [:location])
   end
 end

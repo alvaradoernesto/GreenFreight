@@ -31,6 +31,16 @@ ActiveRecord::Schema.define(version: 2020_08_15_184519) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "end_points", force: :cascade do |t|
+    t.string "location"
+    t.float "latitude"
+    t.float "longitude"
+    t.bigint "load_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["load_id"], name: "index_end_points_on_load_id"
+  end
+
   create_table "freights", force: :cascade do |t|
     t.string "start_point"
     t.string "end_point"
@@ -94,6 +104,16 @@ ActiveRecord::Schema.define(version: 2020_08_15_184519) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "start_points", force: :cascade do |t|
+    t.string "location"
+    t.float "latitude"
+    t.float "longitude"
+    t.bigint "load_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["load_id"], name: "index_start_points_on_load_id"
+  end
+
   create_table "truck_categories", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
@@ -142,6 +162,7 @@ ActiveRecord::Schema.define(version: 2020_08_15_184519) do
   end
 
   add_foreign_key "addresses", "loads"
+  add_foreign_key "end_points", "loads"
   add_foreign_key "freights", "trucks"
   add_foreign_key "loads", "freights"
   add_foreign_key "loads", "load_categories"
@@ -149,6 +170,7 @@ ActiveRecord::Schema.define(version: 2020_08_15_184519) do
   add_foreign_key "loads", "users"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "start_points", "loads"
   add_foreign_key "truck_load_categories", "load_categories"
   add_foreign_key "truck_load_categories", "trucks"
   add_foreign_key "trucks", "truck_categories"
