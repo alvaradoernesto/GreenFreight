@@ -20,11 +20,11 @@ class LoadsController < ApplicationController
 
   def show
     @load = Load.find(params[:id])
-    @addresses = [@load.start_point.location, @load.end_point.location]
+    @addresses = [@load.start_point, @load.end_point]
     @markers = @addresses.map do |address|
       {
-        lat: address[0],
-        lng: address[1]
+        lat: address.latitude,
+        lng: address.longitude
       }
     end
   end
@@ -68,6 +68,6 @@ class LoadsController < ApplicationController
 
   def load_params
     params.require(:load).permit(:user, :start_date, :end_date, :hour_range,
-                                 :weight, :volume, :status, :price, start_point_attributes: [:location], end_point_attributes: [:location])
+                                 :weight, :volume, :status, :price, start_point_attributes: [:location, :latitude, :longitude], end_point_attributes: [:location, :latitude, :longitude])
   end
 end
