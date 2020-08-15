@@ -12,7 +12,22 @@ class Freight < ApplicationRecord
     self.status = "Nueva"
     self.price = "300"
     self.capacity = loads.sum(&:volume)
-    self.distance = "300"
-    self.emissions = "300"
+    self.distance = freight_distance
+    self.emissions = freight_emissions
+  end
+
+  private
+
+  def freight_emissions
+    loads.each do |load|
+      # load.freight.truck.truck_load_category.emissions *
+    end
+    # TODO
+  end
+
+  def freight_distance
+    loads.each do |load|
+      # TODO
+    end
   end
 end
