@@ -27,6 +27,7 @@ class Freight < ApplicationRecord
 
   def freight_distance
     loads.each do |load|
+
       # TODO
     end
   end
