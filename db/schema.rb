@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_15_154013) do
+ActiveRecord::Schema.define(version: 2020_08_15_204109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2020_08_15_154013) do
   end
 
   create_table "load_categories", force: :cascade do |t|
-    t.string "name"
+    t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -93,8 +93,14 @@ ActiveRecord::Schema.define(version: 2020_08_15_154013) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "pickings", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "load_number"
+  end
+
   create_table "special_requirements", force: :cascade do |t|
-    t.string "name"
+    t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -110,7 +116,7 @@ ActiveRecord::Schema.define(version: 2020_08_15_154013) do
   end
 
   create_table "truck_categories", force: :cascade do |t|
-    t.string "name"
+    t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.float "emissions"

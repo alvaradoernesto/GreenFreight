@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="form">
+    <%= simple_form_for @picking do |f| %>
+      <%= f.association :loads, as: :check_boxes %>
+      <%= f.button :submit, "Confirmar seleccion", class: "button green-button"%>
+    <% end %>
+  </div>
+</div>

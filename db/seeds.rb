@@ -75,33 +75,33 @@ cargador_nadia.save!
 
 puts "Creating Truck Categories"
 
-TruckCategory.create(name: "Petróleo", emissions: 500)
-TruckCategory.create(name: "Diésel", emissions: 400)
-TruckCategory.create(name: "Híbrido", emissions: 150)
-TruckCategory.create(name: "Eléctrico", emissions: 100)
+TruckCategory.create(description: "Petróleo", emissions: 500)
+TruckCategory.create(description: "Diésel", emissions: 400)
+TruckCategory.create(description: "Híbrido", emissions: 150)
+TruckCategory.create(description: "Eléctrico", emissions: 100)
 
 puts "Creating Load Categories"
 
-LoadCategory.create(name: "Animales vivos")
-LoadCategory.create(name: "Cajas")
-LoadCategory.create(name: "Contenedores")
-LoadCategory.create(name: "Gaseosos a granel")
-LoadCategory.create(name: "Líquidos a granel")
-LoadCategory.create(name: "Mudanza")
-LoadCategory.create(name: "Otros")
-LoadCategory.create(name: "Palletizado")
-LoadCategory.create(name: "Rodados y maquinaria pesada")
-LoadCategory.create(name: "Sólidos a granel")
+LoadCategory.create(description: "Animales vivos")
+LoadCategory.create(description: "Cajas")
+LoadCategory.create(description: "Contenedores")
+LoadCategory.create(description: "Gaseosos a granel")
+LoadCategory.create(description: "Líquidos a granel")
+LoadCategory.create(description: "Mudanza")
+LoadCategory.create(description: "Otros")
+LoadCategory.create(description: "Palletizado")
+LoadCategory.create(description: "Rodados y maquinas")
+LoadCategory.create(description: "Sólidos a granel")
 
 puts "Creating Special Requirements"
 
-SpecialRequirement.create(name: "Apto alimentos")
-SpecialRequirement.create(name: "Carga peligrosa")
-SpecialRequirement.create(name: "Dimensiones especiales")
-SpecialRequirement.create(name: "Frágil")
-SpecialRequirement.create(name: "Ninguno")
-SpecialRequirement.create(name: "Otros")
-SpecialRequirement.create(name: "Refrigerado")
+SpecialRequirement.create(description: "Apto alimentos")
+SpecialRequirement.create(description: "Carga peligrosa")
+SpecialRequirement.create(description: "Dimensiones especiales")
+SpecialRequirement.create(description: "Frágil")
+SpecialRequirement.create(description: "Ninguno")
+SpecialRequirement.create(description: "Otros")
+SpecialRequirement.create(description: "Refrigerado")
 
 puts "Creating Load Status"
 
@@ -169,34 +169,34 @@ puts "Creating Trucks"
   end
 end
 
+puts "Creating Loads"
+
+[cargador_ernesto, cargador_mauricio, cargador_nadia].each do |loader|
+  10.times do
+    oneload = Load.new(
+      user: loader,
+      start_date: Date.today-rand(30),
+      end_date: Date.today+rand(30),
+      hour_range: HOUR_RANGES.sample,
+      # start_point: LOAD_START_POINTS.sample,
+      # end_point: LOAD_END_POINTS.sample,
+      load_category_id: LoadCategory.pluck(:id).sample,
+      special_requirement_id: SpecialRequirement.pluck(:id).sample,
+      weight: Faker::Number.between(from: 10, to: 25000),
+      volume: Faker::Number.between(from: 1, to: 130),
+      price: Faker::Number.number(digits: 3),
+      status: LOAD_STATUS.sample,
+    )
+    oneload.save!
+  end
+end
+
 puts "Creating Truck Load Categories"
 
 Truck.all.each do |truck|
      truck_load_category = TruckLoadCategory.new(truck: truck,
      load_category: LoadCategory.all.sample)
      truck_load_category.save
-end
-
-puts "Creating Loads"
-
-[cargador_ernesto, cargador_mauricio, cargador_nadia].each do |loader|
-  10.times do
-    oneload = Load.new(
-      user: cargador_ernesto,
-      start_date: Date.today-rand(30),
-      end_date: Date.today+rand(30),
-      hour_range: HOUR_RANGES.sample,
-      start_point: LOAD_START_POINTS.sample,
-      end_point: LOAD_END_POINTS.sample,
-      load_category: LoadCategory.all.sample,
-      special_requirement: SpecialRequirement.all.sample,
-      weight: Faker::Number.between(from: 1, to: 130),
-      volume: Faker::Number.between(from: 10, to: 25000),
-      price: Faker::Number.number(digits: 3),
-      status: LOAD_STATUS.sample,
-    )
-    oneload.save!
-  end
 end
 
 puts "Creating Freights -- falta"
