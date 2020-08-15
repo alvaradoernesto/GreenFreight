@@ -1,32 +1,40 @@
-<div class="container">
-  <div class="row">
-    <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4));">
-      <div class="container">
-        <h1>La manera segura y eficiente de transportar tus pertenencias ayudando al medioambiente</h1>
-        <p>Obtené un estimado de tu Green Freight</p>
-        <div class="cotizacion">
-          <form class="form-inline d-flex justify-content-around">
-            <div class="form-group w-25">
-              <label for="inputOrigin" class="sr-only">Origen</label>
-              <input type="string" class="form-control" id="inputOrigin" placeholder="Origen">
-            </div>
-            <div class="form-group w-25">
-              <label for="inputDestino" class="sr-only">Destino</label>
-              <input type="string" class="form-control" id="inputDestino" placeholder="Destino">
-            </div>
-              <button type="submit" class="btn btn-primary w-50 font-weight-bold">Cotizá</button>
-          </form>
-        </div>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= image_path 'banner.png' %>');" >
+  <div class="container">
+    <div class="col-6">
+      <h2 class="text-left">La manera segura y eficiente de transportar tus pertenencias ayudando al medioambiente</h2>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="container">
+      <p>Obtené un estimado de tu Green Freight</p>
+      <div class="cotizacion">
+        <form class="form-inline d-flex justify-content-around">
+          <div class="form-group w-25">
+            <label for="inputOrigin" class="sr-only">Origen</label>
+            <input type="string" class="form-control" id="inputOrigin" placeholder="Origen">
+          </div>
+          <div class="form-group w-25">
+            <label for="inputDestino" class="sr-only">Destino</label>
+            <input type="string" class="form-control" id="inputDestino" placeholder="Destino">
+          </div>
+            <button type="submit" class="button green-button w-30 font-weight-bold">Cotizá</button>
+        </form>
       </div>
     </div>
   </div>
-  <div class="row justify-content-center m-2">
-    <h2 class="black-shadow">¿Por qué elegirnos?</h2>
-  </div>
-  <div class="row">
+</div>
+<div class="white-rec">
+  <br>
+  <h1 class="black-shadow">¿Por qué elegirnos?</h1>
+  <br>
+</div>
+<div class="container">
+  <div class="row cards">
     <div class="col">
       <div class="card">
-        <img src="https://images.unsplash.com/photo-1593642532842-98d0fd5ebc1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt="">
+        <img src="<%= asset_path('save-money.jpg') %>" alt="">
         <div class="card-info">
           <h1>Ahorrá dinero</h1>
           <p>Mediante el sistema de cargas compartidas, podes comparar las distintas tarifas disponibles para transportar tu carga.</p>
@@ -35,60 +43,62 @@
     </div>
      <div class="col">
        <div class="card">
-         <img src="https://images.unsplash.com/photo-1593642532842-98d0fd5ebc1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt="">
+         <img src="<%= asset_path('save-planet.jpg') %>" alt="">
          <div class="card-info">
            <h1>Cuidá el planeta</h1>
-           <p>Description</p>
+           <p>Compartiendo tu Green Freight con otros solicitantes ayudas a disminuir considerablemente la huella de carbono y el impacto ambiental.</p>
          </div>
        </div>
      </div>
       <div class="col">
         <div class="card">
-          <img src="https://images.unsplash.com/photo-1593642532842-98d0fd5ebc1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt="">
+          <img src="<%= asset_path('save-time.jpg') %>" alt="">
           <div class="card-info">
             <h1>Ahorrá tiempo</h1>
-            <p>Description</p>
+            <p>En segundos podras comparar las tarifas y matchear tu carga con los transportes disponibles en la fecha solicitada.</p>
           </div>
         </div>
       </div>
   </div>
   <div class="row justify-content-center m-2">
-    <h2 class="black-shadow">¿Cómo funciona?</h2>
+    <br>
+    <h1 class="black-shadow">¿Cómo funciona?</h1>
+    <br>
   </div>
   <div class="row">
     <div class="col">
       <div class="small-card">
-        <img src="https://images.unsplash.com/photo-1593642532842-98d0fd5ebc1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt="">
+        <img src="<%= asset_path('loader-paso1.png') %>" alt="">
         <div class="card-info">
-          <h1>Small Card</h1>
-          <p>Small card description</p>
+          <h2>Agrega tu carga</h2>
+          <p>Sumá todas las cosas que necesites transportar</p>
         </div>
       </div>
     </div>
     <div class="col">
       <div class="small-card">
-        <img src="https://images.unsplash.com/photo-1593642532842-98d0fd5ebc1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt="">
+        <img src="<%= asset_path('loader-paso2.png') %>" alt="">
         <div class="card-info">
-          <h1>Small Card</h1>
-          <p>Small card description</p>
+          <h2>Compara opciones</h2>
+          <p>Con nuestro amplio rango de transportitas</p>
         </div>
       </div>
     </div>
     <div class="col">
       <div class="small-card">
-        <img src="https://images.unsplash.com/photo-1593642532842-98d0fd5ebc1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt="">
+        <img src="<%= asset_path('loader-paso3.png') %>" alt="">
         <div class="card-info">
-          <h1>Small Card</h1>
-          <p>Small card description</p>
+          <h2>Reserva tu GreenFreight</h2>
+          <p>A través de nuestra plataforma de pagos 100% seguros</p>
         </div>
       </div>
     </div>
     <div class="col">
       <div class="small-card">
-        <img src="https://images.unsplash.com/photo-1593642532842-98d0fd5ebc1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt="">
+        <img src="<%= asset_path('loader-paso4.png') %>" alt="">
         <div class="card-info">
-          <h1>Small Card</h1>
-          <p>Small card description</p>
+          <h2>Segui tu viaje</h2>
+          <p>Y asegurate de que todas tus cosas lleguen a destino</p>
         </div>
       </div>
     </div>

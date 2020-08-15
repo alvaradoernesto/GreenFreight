@@ -1,39 +1,39 @@
 <div class="container">
   <br>
-  <h2>New truck</h2>
+  <h1 class="black-shadow">New truck</h1>
+  <br>
     <%= simple_form_for @truck do |f| %>
-  <div class="form-row white-box">
-    <div class="form-group col-md-6">
-      <%= f.input :truck_name, placeholder: "Diesel 1", label: 'Nombre identificador' %>
-    </div>
-    <div class="form-group col-md-3">
-      <%= f.input :truck_license, placeholder: "XX 123 XX", label: 'Patente' %>
-    </div>
-    <div class="form-group col-md-3">
-      <%= f.input :driver_name, placeholder: "Roberto Bolaños", label: 'Conductor' %>
-    </div>
-    <div class="form-row white-box">
-      <div class="form-group col-md-2">
-        <%= f.input :driver_license, placeholder: "xxxxxxx", label: 'Licencia' %>
-      </div>
-      <div class="form-group col-md-2">
-        <%= f.input :capacity, placeholder: "84", label: 'Capacidad (m3)' %>
-      </div>
-      <div class="form-group col-md-2">
-        <%= f.input :price_per_km, placeholder: "100", label: 'Tarifa por km ($/km)' %>
-      </div>
-      <div class="form-group col-md-2">
-        <%= f.association :truck_category %>
-      </div>
-        <div class="form-group col-md-4">
-          <%= f.label "Load category" %>
-          <%= f.fields_for :truck_load_categories, @truck_load_category do |t| %>
-            <%= t.collection_select(:id, LoadCategory.all, :id, :name,  {:prompt => "Please Select a Sector"}, {:multiple => true}) %>
-          <% end %>
+      <div class="form-row white-box">
+        <div class="form-group col-md-6">
+          <%= f.input :truck_name, placeholder: "Diesel 1", label: 'Nombre identificador' %>
         </div>
-    </div>
-
-      <%= f.button :submit, "Confirmar alta", class: "btn btn-primary mt-2 font-weight-bold"%>
+        <div class="form-group col-md-3">
+          <%= f.input :truck_license, placeholder: "XX 123 XX", label: 'Patente' %>
+        </div>
+        <div class="form-group col-md-3">
+          <%= f.input :driver_name, placeholder: "Roberto Bolaños", label: 'Conductor' %>
+        </div>
+        <div class="form-row white-box">
+          <div class="form-group col-md-2">
+            <%= f.input :driver_license, placeholder: "xxxxxxx", label: 'Licencia' %>
+          </div>
+          <div class="form-group col-md-2">
+            <%= f.input :capacity, placeholder: "84", label: 'Capacidad (m3)' %>
+          </div>
+          <div class="form-group col-md-2">
+            <%= f.input :price_per_km, placeholder: "100", label: 'Tarifa por km ($/km)' %>
+          </div>
+          <div class="form-group col-md-2">
+            <%= f.association :truck_category %>
+          </div>
+            <div class="form-group col-md-4">
+              <%= f.label "Load category" %>
+              <%= f.fields_for :truck_load_categories, @truck_load_category do |t| %>
+                <%= t.collection_select(:id, LoadCategory.all, :id, :name,  {:prompt => "Please Select a Sector"}, {:multiple => true}) %>
+              <% end %>
+            </div>
+        </div>
+      <%= f.button :submit, "Confirmar alta", class: "buttn green-button mt-2 font-weight-bold"%>
     <% end %>
   </div>
 </div>

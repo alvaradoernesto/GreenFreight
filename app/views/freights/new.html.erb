@@ -1,57 +1,62 @@
 <div class="container">
-  <h2>Confirmación de viaje</h2>
-  <div class="form">
+  <br>
+  <h1 class="black-shadow">Confirmación de viaje</h1>
+  <br>
+  <div class="form form-box">
     <%= simple_form_for @freight do |f| %>
       <div class="row">
-        <div class="col-sm">
+        <div class="col-sm white-box m-2">
           <%= f.input :start_date, label: 'Fecha' %>
         </div>
-        <div class="col-sm">
+        <div class="col-sm white-box m-2">
           <%= f.input :start_date, label: 'Hora inicial' %>
         </div>
-        <div class="col-sm">
+        <div class="col-sm white-box m-2">
           <%= f.input :end_date, label: 'Hora final' %>
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm white-box m-2">
           <%= f.input :truck, label: 'Tipo de carga' %>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm white-box m-2">
           <%= f.input :truck, label: 'Requerimientos especiales' %>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm white-box m-2">
           <%= f.input :truck, label: 'Asignar camión' %>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm white-box m-2">
           <%= f.input :truck, label: 'Conductor' %>
         </div>
       </div>
       <div class="row">
-        <div class="col-sm">
+        <div class="col-sm white-box m-2">
           <%= f.input :distance, label: 'Distancia total' %>
         </div>
-        <div class="col-sm">
+        <div class="col-sm white-box m-2">
           <%= f.input :capacity, label: 'Capacidad utilizada' %>
         </div>
-        <div class="col-sm">
+        <div class="col-sm white-box m-2">
           <%= f.input :emissions, label: 'Emisiones' %>
         </div>
-        <div class="col-sm">
+        <div class="col-sm white-box m-2">
           <%= f.input :price, label: 'Tarifa $/km/m3' %>
         </div>
-        <div class="col-sm">
+        <div class="col-sm white-box m-2">
           <%= f.input :price, label: 'Precio total' %>
         </div>
-        <div class="col-sm">
+        <div class="col-sm" id="buttons">
           <div class="row">
-            <%= f.button :submit, "Confirmar viaje", class: "btn green-button"%>
+            <%= f.button :submit, "Confirmar viaje", class: "button green-button"%>
           </div>
           <div class="row">
-            <%= f.button :submit, "Agregar cargas", class: "btn green-button"%>
+            <%= f.button :submit, "Agregar cargas", class: "button green-button"%>
           </div>
         </div>
       </div>
     <% end %>
   </div>
+  <br>
+  <h1 class="black-shadow">Hoja de ruta</h1>
+  <br>
 </div>
