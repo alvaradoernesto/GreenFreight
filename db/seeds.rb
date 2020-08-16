@@ -16,6 +16,9 @@ User.destroy_all
 SpecialRequirement.destroy_all
 LoadCategory.destroy_all
 TruckCategory.destroy_all
+StartPoint.destroy_all
+EndPoint.destroy_all
+
 
 puts "Creating New Users"
 
@@ -188,6 +191,10 @@ puts "Creating Loads"
       status: LOAD_STATUS.sample,
     )
     oneload.save!
+    start_point = StartPoint.new(load: oneload, location: LOAD_START_POINTS.sample)
+    end_point  = EndPoint.new(load: oneload, location: LOAD_END_POINTS.sample)
+    start_point.save!
+    end_point.save!
   end
 end
 
@@ -201,3 +208,12 @@ end
 
 puts "Creating Freights -- falta"
 
+5.times do
+  freight = Freight.new
+  t = 0
+  rand(1..3).times do
+    freight.loads << Load.find(rand(1..Load.count))
+  end
+  freight.truck = Truck.all.sample
+  freight.save!
+end

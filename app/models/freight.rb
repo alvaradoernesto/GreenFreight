@@ -1,6 +1,3 @@
-require 'json'
-require 'open-uri'
-
 class Freight < ApplicationRecord
   belongs_to :truck
   has_many :loads
@@ -26,7 +23,7 @@ class Freight < ApplicationRecord
   end
 
   def freight_end_date
-    end_date = loads.firs.end_date
+    end_date = loads.first.end_date
     loads.each do |load|
       if load.end_date > end_date
         end_date = load.start_date
@@ -37,7 +34,7 @@ class Freight < ApplicationRecord
 
 
   def freight_start_date
-    start_date = loads.firs.start_date
+    start_date = loads.first.start_date
     loads.each do |load|
     if load.start_date < start_date
       start_date = load.start_date
@@ -49,7 +46,7 @@ class Freight < ApplicationRecord
   def freight_emissions
     emissions = 0
     loads.each do |load|
-      emissions =+ load.freight.truck.truck_load_category.emissions * Geocoder::Calculations.distance_between([load.start_point.location.latitude,load.start_point.location.longitude], [load.end_point.location.latitude,load.end_point.location.longitude])
+      emissions =+ load.freight.truck.truck_category.emissions * Geocoder::Calculations.distance_between([load.start_point.latitude,load.start_point.longitude], [load.end_point.latitude,load.end_point.longitude])
     end
     return emissions
   end
@@ -57,10 +54,10 @@ class Freight < ApplicationRecord
   def freight_distance
     api_string = "https://api.mapbox.com/directions/v5/mapbox/driving-traffic/"
     loads.each do |load|
-      api_string =+ load.location.latitude + "," + load.location.latitude + ";"
+      api_string += load.start_point.latitude.to_s + "," + load.end_point.latitude.to_s + ";"
     end
     api_string = api_string[0..-2] + "?annotations=distance&overview=full&access_token=pk.eyJ1IjoibWF1cmljaW83NyIsImEiOiJja2F5aXM1dTUwam92MnpvN3VoZ3V3ZzNkIn0.RlRTMnbFVVPEl9jWVH08Bg"
-    user_serialized = open(url).read
+    user_serialized = open(api_string).read
     user = JSON.parse(user_serialized)
     return user["routes"][0]["distance"].to_f
   end
