@@ -1,9 +1,10 @@
 <div class="container">
- <br>
- <h1 class="black-shadow">Your trucks</h1>
- <br>
- <table class="table table-hover white-box">
-      <thead class="thead-dark">
+  <br>
+  <h1 class="black-shadow">Your trucks</h1>
+  <br>
+  <div class="form form-box">
+    <table class="table table-hover white-box">
+      <thead>
         <tr>
           <th scope="col">Truck name</th>
           <th scope="col">Price per km</th>
@@ -24,15 +25,18 @@
             <td><%= truck.driver_name %></td>
             <td><%= truck.driver_license %></td>
             <td><%= truck.truck_license %></td>
-            <td><%= truck.truck_category.name %>
+            <td><%= truck.truck_category.description %>
             <td>
             <% truck.load_categories.each do |cat| %>
-              <%= cat.name %>
+              <%= cat.description %>
             <% end %>
             </td>
           </tr>
         <% end %>
       </tbody>
- </table>
-<%= link_to "Go home", root_path, class: "btn btn-primary"  %>
+    </table>
+    <div class="form-row d-flex justify-content-center">
+      <%= link_to "Go home", root_path, class: "button green-button align-middle" %>
+    </div>
+  </div>
 </div>

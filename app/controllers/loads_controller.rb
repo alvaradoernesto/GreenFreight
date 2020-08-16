@@ -1,30 +1,19 @@
 class LoadsController < ApplicationController
   def index
-    # if params[:query].present?
-    #   sql_query = " \
-    #     load.start_point @@ :query \
-    #     AND load.end_point @@ :query \
-    #     AND load.start_date @@ :query \
-    #     AND load.end_date @@ :query \
-    #     AND load.hour_range @@ :query \
-    #     AND load.load_category_id @@ :query \
-    #     AND load.special_requirement_id @@ :query \
-    #   "
-    #   @loads = Load.where(sql_query, query: "%#{params[:query]}%")
-    # else
-    #   @loads = Load.where(status: "Nueva")
-    # end
     @q = Load.ransack(params[:q])
     @loads = @q.result(distinct: true)
+    if @loads.empty?
+      @loads = Load.where(status: "Nueva")
+    end
   end
 
   def show
     @load = Load.find(params[:id])
-    @addresses = [@load.start_point.location, @load.end_point.location]
+    @addresses = [@load.start_point, @load.end_point]
     @markers = @addresses.map do |address|
       {
-        lat: address[0],
-        lng: address[1]
+        lat: address.latitude,
+        lng: address.longitude
       }
     end
   end
@@ -68,6 +57,6 @@ class LoadsController < ApplicationController
 
   def load_params
     params.require(:load).permit(:user, :start_date, :end_date, :hour_range,
-                                 :weight, :volume, :status, :price, start_point_attributes: [:location], end_point_attributes: [:location])
+                                 :weight, :volume, :status, :price, start_point_attributes: [:location, :latitude, :longitude], end_point_attributes: [:location, :latitude, :longitude])
   end
 end

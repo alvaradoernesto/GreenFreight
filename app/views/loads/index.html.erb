@@ -6,6 +6,7 @@
     <div class="row">
       <div class="col-sm-6 form-box ">
         <%= search_form_for @q do |f| %>
+          <% f.select :status_eq, ["Nueva"] %>
           <div class= "form-inputs">
             <div class="container">
               <div class="form-row white-box">
@@ -24,36 +25,32 @@
                 <div class="form-group col-md-6 input-daterange" id="datepicker">
                   <label>Fecha máxima</label>
                   <div class="input-daterange" id="datepicker">
-                    <%= f.search_field :start_date_cont, placeholder: "15/08/2020",'datepicker' => true %>
+                    <%= f.date_field :start_date_gteq, class: 'form-control input-sm', 'datepicker' => true %>
                   </div>
                 </div>
                 <div class="form-group col-md-6">
                   <label>Fecha mínima</label>
-                  <%= f.search_field :end_date_cont, placeholder: "20/08/2020",'datepicker' => true %>
+                  <%= f.date_field :end_date_lt, class: 'form-control input-sm','datepicker' => true %>
                 </div>
               </div>
             </div>
             <div class="container">
               <div class="form-row white-box">
                 <div class="form-group col-md-6">
-                  <label>Hora mínima</label>
-                  <%= f.search_field :hour_range_cont, placeholder: "07:00" %>
+                  <label>Rango horario</label>
+                  <%= f.select :hour_range_eq, ["7:00-12:00", "12:00-17:00", "17:00-22:00"], include_blank: true %>
                 </div>
                 <div class="form-group col-md-6">
-                  <label>Hora máxima</label>
-                  <%= f.search_field :hour_range_cont, placeholder: "19:00" %>
+                  <label>Tipo de carga</label>
+                  <%= f.collection_select :load_category_id_eq, LoadCategory.all, :id, :description, include_blank: true %>
                 </div>
               </div>
             </div>
             <div class="container">
-              <div class="form-row">
-                <div class="form-group col-md-6 white-box">
-                  <label>Tipo de carga</label>
-                  <%= f.search_field :load_category_id_cont, placeholder: "Palletizado", collection: LoadCategory.all %>
-                </div>
-                <div class="form-group col-md-6 white-box">
+              <div class="form-row white-box">
+                <div class="form-group col-md-6">
                   <label>Requerimientos especiales</label>
-                  <%= f.search_field :special_requirement_id_cont, placeholder: "Frágil" %>
+                  <%= f.collection_select :special_requirement_id_eq, SpecialRequirement.all, :id, :description, include_blank: true %>
                 </div>
               </div>
             </div>
@@ -74,7 +71,7 @@
     <br>
     <div class="form-box">
       <% @loads.each do |load| %>
-        <div class="form-row">
+        <div class="form-row row">
           <div class="load-card col-11">
             <%= image_tag "default-load.png", height: 300, width: 400, crop: :fill %>
               <div class= "load-card-infos">
@@ -100,22 +97,22 @@
                 </div>
                 <div class="form-row white-box">
                   <div class="form-group col-md-6">
-                    <label>Hora mínima</label>
+                    <label>Rango horario</label>
                     <p><%= load.hour_range %></p>
                   </div>
                   <div class="form-group col-md-6">
-                    <label>Hora máxima</label>
-                    <p><%= load.hour_range %></p>
+                    <label>Estado</label>
+                    <p><%= load.status %></p>
                   </div>
                 </div>
                 <div class="form-row white-box">
                   <div class="form-group col-md-6">
                     <label>Requerimientos especiales</label>
-                    <p><%= load.special_requirement.name %></p>
+                    <p><%= load.special_requirement.description %></p>
                   </div>
                   <div class="form-group col-md-6">
                     <label>Tipo de carga</label>
-                    <p><%= load.load_category.name %></p>
+                    <p><%= load.load_category.description %></p>
                   </div>
                 </div>
                 <div class="form-row white-box">
@@ -135,6 +132,9 @@
           </div>
         </div>
       <% end %>
+      <div class="form-row d-flex justify-content-center">
+        <%= link_to "Armar viaje", new_freight_path, class: "button green-button" %>
+      </div>
     </div>
   </div>
 </div>
