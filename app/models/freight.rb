@@ -5,8 +5,8 @@ class Freight < ApplicationRecord
   validates :status, inclusion: {in: ["Nuevo", "En tránsito", "Finalizado", "Cancelado"]}
 
   def routing!
-    self.start_point = loads.first.start_point
-    self.end_point = loads.last.end_point
+    self.start_point = self.loads.first.start_point.location
+    self.end_point = self.loads.last.end_point.location
     self.start_date = freight_start_date
     self.end_date = freight_end_date
     self.status = "Nuevo"
@@ -52,13 +52,19 @@ class Freight < ApplicationRecord
   end
 
   def freight_distance
-    api_string = "https://api.mapbox.com/directions/v5/mapbox/driving-traffic/"
+    # api_string = "https://api.mapbox.com/optimized-trips/v1/mapbox/driving/"
+    # loads.each do |load|
+    #   api_string += load.start_point.latitude.to_s + "," + load.start_point.longitude.to_s + ";"
+    #   api_string += load.end_point.latitude.to_s + "," + load.end_point.longitude.to_s + ";"
+    # end
+    # api_string = api_string[0..-2] + "?access_token=pk.eyJ1IjoibWF1cmljaW83NyIsImEiOiJja2F5aXM1dTUwam92MnpvN3VoZ3V3ZzNkIn0.RlRTMnbFVVPEl9jWVH08Bg"
+    # user_serialized = open(api_string).read
+    # user = JSON.parse(user_serialized)
+    # return user["routes"][0]["distance"].to_f
+    sum = 0
     loads.each do |load|
-      api_string += load.start_point.latitude.to_s + "," + load.end_point.latitude.to_s + ";"
+      sum += Geocoder::Calculations.distance_between([load.start_point.latitude,load.start_point.longitude],[load.end_point.latitude,load.end_point.longitude])
     end
-    api_string = api_string[0..-2] + "?annotations=distance&overview=full&access_token=pk.eyJ1IjoibWF1cmljaW83NyIsImEiOiJja2F5aXM1dTUwam92MnpvN3VoZ3V3ZzNkIn0.RlRTMnbFVVPEl9jWVH08Bg"
-    user_serialized = open(api_string).read
-    user = JSON.parse(user_serialized)
-    return user["routes"][0]["distance"].to_f
+    return sum
   end
 end
