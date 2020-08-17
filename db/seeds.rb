@@ -190,9 +190,9 @@ puts "Creating Loads"
       price: Faker::Number.number(digits: 3),
       status: LOAD_STATUS.sample,
     )
-    oneload.save!
     start_point = StartPoint.new(load: oneload, location: LOAD_START_POINTS.sample)
     end_point  = EndPoint.new(load: oneload, location: LOAD_END_POINTS.sample)
+    oneload.save!
     start_point.save!
     end_point.save!
   end
@@ -206,7 +206,7 @@ Truck.all.each do |truck|
      truck_load_category.save
 end
 
-puts "Creating Freights -- falta"
+puts "Creating Freights"
 
 5.times do
   freight = Freight.new
@@ -215,5 +215,6 @@ puts "Creating Freights -- falta"
     freight.loads << Load.find(rand(1..Load.count))
   end
   freight.truck = Truck.all.sample
+  freight.routing!
   freight.save!
 end
