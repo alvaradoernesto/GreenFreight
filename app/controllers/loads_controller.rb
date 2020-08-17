@@ -5,6 +5,15 @@ class LoadsController < ApplicationController
     if @loads.empty?
       @loads = Load.where(status: "Nueva")
     end
+    @markers = @loads.map do |load|
+      unless load.start_point.latitude.nil? && load.start_point.longitude.nil?
+      {
+        lat: load.start_point.latitude,
+        lng: load.start_point.longitude
+      }
+      end
+    end
+    @markers.reject! { |x| x.nil? }
   end
 
   def show
