@@ -209,12 +209,13 @@ end
 puts "Creating Freights"
 
 5.times do
-  freight = Freight.new
-  t = 0
-  rand(1..3).times do
-    freight.loads << Load.find(rand(1..Load.count))
+  ruta = Freight.new
+  ruta.truck = Truck.all.sample
+  ruta.status = FREIGHT_STATUS.sample
+  ruta.save!
+  rand(2..3).times do
+    Load.find(rand(1..Load.count)).update(freight_id: ruta.id)
   end
-  freight.truck = Truck.all.sample
-  freight.routing!
-  freight.save!
+  ruta.routing!
+  ruta.save!
 end

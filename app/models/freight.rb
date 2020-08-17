@@ -11,9 +11,9 @@ class Freight < ApplicationRecord
     self.end_date = freight_end_date
     self.status = "Nuevo"
     self.capacity = loads.sum(&:volume)
-    self.distance = freight_distance
+    self.distance = freight_distance(self.loads)
     self.price = freight_price
-    self.emissions = freight_emissions
+    self.emissions = freight_emissions(self.loads)
   end
 
   private
@@ -23,8 +23,8 @@ class Freight < ApplicationRecord
   end
 
   def freight_end_date
-    end_date = loads.first.end_date
-    loads.each do |load|
+    end_date = self.loads.first.end_date
+    self.loads.each do |load|
       if load.end_date > end_date
         end_date = load.start_date
       end
@@ -34,8 +34,8 @@ class Freight < ApplicationRecord
 
 
   def freight_start_date
-    start_date = loads.first.start_date
-    loads.each do |load|
+    start_date = self.loads.first.start_date
+    self.loads.each do |load|
     if load.start_date < start_date
       start_date = load.start_date
     end
@@ -43,15 +43,15 @@ class Freight < ApplicationRecord
     end
   end
 
-  def freight_emissions
+  def freight_emissions(array)
     emissions = 0
-    loads.each do |load|
+    array.each do |load|
       emissions =+ load.freight.truck.truck_category.emissions * Geocoder::Calculations.distance_between([load.start_point.latitude,load.start_point.longitude], [load.end_point.latitude,load.end_point.longitude])
     end
     return emissions
   end
 
-  def freight_distance
+  def freight_distance(array)
     # api_string = "https://api.mapbox.com/optimized-trips/v1/mapbox/driving/"
     # loads.each do |load|
     #   api_string += load.start_point.latitude.to_s + "," + load.start_point.longitude.to_s + ";"
@@ -62,7 +62,7 @@ class Freight < ApplicationRecord
     # user = JSON.parse(user_serialized)
     # return user["routes"][0]["distance"].to_f
     sum = 0
-    loads.each do |load|
+    array.each do |load|
       sum += Geocoder::Calculations.distance_between([load.start_point.latitude,load.start_point.longitude],[load.end_point.latitude,load.end_point.longitude])
     end
     return sum
