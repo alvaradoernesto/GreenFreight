@@ -124,26 +124,26 @@ LOAD_END_POINTS = [
   "Francia 981, Luján, Provincia de Buenos Aires",
   "San Martín 2152, Campana, Provincia de Buenos Aires",
   "Av. San Martín 1747, Baradero, Provincia de Buenos Aires",
-  "Av H Yrigoyen 765, Rauch, Provincia de Buenos Aires",
+  "Rauch, Provincia de Buenos Aires",
   "Undiano 264, Bahía Blanca, Provincia de Buenos Aires",
-  "Carlos Pellegrini 1785, Trelew, Provincia de Chubut",
+  "Provincia de Chubut",
   "Luis Maspero 158, Remedios de Escalada, Provincia de Buenos Aires",
   "Pasteur 220, Mar del Plata, Provincia de Buenos Aires",
-  "Bv Segui 3602, Rosario, Provincia de Santa Fe",
-  "Dardo Rocha y Pedro Mena, Moreno, Provincia de Buenos Aires"
+  "Rosario, Provincia de Santa Fe",
+  "Moreno, Provincia de Buenos Aires"
 ]
 
 LOAD_START_POINTS = [
-  "Jose Ingenieros 2202, Olivos, Provincia de Buenos Aires",
+  "Olivos, Provincia de Buenos Aires",
   "Moreno 490, Buenos Aires",
   "San Luis 542, Rosario, Provincia de Santa Fe",
   "Yrigoyen 625, Pehuajó, Provincia de Buenos Aires",
-  "Reconquista 16, Comodoro Rivadavia, Provincia de Chubut",
-  "Tupungato 54, La Rioja, Provincia de La Rioja",
+  "Comodoro Rivadavia, Chubut",
+  "Tupungato 54, La Rioja",
   "Pedro Luro 6681, Mar del Plata, Provincia de Buenos Aires",
-  "Urquiza 345, Santiago del Estero, Provincia de Santiago del Estero",
-  "San Lorenzo 431, Puerto Madryn, Provincia de Chubut",
-  "Carlos Lencinas 776, Luján de Cuyo, Provincia de Mendoza"
+  "Urquiza 345, Santiago del Estero",
+  "Puerto Madryn, Chubut",
+  "Luján de Cuyo, Provincia de Mendoza"
 ]
 
 puts "Creating Truck Names"
@@ -190,9 +190,9 @@ puts "Creating Loads"
       price: Faker::Number.number(digits: 3),
       status: LOAD_STATUS.sample,
     )
+    oneload.save!
     start_point = StartPoint.new(load: oneload, location: LOAD_START_POINTS.sample)
     end_point  = EndPoint.new(load: oneload, location: LOAD_END_POINTS.sample)
-    oneload.save!
     start_point.save!
     end_point.save!
   end
@@ -214,8 +214,7 @@ puts "Creating Freights"
   ruta.status = FREIGHT_STATUS.sample
   ruta.save!
   rand(2..3).times do
-    Load.find(rand(1..Load.count)).update(freight_id: ruta.id)
+    Load.where(freight_id: nil).sample.update(freight_id: ruta.id)
   end
-  ruta.routing!
   ruta.save!
 end

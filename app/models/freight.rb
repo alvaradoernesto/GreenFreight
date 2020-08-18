@@ -3,20 +3,23 @@ class Freight < ApplicationRecord
   has_many :loads
 
   validates :status, inclusion: {in: ["Nuevo", "En tránsito", "Finalizado", "Cancelado"]}
+  before_save :routing!
+
+  private
 
   def routing!
+    self.status ||= "Nuevo"
+    return if loads.empty?
+
     self.start_point = self.loads.first.start_point.location
     self.end_point = self.loads.last.end_point.location
     self.start_date = freight_start_date
     self.end_date = freight_end_date
-    self.status = "Nuevo"
     self.capacity = loads.sum(&:volume)
     self.distance = freight_distance(self.loads)
     self.price = freight_price
     self.emissions = freight_emissions(self.loads)
   end
-
-  private
 
   def freight_price
     self.distance * self.truck.price_per_km
