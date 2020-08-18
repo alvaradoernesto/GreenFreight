@@ -1,6 +1,6 @@
 <div class="container">
   <h1 class="black-shadow">Set nickname</h1>
-  <%= simple_form_for @user, action: :update do |f| %>
+  <%= simple_form_for @user do |f| %>
     <%= f.input :nickname, placeholder: "Your nick", label: "Nickname" %>
     <%= f.button :submit, label: "Enviar", class: "btn btn-primary" %>
   <% end %>
