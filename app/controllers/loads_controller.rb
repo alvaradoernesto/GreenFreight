@@ -9,7 +9,8 @@ class LoadsController < ApplicationController
       unless load.start_point.latitude.nil? && load.start_point.longitude.nil?
       {
         lat: load.start_point.latitude,
-        lng: load.start_point.longitude
+        lng: load.start_point.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { load: load })
       }
       end
     end

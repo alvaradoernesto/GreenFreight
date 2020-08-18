@@ -29,15 +29,15 @@ const initMapbox = () => {
     });
 
     if (mapElement) {
-  // [ ... ]
-  const markers = JSON.parse(mapElement.dataset.markers);
-  markers.forEach((marker) => {
-    new mapboxgl.Marker()
-      .setLngLat([ marker.lng, marker.lat ])
-      .addTo(map);
-  });
-  fitMapToMarkers(map, markers);
-}
+    // [ ... ]
+    const markers = JSON.parse(mapElement.dataset.markers);
+    markers.forEach((marker) => {
+      new mapboxgl.Marker()
+        .setLngLat([ marker.lng, marker.lat ])
+        .addTo(map);
+    });
+    fitMapToMarkers(map, markers);
+    }
   }
 };
 
@@ -48,18 +48,19 @@ const initMapbox2 = () => {
     mapboxgl.accessToken = mapElement2.dataset.mapboxApiKey;
     const map2 = new mapboxgl.Map({
       container: 'map2',
-      style: 'mapbox://styles/mapbox/streets-v10'
+      style: 'mapbox://styles/mauricio77/ckdza4azq05wh19nz7g2ba73u'
     });
 
     if (mapElement2) {
-  // [ ... ]
-  const markers = JSON.parse(mapElement2.dataset.markers);
-  markers.forEach((marker) => {
+    // [ ... ]
+    const markers = JSON.parse(mapElement2.dataset.markers);
+    markers.forEach((marker) => {
     new mapboxgl.Marker()
       .setLngLat([ marker.lng, marker.lat ])
       .addTo(map2);
-  });
-  fitMapToMarkers(map2, markers);
+    });
+    fitMapToMarkers(map2, markers);
+    addMarkersToMap(map2, markers);
     }
   }
 };
