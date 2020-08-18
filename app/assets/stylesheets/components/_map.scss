@@ -1,0 +1,12 @@
+// app/assets/stylesheets/components/_map.scss
+.mapboxgl-popup {
+  max-width: 220px;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  h2 {
+    color: black;
+  }
+}
