@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_15_204109) do
+ActiveRecord::Schema.define(version: 2020_08_19_231604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,6 +99,14 @@ ActiveRecord::Schema.define(version: 2020_08_15_204109) do
     t.string "load_number"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.text "content"
+    t.bigint "truck_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["truck_id"], name: "index_reviews_on_truck_id"
+  end
+
   create_table "special_requirements", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
@@ -171,6 +179,7 @@ ActiveRecord::Schema.define(version: 2020_08_15_204109) do
   add_foreign_key "loads", "users"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "reviews", "trucks"
   add_foreign_key "start_points", "loads"
   add_foreign_key "truck_load_categories", "load_categories"
   add_foreign_key "truck_load_categories", "trucks"

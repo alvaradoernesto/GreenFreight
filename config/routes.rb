@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :freights, only: [:new, :create, :index, :show]
   resources :pickings, only: [:new, :create, :index]
   resources :users, only: [:show, :index, :update]
+  resources :reviews, only: [ :new, :create ]
   resources :chatrooms, only: :show do
     resources :messages, only: :create
   end
