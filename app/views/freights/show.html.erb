@@ -21,19 +21,19 @@
       <div class="row">
         <div class="col-sm white-box m-2">
           <label>Tipo de carga</label>
-          <p><%= @freight.truck %></p>
+          <p><%= @freight.loads.first.load_category.description %></p>
         </div>
         <div class="col-sm white-box m-2">
           <label>Requerimientos especiales</label>
-          <p><%= @freight.truck %></p>
+          <p><%= @freight.loads.first.special_requirement.description %></p>
         </div>
         <div class="col-sm white-box m-2">
           <label>Camión</label>
-          <p><%= @freight.truck %></p>
+          <p><%= @freight.truck.truck_name %></p>
         </div>
         <div class="col-sm white-box m-2">
           <label>Conductor</label>
-          <p><%= @freight.truck %></p>
+          <p><%= @freight.truck.driver_name %></p>
         </div>
       </div>
       <div class="row">
@@ -85,15 +85,17 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
+        <% @freight.loads.each do |load| %>
+          <tr>
+            <td> Carga </td>
+            <td> Origen </td>
+            <td> Destino </td>
+            <td><%= load.volume %></td>
+            <td><%= load.weight %></td>
+            <td><%= load.price %></td>
+            <td><%= load.status %>
+          </tr>
+        <% end %>
       </tbody>
     </table>
 </td>
