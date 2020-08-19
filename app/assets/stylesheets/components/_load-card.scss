@@ -29,3 +29,17 @@
   padding: 5px;
   margin: 5px 5px;
 }
+
+.add-load {
+  .fa-check-square {
+    display: none;
+  }
+  &.active {
+    .fa-check-square {
+      display: inline;
+    }
+    .fa-square {
+      display: none;
+    }
+  }
+}

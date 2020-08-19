@@ -15,6 +15,7 @@ class LoadsController < ApplicationController
       end
     end
     @markers.reject! { |x| x.nil? }
+    @freight = Freight.new
   end
 
   def show

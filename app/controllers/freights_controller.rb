@@ -5,22 +5,29 @@ class FreightsController < ApplicationController
 
   def create
     @freight = Freight.new(freight_params)
-    @freight.loads = loads
-    @freight.truck = current_user.truck
-    if @freight.save
-      redirect_to freight_path(@freight)
-    else
-      render :new
+    @freight.status = "Nuevo"
+    @freight.save!
+    loads = Load.where(id: loads_params[:ids])
+    loads.each do |load|
+      load.freight = @freight
+      load.save!
     end
+    #@freight.routing!
+    @freight.save!
+    redirect_to freight_path(@freight)
+  end
+
+  def show
+    @freight = Freight.find(params[:id])
   end
 
   private
 
   def freight_params
-    params.require(:freight).permit(load_ids: [])
+    params.require(:freight).permit(:truck_id)
   end
 
-  def loads
-    Load.find(freight_params[:load_ids])
+  def loads_params
+    params.require(:loads).permit(ids: [])
   end
 end
