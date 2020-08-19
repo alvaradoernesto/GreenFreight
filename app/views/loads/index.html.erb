@@ -64,20 +64,6 @@
           <% end %>
         </div>
         <br>
-        <div class="justify-content-center form-row">
-          <h3 class="black-shadow">Asigna el camión para este viaje</h3>
-          <%= simple_form_for @freight do |f| %>
-            <div class="white-box d-flex">
-              <%= f.association :truck, label_method: :truck_name %>
-            </div>
-            <div class="d-none">
-              <%= simple_fields_for :loads do |l|%>
-                <%= l.input :ids, collection: @loads, input_html: {multiple: true} %>
-              <% end %>
-            </div>
-            <%= f.submit 'Crear viaje', class: "button green-button"%>
-          <% end %>
-        </div>
       </div>
       <div class="col-sm-6">
         <div id="map2"
@@ -86,6 +72,24 @@
              data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
       </div>
     <div>
+  </div>
+  <br>
+  <br>
+  <div class="container">
+    <h1 class="black-shadow">Asigna el camión para este viaje</h1>
+    <div class="justify-content-center form-box">
+      <%= simple_form_for @freight do |f| %>
+        <div class="white-box">
+          <%= f.association :truck, label_method: :truck_name %>
+        </div>
+        <div class="d-none">
+          <%= simple_fields_for :loads do |l|%>
+            <%= l.input :ids, collection: @loads, input_html: {multiple: true} %>
+          <% end %>
+        </div>
+        <%= f.submit 'Crear viaje', class: "button green-button"%>
+      <% end %>
+    </div>
   </div>
   <div class="container">
     <br>
@@ -159,7 +163,7 @@
         </div>
       <% end %>
       <div class="form-row d-flex justify-content-center">
-        <%= link_to "Armar viaje", new_freight_path, class: "button green-button" %>
+        <%= link_to "Crear viaje", new_freight_path, class: "button green-button" %>
       </div>
     </div>
   </div>
