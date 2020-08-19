@@ -1,76 +1,83 @@
 <div class="container">
-  <%= simple_form_for @freight do |f| %>
-    <%= f.association :truck, label_method: :truck_name %>
-    <%= simple_fields_for :loads do |l|%>
-      <%= l.input :ids, collection: Load.all, input_html: {multiple: true} %>
-    <% end %>
-    <%= f.submit 'Crear viaje', class: "button green-button"%>
-  <% end %>
-
-
   <div class="container">
     <br>
     <h1 class="black-shadow">Buscador de cargas</h1>
     <br>
     <div class="row">
       <div class="col-sm-6 form-box ">
-        <%= search_form_for @q do |f| %>
-          <% f.select :status_eq, ["Nueva"] %>
-          <div class= "form-inputs">
-            <div class="container">
-              <div class="form-row white-box">
-                <div class="form-group col-md-6">
-                  <label>Origen</label>
-                  <p>¿Desde dónde sale?</p>
-                </div>
-                <div class="form-group col-md-6">
-                  <label>Destino</label>
-                  <p>¿Hasta dónde va?</p>
-                </div>
-              </div>
+        <div class="d-flex justify-content-center">
+          <%= search_form_for @q do |f| %>
+            <div class="d-none">
+              <%= f.select :status_eq, ["Nueva"], include_blank: false %>
             </div>
-            <div class="container">
-              <div class="form-row white-box">
-                <div class="form-group col-md-6 input-daterange" id="datepicker">
-                  <label>Fecha máxima</label>
-                  <div class="input-daterange" id="datepicker">
-                    <%= f.date_field :start_date_gteq, class: 'form-control input-sm', 'datepicker' => true %>
+            <div class= "form-inputs">
+              <div class="container">
+                <div class="form-row white-box">
+                  <div class="form-group col-md-6">
+                    <label>Origen</label>
+                    <p>¿Desde dónde sale?</p>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label>Destino</label>
+                    <p>¿Hasta dónde va?</p>
                   </div>
                 </div>
-                <div class="form-group col-md-6">
-                  <label>Fecha mínima</label>
-                  <%= f.date_field :end_date_lt, class: 'form-control input-sm','datepicker' => true %>
+              </div>
+              <div class="container">
+                <div class="form-row white-box">
+                  <div class="form-group col-md-6 input-daterange" id="datepicker">
+                    <label>Fecha máxima</label>
+                    <div class="input-daterange" id="datepicker">
+                      <%= f.date_field :start_date_gteq, class: 'form-control input-sm', 'datepicker' => true %>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label>Fecha mínima</label>
+                    <%= f.date_field :end_date_lt, class: 'form-control input-sm','datepicker' => true %>
+                  </div>
+                </div>
+              </div>
+              <div class="container">
+                <div class="form-row white-box">
+                  <div class="form-group col-md-6">
+                    <label>Rango horario</label>
+                    <%= f.select :hour_range_eq, ["7:00-12:00", "12:00-17:00", "17:00-22:00"], include_blank: true %>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label>Tipo de carga</label>
+                    <%= f.collection_select :load_category_id_eq, LoadCategory.all, :id, :description, include_blank: true %>
+                  </div>
+                </div>
+              </div>
+              <div class="container">
+                <div class="form-row white-box">
+                  <div class="form-group col-md-6">
+                    <label>Requerimientos especiales</label>
+                    <%= f.collection_select :special_requirement_id_eq, SpecialRequirement.all, :id, :description, include_blank: true %>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="container">
-              <div class="form-row white-box">
-                <div class="form-group col-md-6">
-                  <label>Rango horario</label>
-                  <%= f.select :hour_range_eq, ["7:00-12:00", "12:00-17:00", "17:00-22:00"], include_blank: true %>
-                </div>
-                <div class="form-group col-md-6">
-                  <label>Tipo de carga</label>
-                  <%= f.collection_select :load_category_id_eq, LoadCategory.all, :id, :description, include_blank: true %>
-                </div>
-              </div>
+            <div class="d-flex justify-content-center">
+              <%= f.submit 'Ver opciones', class: "button green-button"%>
             </div>
-            <div class="container">
-              <div class="form-row white-box">
-                <div class="form-group col-md-6">
-                  <label>Requerimientos especiales</label>
-                  <%= f.collection_select :special_requirement_id_eq, SpecialRequirement.all, :id, :description, include_blank: true %>
-                </div>
-              </div>
+          <% end %>
+        </div>
+        <br>
+        <div class="justify-content-center form-row">
+          <h3 class="black-shadow">Asigna el camión para este viaje</h3>
+          <%= simple_form_for @freight do |f| %>
+            <div class="white-box d-flex">
+              <%= f.association :truck, label_method: :truck_name %>
             </div>
-          </div>
-          <div class="d-flex justify-content-center">
-            <%= f.submit 'Ver opciones', class: "button green-button"%>
-          </div>
-          <div class="d-flex justify-content-center">
-            <%= link_to "Armar viaje", new_freight_path, class: "button green-button" %>
-          </div>
-        <% end %>
+            <div class="d-none">
+              <%= simple_fields_for :loads do |l|%>
+                <%= l.input :ids, collection: @loads, input_html: {multiple: true} %>
+              <% end %>
+            </div>
+            <%= f.submit 'Crear viaje', class: "button green-button"%>
+          <% end %>
+        </div>
       </div>
       <div class="col-sm-6">
         <div id="map2"
@@ -84,9 +91,9 @@
     <br>
     <h1 class="black-shadow">Selecciona las cargas</h1>
     <br>
-    <div class="form-box">
+    <div class="form-box" id="loads-selection">
       <% @loads.each do |load| %>
-        <div class="form-row row">
+        <div class="row align-items-center">
           <div class="load-card col-11">
             <%= image_tag "default-load.png", height: 300, width: 400, crop: :fill %>
               <div class= "load-card-infos">
@@ -140,10 +147,14 @@
                     <p><%= load.weight %></p>
                   </div>
                 </div>
+
               </div>
           </div>
-          <div class="col-1">
-            <i class="fas fa-clipboard-check"></i>
+          <div>
+            <%= link_to "#", class: "add-load check-button", data: {id: load.id} do %>
+              <i class="fas fa-check-square fa-3x"></i>
+              <i class="far fa-square fa-3x"></i>
+            <% end %>
           </div>
         </div>
       <% end %>

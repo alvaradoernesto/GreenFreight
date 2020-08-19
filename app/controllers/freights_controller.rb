@@ -17,6 +17,10 @@ class FreightsController < ApplicationController
     redirect_to freight_path(@freight)
   end
 
+  def show
+    @freight = Freight.find(params[:id])
+  end
+
   private
 
   def freight_params

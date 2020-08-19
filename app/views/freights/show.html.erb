@@ -1,0 +1,100 @@
+<div class="container">
+  <br>
+  <h1 class="black-shadow">Confirmación de viaje</h1>
+  <br>
+  <div class="form form-box">
+    <%= simple_form_for @freight do |f| %>
+      <div class="row">
+        <div class="col-sm white-box m-2">
+          <label>Fecha</label>
+          <p><%= @freight.start_date %></p>
+        </div>
+        <div class="col-sm white-box m-2">
+          <label>Hora inicial</label>
+          <p><%= @freight.start_date %></p>
+        </div>
+        <div class="col-sm white-box m-2">
+          <label>Hora final</label>
+          <p><%= @freight.end_date %></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm white-box m-2">
+          <label>Tipo de carga</label>
+          <p><%= @freight.truck %></p>
+        </div>
+        <div class="col-sm white-box m-2">
+          <label>Requerimientos especiales</label>
+          <p><%= @freight.truck %></p>
+        </div>
+        <div class="col-sm white-box m-2">
+          <label>Camión</label>
+          <p><%= @freight.truck %></p>
+        </div>
+        <div class="col-sm white-box m-2">
+          <label>Conductor</label>
+          <p><%= @freight.truck %></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm white-box m-2">
+          <label>Distancia total</label>
+          <p><%= @freight.distance %></p>
+        </div>
+        <div class="col-sm white-box m-2">
+          <label>Capacidad utilizada</label>
+          <p><%= @freight.capacity %></p>
+        </div>
+        <div class="col-sm white-box m-2">
+          <label>Emisiones</label>
+          <p><%= @freight.emissions %></p>
+        </div>
+        <div class="col-sm white-box m-2">
+          <label>Tarifa $/km/m3</label>
+          <p><%= @freight.price %></p>
+        </div>
+        <div class="col-sm white-box m-2">
+          <label>Precio total</label>
+          <p><%= @freight.price %></p>
+        </div>
+        <div class="col-sm" id="buttons">
+          <div class="row">
+            <%= link_to "Confirmar viaje", new_freight_path, class: "button green-button" %>
+          </div>
+          <div class="row">
+            <%= link_to "Agregar cargas", new_freight_path, class: "button green-button" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <br>
+  <h1 class="black-shadow">Hoja de ruta</h1>
+  <br>
+  <div class="form-box">
+    <table class="table table-hover white-box">
+      <thead>
+        <tr>
+          <th scope="col">Carga</th>
+          <th scope="col">Origen</th>
+          <th scope="col">Destino</th>
+          <th scope="col">Volumen</th>
+          <th scope="col">Peso</th>
+          <th scope="col">Precio Total</th>
+          <th scope="col">Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+</td>
+</div>
