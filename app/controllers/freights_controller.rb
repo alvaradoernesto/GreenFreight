@@ -12,7 +12,7 @@ class FreightsController < ApplicationController
       load.freight = @freight
       load.save!
     end
-    @freight.routing!
+    #@freight.routing!
     @freight.save!
     redirect_to freight_path(@freight)
   end
