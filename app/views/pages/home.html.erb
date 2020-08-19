@@ -9,18 +9,21 @@
     <br>
     <div class="container">
       <p>Obtené un estimado de tu Green Freight</p>
-      <div class="cotizacion">
-        <form class="form-inline d-flex justify-content-around">
-          <div class="form-group w-25">
-            <label for="inputOrigin" class="sr-only">Origen</label>
-            <input type="string" class="form-control" id="inputOrigin" placeholder="Origen">
-          </div>
-          <div class="form-group w-25">
-            <label for="inputDestino" class="sr-only">Destino</label>
-            <input type="string" class="form-control" id="inputDestino" placeholder="Destino">
-          </div>
-            <button type="submit" class="button green-button w-30 font-weight-bold">Cotizá</button>
-        </form>
+      <div class="cotizacion" id="input-styling-address">
+      <form action="/cotizacion" class="form-inline d-flex justify-content-around" method="GET" >
+        <div class="form-group w-40 input-styling-address">
+          <label for="inputOrigin" class="sr-only">Origen</label>
+          <input name="inputOrigin" id="inputOrigin" placeholder="Origen">
+        </div>
+        <div class="form-group w-40">
+          <label for="inputDestino" class="sr-only">Destino</label>
+          <input name="inputDestino" id="inputDestino" placeholder="Destino">
+        </div>
+        <div>
+          <button type="submit" class="button green-button w-auto font-weight-bold">Cotizá</button>
+        </div>
+      </form>
+      </div>
       </div>
     </div>
   </div>
