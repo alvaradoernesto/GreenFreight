@@ -7,8 +7,8 @@ class PagesController < ApplicationController
   def cotizacion
     @origen = Geocoder.coordinates(params[:inputOrigin])
     @destino = Geocoder.coordinates(params[:inputDestino])
-    distancia = Geocoder::Calculations.distance_between([@origen[0],@origen[1]], [@destino[0],@destino[1]])
-    promedio = Truck.average(:price_per_km)
-    @cotizacion = distancia * promedio
+    @distancia = Geocoder::Calculations.distance_between([@origen[0],@origen[1]], [@destino[0],@destino[1]])
+    @promedio = Truck.average(:price_per_km)
+    @cotizacion = @distancia * @promedio
   end
 end
