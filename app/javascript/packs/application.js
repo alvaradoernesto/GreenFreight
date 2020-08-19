@@ -27,6 +27,7 @@ import "bootstrap";
 // import { initChatroomCable} from '../channels/chatroom_channel';
 import { initMapbox } from '../plugins/init_mapbox';
 import { initMapbox2 } from '../plugins/init_mapbox';
+import { initAutocomplete } from '../plugins/init_autocomplete';
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
@@ -36,7 +37,7 @@ document.addEventListener('turbolinks:load', () => {
   // initChatroomCable();
   initMapbox();
   initMapbox2();
-  // initAutocomplete();
+  initAutocomplete();
 });
 
 import "controllers"
