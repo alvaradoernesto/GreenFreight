@@ -7,7 +7,6 @@ class FreightsController < ApplicationController
     @freight = Freight.new(freight_params)
     @freight.loads = loads
     @freight.truck = current_user.truck
-    @freight.routing!
     if @freight.save
       redirect_to freight_path(@freight)
     else
