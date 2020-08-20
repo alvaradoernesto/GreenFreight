@@ -1,6 +1,6 @@
 <div class="container">
   <div class="form">
-    <h1> Name: <%= @user.name %></h1>
+    <h1> Name: <%= @user.nickname %></h1>
     <h1> Email: <%= @user.email %></h1>
   </div>
   <div class="row justify-content-center m-2">
@@ -14,7 +14,7 @@
 
 <div class="w3-container">
   <div class="w3-green w3-hover-shadow w3-padding-64 w3-center" style="width:70%">
-    <p>Viajes Realizados: <%= @freight %></p>
+    <p>Viajes Realizados: <%= @user.loads.count %></p>
   </div>
 </div>
 <div class="w3-container">
