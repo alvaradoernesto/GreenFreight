@@ -82,18 +82,26 @@
           <th scope="col">Peso</th>
           <th scope="col">Precio Total</th>
           <th scope="col">Estado</th>
+          <th scope="col">Imagen</th>
         </tr>
       </thead>
       <tbody>
-        <% @freight.loads.each do |load| %>
+        <% @freight.loads.each_with_index do |load, i| %>
           <tr>
-            <td> Carga </td>
-            <td> Origen </td>
-            <td> Destino </td>
+            <td><%= i + 1 %></td>
+            <td><%= load.start_point.location %></td>
+            <td><%= load.end_point.location %></td>
             <td><%= load.volume %></td>
             <td><%= load.weight %></td>
             <td><%= load.price %></td>
-            <td><%= load.status %>
+            <td><%= load.status %></td>
+            <td>
+              <% if load.photo.present? %>
+                <%= cl_image_tag load.photo.key, height: 60, width: 80, crop: :fill %>
+              <% else %>
+                <%= image_tag "default-load.png", height: 60, width: 80, crop: :fill %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>

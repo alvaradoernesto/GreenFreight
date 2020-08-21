@@ -83,16 +83,20 @@
       <% @loads.each do |load| %>
         <div class="row align-items-center">
           <div class="load-card col-11">
-            <%= image_tag "default-load.png", height: 300, width: 400, crop: :fill %>
+            <% if load.photo.present? %>
+              <%= cl_image_tag load.photo.key, height: 300, width: 400, crop: :fill %>
+            <% else %>
+              <%= image_tag "default-load.png", height: 300, width: 400, crop: :fill %>
+            <% end %>
               <div class= "load-card-infos">
                 <div class="form-row white-box">
                   <div class="form-group col-md-6">
                     <label>Origen</label>
-                    <p>Arávalo 2279, CABA</p>
+                    <p><%= load.start_point.location %></p>
                   </div>
                   <div class="form-group col-md-6">
                     <label>Destino</label>
-                    <p>Rueda 755, Rosario</p>
+                    <p><%= load.end_point.location %></p>
                   </div>
                 </div>
                 <div class="form-row white-box">
