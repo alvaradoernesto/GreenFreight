@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :loads
+  has_many :trucks
+  has_many :freights, through: :trucks
 
   validates :role, inclusion: {in: ["Transportista", "Cargador"]}
 end

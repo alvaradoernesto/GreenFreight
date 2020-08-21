@@ -7,29 +7,29 @@
       <div class="row">
         <div class="col-sm white-box m-2">
           <label>Fecha</label>
-          <p><%= @freight.start_date %></p>
+          <p><%= @freight.start_date.strftime("%d.%m.%y") %></p>
         </div>
         <div class="col-sm white-box m-2">
-          <label>Hora inicial</label>
-          <p><%= @freight.start_date %></p>
+          <label>Origen</label>
+          <p><%= @freight.start_point %></p>
         </div>
         <div class="col-sm white-box m-2">
-          <label>Hora final</label>
-          <p><%= @freight.end_date %></p>
+          <label>Destino</label>
+          <p><%= @freight.end_point %></p>
         </div>
       </div>
       <div class="row">
         <div class="col-sm white-box m-2">
           <label>Tipo de carga</label>
-          <p><%= @freight.loads.first.load_category.description %></p>
+          <p><%= @freight.loads.first&.load_category&.description %></p>
         </div>
         <div class="col-sm white-box m-2">
           <label>Requerimientos especiales</label>
-          <p><%= @freight.loads.first.special_requirement.description %></p>
+          <p><%= @freight.loads.first&.special_requirement&.description %></p>
         </div>
         <div class="col-sm white-box m-2">
           <label>Camión</label>
-          <p><%= @freight.truck.truck_name %></p>
+          <p><%= @freight.truck.truck_name + @freight.truck.id.to_s %></p>
         </div>
         <div class="col-sm white-box m-2">
           <label>Conductor</label>
@@ -39,30 +39,30 @@
       <div class="row">
         <div class="col-sm white-box m-2">
           <label>Distancia total</label>
-          <p><%= @freight.distance %></p>
+          <p class="text-center"><%= number_with_delimiter(@freight.distance.round(0), delimiter: ".") %></p>
         </div>
         <div class="col-sm white-box m-2">
-          <label>Capacidad utilizada</label>
-          <p><%= @freight.capacity %></p>
+          <label>Utilización</label>
+          <p class="text-center"><%= number_to_percentage(@freight.capacity, precision: 0) %></p>
         </div>
         <div class="col-sm white-box m-2">
           <label>Emisiones</label>
-          <p><%= @freight.emissions %></p>
+          <p class="text-center"><%= number_with_delimiter(@freight.emissions.round(0), delimiter: ".") %></p>
         </div>
         <div class="col-sm white-box m-2">
           <label>Tarifa $/km/m3</label>
-          <p><%= @freight.price %></p>
+          <p class="text-center"><%= number_to_currency @freight.price %></p>
         </div>
         <div class="col-sm white-box m-2">
           <label>Precio total</label>
-          <p><%= @freight.price %></p>
+          <p class="text-center"><%= number_to_currency @freight.price %></p>
         </div>
         <div class="col-sm" id="buttons">
           <div class="row">
-            <%= link_to "Confirmar viaje", new_freight_path, class: "button green-button" %>
+            <button class="button green-button align-middle"><%= link_to "Confirmar viaje", my_freights_path %></button>
           </div>
           <div class="row">
-            <%= link_to "Agregar cargas", new_freight_path, class: "button green-button" %>
+            <button class="button green-button align-middle"><%= link_to "Agregar cargas", loads_path %></button>
           </div>
         </div>
       </div>

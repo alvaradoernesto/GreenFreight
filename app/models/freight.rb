@@ -15,7 +15,7 @@ class Freight < ApplicationRecord
     self.end_point = self.loads.last.end_point.location
     self.start_date = freight_start_date
     self.end_date = freight_end_date
-    self.capacity = loads.sum(&:volume)
+    self.capacity = loads.sum(&:volume).to_f / self.truck.capacity
     self.distance = freight_distance(self.loads)
     self.price = freight_price
     self.emissions = freight_emissions(self.loads)
