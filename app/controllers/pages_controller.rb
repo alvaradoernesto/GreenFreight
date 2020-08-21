@@ -5,10 +5,17 @@ class PagesController < ApplicationController
   end
 
   def cotizacion
-    @origen = Geocoder.coordinates(params[:inputOrigin])
-    @destino = Geocoder.coordinates(params[:inputDestino])
-    @distancia = Geocoder::Calculations.distance_between([@origen[0],@origen[1]], [@destino[0],@destino[1]])
-    @promedio = Truck.average(:price_per_km)
-    @cotizacion = @distancia * @promedio
+    unless params[:inputOrigin].nil? || params[:inputDestino].nil?
+      unless params[:inputOrigin].empty? || params[:inputDestino].empty?
+        @origen = Geocoder.coordinates(params[:inputOrigin])
+        @destino = Geocoder.coordinates(params[:inputDestino])
+        @distancia = Geocoder::Calculations.distance_between([@origen[0],@origen[1]], [@destino[0],@destino[1]])
+        @promedio = Truck.average(:price_per_km)
+        @cotizacion = @distancia * @promedio
+        redirect_to cotizacion_path(@distancia)
+      else
+        redirect_to :root
+      end
+    end
   end
 end
