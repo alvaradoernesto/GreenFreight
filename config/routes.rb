@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   get 'mytrucks', to: 'trucks#mytrucks'
+  get 'my_freights', to: 'freights#my_freights'
   get 'set_nick', to: 'users#set_nick'
   post 'set_nick', to: 'users#udate_nick'
   # post 'cotizacion', to: 'pages#cotizacion'

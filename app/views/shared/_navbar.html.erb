@@ -13,11 +13,11 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? && current_user.role == "Transportista" %>
-        <a class="nav-item nav-link" href="/loads">Loads available</a>
-        <a class="nav-item nav-link" href="/freights/new">My Freights</a>
-        <a class="nav-item nav-link" href="/mytrucks">My trucks</a>
-        <a class="nav-item nav-link" href="/trucks/new">New truck</a>
-        <a class="nav-item nav-link" href="/set_nick">Support</a>
+        <a class="nav-item nav-link" href="/loads">Nuevo viaje</a>
+        <a class="nav-item nav-link" href="/my_freights">Mis viajes</a>
+        <a class="nav-item nav-link" href="/mytrucks">Mis camiones</a>
+        <a class="nav-item nav-link" href="/trucks/new">Nuevo camión</a>
+        <a class="nav-item nav-link" href="/set_nick">Soporte</a>
       <% elsif user_signed_in? && current_user.role == "Cargador" %>
         <a class="nav-item nav-link" href="#">Create load</a>
         <a class="nav-item nav-link" href="#">My loads</a>
