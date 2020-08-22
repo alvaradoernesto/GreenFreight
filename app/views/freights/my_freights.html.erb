@@ -1,0 +1,44 @@
+<div class="container">
+  <br>
+  <h1 class="black-shadow">Mis viajes realizados</h1>
+  <br>
+  <div class="form form-box">
+    <table class="table table-hover white-box">
+      <thead>
+        <tr>
+          <th class="align-middle" scope="col">Fecha</th>
+          <th class="align-middle" scope="col">Origen</th>
+          <th class="align-middle" scope="col">Destino</th>
+          <th class="align-middle" scope="col">Tipo de carga</th>
+          <th class="align-middle" scope="col">Camión asignado</th>
+          <th class="align-middle" scope="col">Conductor</th>
+          <th class="align-middle" scope="col">Distancia</th>
+          <th class="align-middle" scope="col">Capacidad</th>
+          <th class="align-middle" scope="col">Estado</th>
+          <th class="align-middle" scope="col">Detalle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @freights.each do |freight| %>
+          <tr>
+            <td class="align-middle"><%= freight.start_date.strftime("%d.%m.%y") %></td>
+            <td class="align-middle"><%= freight.start_point %></td>
+            <td class="align-middle"><%= freight.end_point %></td>
+            <td class="align-middle"><%= freight.loads.first&.load_category&.description %></td>
+            <td class="align-middle"><%= freight.truck.truck_name %></td>
+            <td class="align-middle"><%= freight.truck.driver_name %></td>
+            <td class="align-middle"><%= number_with_delimiter(freight.distance.round(0), delimiter: ".") %></td>
+            <td class="align-middle"><%= number_to_percentage(freight.capacity, precision: 0) %></td>
+            <td class="align-middle"><%= freight.status %></td>
+            <td class="green-button align-middle"><%= link_to "Ver", freight_path(freight) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="form-row d-flex justify-content-center px-10">
+      <button class="button green-button align-middle"><%= link_to "Nuevo camión", new_truck_path %></button>
+      <button class="button green-button align-middle"><%= link_to "Nuevo viaje", loads_path %></button>
+      <button class="button green-button align-middle"><%= link_to "Estadísticas", users_path %></button>
+    </div>
+  </div>
+</div>

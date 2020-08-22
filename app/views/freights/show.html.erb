@@ -7,25 +7,25 @@
       <div class="row">
         <div class="col-sm white-box m-2">
           <label>Fecha</label>
-          <p><%= @freight.start_date %></p>
+          <p><%= @freight.start_date.strftime("%d.%m.%y") %></p>
         </div>
         <div class="col-sm white-box m-2">
-          <label>Hora inicial</label>
-          <p><%= @freight.start_date %></p>
+          <label>Origen</label>
+          <p><%= @freight.start_point %></p>
         </div>
         <div class="col-sm white-box m-2">
-          <label>Hora final</label>
-          <p><%= @freight.end_date %></p>
+          <label>Destino</label>
+          <p><%= @freight.end_point %></p>
         </div>
       </div>
       <div class="row">
         <div class="col-sm white-box m-2">
           <label>Tipo de carga</label>
-          <p><%= @freight.loads.first.load_category.description %></p>
+          <p><%= @freight.loads.first&.load_category&.description %></p>
         </div>
         <div class="col-sm white-box m-2">
           <label>Requerimientos especiales</label>
-          <p><%= @freight.loads.first.special_requirement.description %></p>
+          <p><%= @freight.loads.first&.special_requirement&.description %></p>
         </div>
         <div class="col-sm white-box m-2">
           <label>Camión</label>
@@ -39,30 +39,30 @@
       <div class="row">
         <div class="col-sm white-box m-2">
           <label>Distancia total</label>
-          <p><%= @freight.distance %></p>
+          <p class="text-center"><%= number_with_delimiter(@freight.distance.round(0), delimiter: ".") %></p>
         </div>
         <div class="col-sm white-box m-2">
-          <label>Capacidad utilizada</label>
-          <p><%= @freight.capacity %></p>
+          <label>Utilización</label>
+          <p class="text-center"><%= number_to_percentage(@freight.capacity, precision: 0) %></p>
         </div>
         <div class="col-sm white-box m-2">
           <label>Emisiones</label>
-          <p><%= @freight.emissions %></p>
+          <p class="text-center"><%= number_with_delimiter(@freight.emissions.round(0), delimiter: ".") %></p>
         </div>
         <div class="col-sm white-box m-2">
           <label>Tarifa $/km/m3</label>
-          <p><%= @freight.price %></p>
+          <p class="text-center"><%= number_to_currency @freight.price %></p>
         </div>
         <div class="col-sm white-box m-2">
           <label>Precio total</label>
-          <p><%= @freight.price %></p>
+          <p class="text-center"><%= number_to_currency @freight.price %></p>
         </div>
         <div class="col-sm" id="buttons">
           <div class="row">
-            <%= link_to "Confirmar viaje", new_freight_path, class: "button green-button" %>
+            <button class="button green-button align-middle"><%= link_to "Confirmar viaje", my_freights_path %></button>
           </div>
           <div class="row">
-            <%= link_to "Agregar cargas", new_freight_path, class: "button green-button" %>
+            <button class="button green-button align-middle"><%= link_to "Agregar cargas", loads_path %></button>
           </div>
         </div>
       </div>
@@ -82,18 +82,26 @@
           <th scope="col">Peso</th>
           <th scope="col">Precio Total</th>
           <th scope="col">Estado</th>
+          <th scope="col">Imagen</th>
         </tr>
       </thead>
       <tbody>
-        <% @freight.loads.each do |load| %>
+        <% @freight.loads.each_with_index do |load, i| %>
           <tr>
-            <td> Carga </td>
-            <td> Origen </td>
-            <td> Destino </td>
+            <td><%= i + 1 %></td>
+            <td><%= load.start_point.location %></td>
+            <td><%= load.end_point.location %></td>
             <td><%= load.volume %></td>
             <td><%= load.weight %></td>
             <td><%= load.price %></td>
-            <td><%= load.status %>
+            <td><%= load.status %></td>
+            <td>
+              <% if load.photo.present? %>
+                <%= cl_image_tag load.photo.key, height: 60, width: 80, crop: :fill %>
+              <% else %>
+                <%= image_tag "default-load.png", height: 60, width: 80, crop: :fill %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>

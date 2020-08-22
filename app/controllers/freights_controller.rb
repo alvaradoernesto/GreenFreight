@@ -21,6 +21,10 @@ class FreightsController < ApplicationController
     @freight = Freight.find(params[:id])
   end
 
+  def my_freights
+    @freights = current_user.freights
+  end
+
   private
 
   def freight_params

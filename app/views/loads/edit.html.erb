@@ -1,20 +1,22 @@
 <div class="container">
   <div class="form">
     <%= simple_form_for @load do |f| %>
-      <%= f.input :start_date, placeholder: "Start date", label: false %>
-      <%= f.input :end_date, placeholder: "End date", label: false %>
-      <%= f.input :hour_range, placeholder: "Hour range", label: false %>
-      <%= f.input :start_point, placeholder: "Start point", label: false %>
-      <%= f.input :end_point, placeholder: "End point", label: false %>
-      <%= f.input :weight, placeholder: "Weight", label: false %>
-      <%= f.input :volume, placeholder: "Volume", label: false %>
-      <%= f.input :status, placeholder: "Status", label: false %>
-      <%= f.input :price, placeholder: "Price", label: false %>
-      <%= f.button :submit, "Save changes", class: "btn btn-primary"%>
-      <%= link_to "Delete #{@load.id}",
+      <%= f.input :start_date, placeholder: "Fecha inicio", label: "Fecha inicio:" %>
+      <%= f.input :end_date, placeholder: "Fecha de llegada", label: "Fecha de llegada:" %>
+      <%= f.simple_fields_for :start_point do |spf| %>
+      <%= spf.input :location, placeholder: "Mi ubicacion...", label: "Lugar de carga:" %>
+      <% end %>
+      <%= f.simple_fields_for :end_point do |epf| %>
+      <%= epf.input :location, placeholder: "Rosario...", label: "Lugar de entrega:" %>
+      <% end %>
+      <%= f.input :hour_range, collection: [["Mañana"],["Tarde"],["Noche"]], selected: "Mañana", label: "Rango horario:" %>
+      <%= f.input :weight, placeholder: "1..5000", label: "Peso aproximado:" %>
+      <%= f.input :volume, placeholder: "1..300", label: "Volumen aproximado:" %>
+      <%= f.button :submit, "Guardar cambios", class: "btn btn-primary"%>
+      <%= link_to "Borrar #{@load.id}",
             loads_path(@load),
             method: :destroy,
-            data: { confirm: "Are you sure?" } %>
+            data: { confirm: "Estas seguro?" } %>
     <% end %>
   </div>
 </div>

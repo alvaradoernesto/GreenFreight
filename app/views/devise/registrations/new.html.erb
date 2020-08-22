@@ -30,6 +30,7 @@
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "role" }%>
+      <%= f.input :avatar, as: :file %>
       <%= link_to "Nuevo camión", new_truck_path, class: "btn btn-warning" %>
     </div>
 
