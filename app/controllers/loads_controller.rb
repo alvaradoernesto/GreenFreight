@@ -1,6 +1,6 @@
 class LoadsController < ApplicationController
   def index
-    @q = Load.ransack(params[:q])
+    @q = Load.where(status: "Nueva").joins(:start_point, :end_point).ransack(params[:q])
     @loads = @q.result(distinct: true)
     if @loads.empty?
       @loads = Load.where(status: "Nueva")
@@ -50,6 +50,10 @@ class LoadsController < ApplicationController
 
   def edit
     @load = Load.find(params[:id])
+  end
+
+  def myloads
+    @load = Load.where(user: current_user)
   end
 
   def update
