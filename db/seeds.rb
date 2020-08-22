@@ -97,26 +97,19 @@ TruckCategory.create(description: "Eléctrico", emissions: 100)
 
 puts "Creating Load Categories"
 
-LoadCategory.create(description: "Animales vivos")
 LoadCategory.create(description: "Cajas")
 LoadCategory.create(description: "Contenedores")
-LoadCategory.create(description: "Gaseosos a granel")
-LoadCategory.create(description: "Líquidos a granel")
 LoadCategory.create(description: "Mudanza")
 LoadCategory.create(description: "Otros")
 LoadCategory.create(description: "Palletizado")
-LoadCategory.create(description: "Rodados y maquinas")
-LoadCategory.create(description: "Sólidos a granel")
 
 puts "Creating Special Requirements"
 
 SpecialRequirement.create(description: "Apto alimentos")
 SpecialRequirement.create(description: "Carga peligrosa")
-SpecialRequirement.create(description: "Dimensiones especiales")
 SpecialRequirement.create(description: "Frágil")
 SpecialRequirement.create(description: "Ninguno")
 SpecialRequirement.create(description: "Otros")
-SpecialRequirement.create(description: "Refrigerado")
 
 puts "Creating Load Status"
 
@@ -228,3 +221,10 @@ puts "Creating Freights"
   end
   ruta.save!
 end
+
+puts "Creating support channel"
+
+channel = Chatroom.new(name: :soporte)
+channel.save!
+
+puts "Finished"
