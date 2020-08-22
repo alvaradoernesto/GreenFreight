@@ -156,7 +156,7 @@
         <div class="justify-content-center form-box">
           <%= simple_form_for @freight do |f| %>
             <div class="white-box">
-              <%= f.association :truck, collection: Truck.where(user: current_user), label_method: :truck_name %>
+              <%= f.association :truck, collection: Truck.where(user: current_user), label_method: :truck_name, label: "Elegí el camión" %>
             </div>
             <div class="d-none">
               <%= simple_fields_for :loads do |l|%>

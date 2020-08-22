@@ -25,7 +25,7 @@
             <td class="align-middle"><%= freight.start_point %></td>
             <td class="align-middle"><%= freight.end_point %></td>
             <td class="align-middle"><%= freight.loads.first&.load_category&.description %></td>
-            <td class="align-middle"><%= freight.truck.truck_name + freight.truck.id.to_s %></td>
+            <td class="align-middle"><%= freight.truck.truck_name %></td>
             <td class="align-middle"><%= freight.truck.driver_name %></td>
             <td class="align-middle"><%= number_with_delimiter(freight.distance.round(0), delimiter: ".") %></td>
             <td class="align-middle"><%= number_to_percentage(freight.capacity, precision: 0) %></td>
