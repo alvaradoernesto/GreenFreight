@@ -34,23 +34,33 @@
                 <%= image_tag "default-avatar.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <% end %>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              <%= link_to "Estadísticas", "/users", class: "dropdown-item" %>
+              <%= link_to "Editar perfil", edit_user_registration_path, class: "dropdown-item" %>
+              <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
           </li>
         </ul>
       <% elsif user_signed_in? && current_user.role == "Cargador" %>
+        <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <%= link_to "Nueva carga", "/loads/new", class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Mis cargas", "#", class: "nav-link" %>
+            <%= link_to "Mis cargas", "/myloads", class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Soporte", "/set_nick", class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
-            <%= image_tag "default-avatar.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% if current_user.avatar.present? %>
+              <%= cl_image_tag current_user.avatar.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% else %>
+                <%= image_tag "default-avatar.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% end %>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              <%= link_to "Estadísticas", "/users", class: "dropdown-item" %>
+              <%= link_to "Editar perfil", edit_user_registration_path, class: "dropdown-item" %>
+              <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
           </li>
         </ul>
@@ -62,8 +72,8 @@
           <li class="nav-item dropdown">
             <%= image_tag "default-avatar.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              <%= link_to "Editar perfil", edit_user_registration_path, class: "dropdown-item" %>
+              <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
           </li>
         </ul>

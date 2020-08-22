@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>Registro</h2>
+  <h2>Nuevo usuario</h2>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
@@ -31,10 +31,10 @@
                   autofocus: true,
                   input_html: { autocomplete: "role" }%>
       <%= f.input :avatar, as: :file %>
-
-    <div class="form-actions">
-      <button class="button green-button align-middle"><%= f.button :submit, "Registrate" %></button>
+      <div class="form-actions">
+        <button class="button green-button align-middle"><%= f.button :submit, "Registrate" %></button>
+      </div>
+      <%= render "devise/shared/links" %>
     </div>
-  </div>
   <% end %>
 </div>
