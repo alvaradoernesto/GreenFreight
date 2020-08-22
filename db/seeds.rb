@@ -179,7 +179,7 @@ puts "Creating Trucks"
       driver_license: Faker::IDNumber.spanish_citizen_number,
       truck_license: Faker::Vehicle.license_plate,
     )
-    truck.truck_name = "#{TRUCK_NAMES.sample} - #{rand(99)}",
+    truck.truck_name = "#{TRUCK_NAMES.sample} - #{rand(99)}"
     truck.save!
   end
 end
