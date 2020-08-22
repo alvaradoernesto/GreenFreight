@@ -152,7 +152,7 @@ puts "Creating Trucks"
 [tran_ernesto, tran_mauricio, tran_nadia].each do |tran|
   5.times do
     truck = Truck.new(
-      price_per_km: Faker::Number.number(digits: 3),
+      price_per_km: rand(60.2..70.3),
       capacity: TRUCK_CAPACITIES.sample,
       user: tran,
       truck_category: TruckCategory.all.sample,
