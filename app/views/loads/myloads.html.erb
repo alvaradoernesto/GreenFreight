@@ -1,0 +1,30 @@
+<div class="container">
+  <br>
+  <h1 class="black-shadow">Mis cargas</h1>
+  <br>
+  <div class="form form-box">
+    <table class="table table-hover white-box">
+      <thead>
+        <tr>
+          <th class="align-middle" scope="col">Fecha</th>
+          <th class="align-middle" scope="col">Origen</th>
+          <th class="align-middle" scope="col">Destino</th>
+          <th class="align-middle" scope="col">Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @load.each do |loads| %>
+          <tr>
+            <td class="align-middle"><%= loads.start_date.strftime("%d.%m.%y") %></td>
+            <td class="align-middle"><%= loads.start_point.location %></td>
+            <td class="align-middle"><%= loads.end_point.location %></td>
+            <td class="align-middle"><%= loads.status %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="form-row d-flex justify-content-center px-10">
+      <button class="button green-button align-middle"><%= link_to "Nueva carga", new_load_path %></button>
+    </div>
+  </div>
+</div>

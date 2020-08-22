@@ -52,6 +52,10 @@ class LoadsController < ApplicationController
     @load = Load.find(params[:id])
   end
 
+  def myloads
+    @load = Load.where(user: current_user)
+  end
+
   def update
     @load.find(params[:id])
     @load.update(load_params)
