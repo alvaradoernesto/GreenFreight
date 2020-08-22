@@ -1,6 +1,6 @@
 <div class="container">
   <br>
-  <h1 class="black-shadow">New truck</h1>
+  <h1 class="black-shadow">Nuevo camión</h1>
   <br>
   <div class="container row">
     <div class="form-box col">
@@ -44,8 +44,13 @@
           <div class="form-group">
             <%= f.label "Load category" %>
             <%= f.fields_for :truck_load_categories, @truck_load_category do |t| %>
-              <%= t.collection_select(:id, LoadCategory.all, :id, :description,  {:prompt => "Please Select a Sector"}, {:multiple => true}) %>
+              <%= t.collection_select(:id, LoadCategory.all, :id, :description,  {:prompt => "Selecciona una categoría"}, {:multiple => true}) %>
             <% end %>
+          </div>
+        </div>
+        <div class="form-row white-box">
+          <div class="form-group">
+            <%= f.input :photo, as: :file, label: 'Imagen del camión', placeholder: "Imagen del camión" %>
           </div>
         </div>
         <div class="form-row d-flex justify-content-center">

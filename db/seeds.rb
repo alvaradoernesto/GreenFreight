@@ -29,6 +29,8 @@ tran_ernesto = User.new(
   name: "Transporte Ernesto",
   role: "Transportista"
 )
+file = URI.open('https://ca.slack-edge.com/T02NE0241-U010026QV2Q-21399e9af22d-512')
+tran_ernesto.avatar.attach(io: file, filename: "#{tran_ernesto.name}.png", content_type: 'image/png')
 tran_ernesto.save!
 
 cargador_ernesto = User.new(
@@ -38,6 +40,8 @@ cargador_ernesto = User.new(
   name: "Ernesto Cargador",
   role: "Cargador"
 )
+file = URI.open('https://ca.slack-edge.com/T02NE0241-U010026QV2Q-21399e9af22d-512')
+cargador_ernesto.avatar.attach(io: file, filename: "#{cargador_ernesto.name}.png", content_type: 'image/png')
 cargador_ernesto.save!
 
 tran_mauricio = User.new(
@@ -47,6 +51,8 @@ tran_mauricio = User.new(
   name: "Transporte Mauricio",
   role: "Transportista"
 )
+file = URI.open('https://ca.slack-edge.com/T02NE0241-U0105LQJJ56-bd4c0813ae97-512')
+tran_mauricio.avatar.attach(io: file, filename: "#{tran_mauricio.name}.png", content_type: 'image/png')
 tran_mauricio.save!
 
 cargador_mauricio = User.new(
@@ -56,6 +62,8 @@ cargador_mauricio = User.new(
   name: "Mauricio Cargador",
   role: "Cargador"
 )
+file = URI.open('https://ca.slack-edge.com/T02NE0241-U0105LQJJ56-bd4c0813ae97-512')
+cargador_mauricio.avatar.attach(io: file, filename: "#{cargador_mauricio.name}.png", content_type: 'image/png')
 cargador_mauricio.save!
 
 tran_nadia = User.new(
@@ -65,6 +73,8 @@ tran_nadia = User.new(
   name: "Transporte Nadia",
   role: "Transportista"
 )
+file = URI.open('https://ca.slack-edge.com/T02NE0241-UV362N1GB-99b98618119c-512')
+tran_nadia.avatar.attach(io: file, filename: "#{tran_nadia.name}.png", content_type: 'image/png')
 tran_nadia.save!
 
 cargador_nadia = User.new(
@@ -74,6 +84,8 @@ cargador_nadia = User.new(
   name: "Nadia Cargador",
   role: "Cargador"
 )
+file = URI.open('https://ca.slack-edge.com/T02NE0241-UV362N1GB-99b98618119c-512')
+cargador_nadia.avatar.attach(io: file, filename: "#{cargador_nadia.name}.png", content_type: 'image/png')
 cargador_nadia.save!
 
 puts "Creating Truck Categories"
@@ -163,11 +175,11 @@ puts "Creating Trucks"
       capacity: TRUCK_CAPACITIES.sample,
       user: tran,
       truck_category: TruckCategory.all.sample,
-      truck_name: "#{TRUCK_NAMES.sample} - #{truck}",
       driver_name: Faker::Name.name,
       driver_license: Faker::IDNumber.spanish_citizen_number,
       truck_license: Faker::Vehicle.license_plate,
     )
+    truck.truck_name = "#{TRUCK_NAMES.sample} - #{rand(99)}",
     truck.save!
   end
 end
@@ -181,8 +193,6 @@ puts "Creating Loads"
       start_date: Date.today-rand(30),
       end_date: Date.today+rand(30),
       hour_range: HOUR_RANGES.sample,
-      # start_point: LOAD_START_POINTS.sample,
-      # end_point: LOAD_END_POINTS.sample,
       load_category_id: LoadCategory.pluck(:id).sample,
       special_requirement_id: SpecialRequirement.pluck(:id).sample,
       weight: Faker::Number.between(from: 10, to: 25000),
