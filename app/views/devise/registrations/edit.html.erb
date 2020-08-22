@@ -1,53 +1,74 @@
 <div class="container">
-  <h2>Edit <%= resource_name.to_s.humanize %></h2>
+  <h2 class="black-shadow">Edit <%= resource_name.to_s.humanize %></h2>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs form-box">
-      <%= f.input :email, required: true, autofocus: true %>
-
+      <div class="white-box">
+          <div class="form-group">
+            <%= f.input :email, required: true, autofocus: true %>
+        </div>
+      </div>
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
       <% end %>
-
-      <%= f.input :password,
-                  label: 'Contraseña',
-                  hint: "Dejala en blanco si no queres cambiarla",
-                  required: false,
-                  input_html: { autocomplete: "Nueva contraseña" } %>
-      <%= f.input :password_confirmation,
-                  label: 'Confirma tu contraseña',
-                  required: false,
-                  input_html: { autocomplete: "Nueva contraseña" } %>
-      <%= f.input :current_password,
-                  label: 'Contraseña actual',
-                  hint: "Necesitamos tu contraseña actual para confirmar los cambios",
-                  required: true,
-                  input_html: { autocomplete: "Contraseña actual" } %>
-      <%= f.input :address,
-                  label: 'Dirección',
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "Dirección" }%>
-      <%= f.input :role,
-                  label: '¿Sos transportista o cargador?',
-                  :collection => ["Transportista", "Cargador"],
-                  :selected => "Cargador",
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "Rol" }%>
-      <%= f.input :avatar, as: :file %>
-    </div>
-
-    <div class="form-actions">
-      <%= f.button :submit, "Editar" %>
+      <div class="white-box">
+          <div class="form-group">
+            <%= f.input :password,
+                        label: 'Contraseña',
+                        hint: "Dejala en blanco si no queres cambiarla",
+                        required: false,
+                        input_html: { autocomplete: "Nueva contraseña" } %>
+        </div>
+      </div>
+      <div class="white-box">
+          <div class="form-group">
+            <%= f.input :password_confirmation,
+                        label: 'Confirma tu contraseña',
+                        required: false,
+                        input_html: { autocomplete: "Nueva contraseña" } %>
+        </div>
+      </div>
+      <div class="white-box">
+          <div class="form-group">
+            <%= f.input :current_password,
+                        label: 'Contraseña actual',
+                        hint: "Necesitamos tu contraseña actual para confirmar los cambios",
+                        required: true,
+                        input_html: { autocomplete: "Contraseña actual" } %>
+        </div>
+      </div>
+      <div class="white-box">
+          <div class="form-group">
+            <%= f.input :address,
+                        label: 'Dirección',
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "Dirección" }%>
+        </div>
+      </div>
+      <div class="white-box">
+          <div class="form-group">
+            <%= f.input :role,
+                        label: '¿Sos transportista o cargador?',
+                        :collection => ["Transportista", "Cargador"],
+                        :selected => "Cargador",
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "Rol" }%>
+        </div>
+      </div>
+      <div class="white-box">
+          <div class="form-group">
+            <%= f.input :avatar, as: :file %>
+        </div>
+      </div>
+      <div class="form-row d-flex justify-content-center px-10">
+        <%= f.button :submit, "Editar", class: "button green-button" %>
+      </div>
     </div>
   <% end %>
 
-  <h3>Cancel my account</h3>
 
-  <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-  <%= link_to "Back", :back %>
 </div>

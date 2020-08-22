@@ -4,8 +4,8 @@ body {
   align-items: center;
   margin:0;
   padding:0;
-  background-image: url(background.jpg), linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5));
-  background-blend-mode: color-burn;
+  background-image: url(background.jpg), linear-gradient(rgba(255,255,255,.7), rgba(255,255,255, .7));
+  background-blend-mode: soft-light;
   background-color: rgba(76,175,80,.7);
 }
 
@@ -15,3 +15,4 @@ body h1, h2 {
   padding: 20px;
   font-weight: 600;
 }
+

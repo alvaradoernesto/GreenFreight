@@ -1,19 +1,28 @@
 <div class="container mt-4">
-  <h2>Iniciar sesión</h2>
+  <h2 class="black-shadow">Iniciar sesión</h2>
 
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-inputs form-box">
-      <%= f.input :email,
-                  required: false,
-                  autofocus: true,
-                  input_html: { autocomplete: "email" } %>
-      <%= f.input :password,
-                  required: false,
-                  input_html: { autocomplete: "current-password" } %>
-      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-      <div class="form-actions">
-        <button class="button green-button align-middle"><%= f.button :submit, "Iniciar sesión" %></button>
+      <div class="white-box">
+        <div class="form-group">
+          <%= f.input :email,
+                        required: false,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" } %>
+        </div>
       </div>
+      <div class="white-box">
+        <div class="form-group">
+          <%= f.input :password,
+                        required: false,
+                        input_html: { autocomplete: "current-password" } %>
+        </div>
+      </div>
+      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+      <div class="form-row d-flex justify-content-center px-10">
+        <%= f.button :submit, "Iniciar sesión", class: "button green-button" %>
+      </div>
+      <br>
       <%= render "devise/shared/links" %>
     </div>
   <% end %>
