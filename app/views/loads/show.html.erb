@@ -2,76 +2,60 @@
   <br>
   <h1 class="black-shadow">Confirmación de carga</h1>
   <br>
-  <div class="container row">
-    <div class="form-box col">
-    <%= simple_form_for @load do |f| %>
-      <div class="form-row white-box">
-          <div class="form-group">
-            <label>Nombre</label>
-            <p><%= @load.user.name %></p>
-          </div>
-        </div>
-      <div class="form-row white-box">
-        <div class="form-group">
+  <div class="row">
+      <div class="form-box col-sm-12 ">
+        <div class="d-flex justify-content-center">
+        <%= simple_form_for @load do |f| %>
+        <div class="form-row white-box">
+        <div class="form-group col-md-6">
           <label>Fecha de inicio</label>
           <p><%= @load.start_date %></p>
         </div>
-      </div>
-        <div class="form-row white-box">
-          <div class="form-group">
+          <div class="form-group col-md-6">
             <label>Fecha de llegada</label>
             <p><%= @load.end_date %></p>
           </div>
         </div>
         <div class="form-row white-box">
-          <div class="form-group">
+          <div class="form-group col-md-6">
             <label>Lugar de inicio</label>
             <p><%= @load.start_point.location %></p>
           </div>
-        </div>
-        <div class="form-row white-box">
-          <div class="form-group">
+          <div class="form-group col-md-6">
             <label>Lugar de llegada</label>
             <p><%= @load.end_point.location %></p>
           </div>
         </div>
         <div class="form-row white-box">
-          <div class="form-group">
+          <div class="form-group col-md-6">
             <label>Volumen</label>
             <p><%= @load.volume %></p>
           </div>
-        </div>
-        <div class="form-row white-box">
-          <div class="form-group">
+          <div class="form-group col-md-6">
             <label>Peso</label>
             <p><%= @load.weight %></p>
           </div>
-        </div>
+          </div>
         <div class="form-row white-box">
-          <div class="form-group">
+          <div class="form-group col-md-6">
             <label>Categoria</label>
             <p><%= @load.load_category.description %></p>
           </div>
-        </div>
-        <div class="form-row white-box">
-          <div class="form-group">
+          <div class="form-group col-md-6">
             <label>Requerimiento especiales</label>
             <p><%= @load.special_requirement.description %></p>
           </div>
         </div>
-        <div class="form-row d-flex justify-content-center">
+      <% end %>
+        <div class="col-sm-6">
+        <div id="map2"
+             style="width: 100%; height: 410px;"
+             data-markers="<%= @markers.to_json %>"
+             data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+      </div>
+    </div>
+      <div class="form-row d-flex justify-content-center">
           <%= link_to "Editar", new_load_path(@load), class: "button green-button" %>
         </div>
-      <% end %>
-      <div class="container">
-        <br>
-        <h1 class="black-shadow">Mapa</h1>
-        <br>
-        <div class="form-row d-flex justify-content-center">
-        <div id="map"
-        style="width: 80%; height: 400px;"
-        data-markers="<%= @markers.to_json %>"
-        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-      </div>
     </div>
 
