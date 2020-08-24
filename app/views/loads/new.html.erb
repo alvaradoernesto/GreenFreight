@@ -37,11 +37,14 @@
           </div>
         </div>
         <div class="form-row white-box">
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-4">
             <%= f.input :load_category_id, collection: LoadCategory.all, label_method: :description, label: "Categoria:" %>
           </div>
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-4">
             <%= f.input :special_requirement_id, collection: SpecialRequirement.all, label_method: :description, label: "Requerimiento especiales:" %>
+          </div>
+          <div class="form-group col-md-4">
+            <%= f.input :photo, as: :file, label: 'Imagen de la carga', placeholder: "Imagen de la carga" %>
           </div>
         </div class="form-group">
         <div class="form-row d-flex justify-content-center">

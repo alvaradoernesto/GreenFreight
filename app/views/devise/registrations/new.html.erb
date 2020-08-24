@@ -1,59 +1,47 @@
-<div class="container">
+<div class="container mt-4 col-6">
   <h2 class="black-shadow">Nuevo usuario</h2>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs form-box">
-      <div class="white-box">
-        <div class="form-group">
-          <%= f.input :email,
-                        required: true,
-                        autofocus: true,
-                        input_html: { autocomplete: "email" }%>
-        </div>
+      <div class="form-group">
+        <%= f.input :email,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "email" }%>
       </div>
-      <div class="white-box">
-        <div class="form-group">
-          <%= f.input :password,
-                        label: 'Contraseña',
-                        required: true,
-                        hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                        input_html: { autocomplete: "new-password" } %>
-        </div>
+      <div class="form-group">
+        <%= f.input :password,
+                      label: 'Contraseña',
+                      required: true,
+                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                      input_html: { autocomplete: "new-password" } %>
       </div>
-      <div class="white-box">
-        <div class="form-group">
-          <%= f.input :password_confirmation,
-                        label: 'Confirma tu contraseña',
-                        required: true,
-                        input_html: { autocomplete: "new-password" } %>
-        </div>
+      <div class="form-group">
+        <%= f.input :password_confirmation,
+                      label: 'Confirma tu contraseña',
+                      required: true,
+                      input_html: { autocomplete: "new-password" } %>
       </div>
-      <div class="white-box">
-        <div class="form-group">
-          <%= f.input :address,
-                        label: 'Dirección',
-                        required: true,
-                        autofocus: true,
-                        input_html: { autocomplete: "address" }%>
-        </div>
+      <div class="form-group">
+        <%= f.input :address,
+                      label: 'Dirección',
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "address" }%>
       </div>
-      <div class="white-box">
-        <div class="form-group">
-          <%= f.input :role,
-                        label: '¿Sos transportista o cargador?',
-                        :collection => ["Transportista", "Cargador"],
-                        :selected => "Cargador",
-                        required: true,
-                        autofocus: true,
-                        input_html: { autocomplete: "role" }%>
-        </div>
+      <div class="form-group">
+        <%= f.input :role,
+                      label: '¿Sos transportista o cargador?',
+                      :collection => ["Transportista", "Cargador"],
+                      :selected => "Cargador",
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "role" }%>
       </div>
-      <div class="white-box">
-        <div class="form-group">
-          <%= f.input :avatar, as: :file %>
-        </div>
+      <div class="form-group">
+        <%= f.input :avatar, as: :file %>
       </div>
       <br>
       <div class="form-row d-flex justify-content-center px-10">

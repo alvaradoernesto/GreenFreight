@@ -30,7 +30,10 @@
             <td class="align-middle"><%= number_with_delimiter(freight.distance.round(0), delimiter: ".") %></td>
             <td class="align-middle"><%= number_to_percentage(freight.capacity, precision: 0) %></td>
             <td class="align-middle"><%= freight.status %></td>
-            <td class="green-button align-middle"><%= link_to "Ver", freight_path(freight) %></td>
+            <td class="align-middle">
+              <button class="button green-button align-middle w-100"><%= link_to "Ver detalle", freight_path(freight) %></button>
+              <button class="button green-button align-middle w-100"><a href="#">Cambiar estado</a></button>
+            </td>
           </tr>
         <% end %>
       </tbody>
