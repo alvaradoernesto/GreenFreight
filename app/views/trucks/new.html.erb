@@ -6,55 +6,45 @@
     <div class="form-box col">
       <%= simple_form_for @truck do |f| %>
         <div class="form-row white-box">
-          <div class="form-group">
+          <div class="form-group col-md-6">
             <%= f.input :truck_name, placeholder: "Diesel 1", label: 'Nombre identificador' %>
           </div>
-        </div>
-        <div class="form-row white-box">
-          <div class="form-group">
+          <div class="form-group col-md-6">
             <%= f.input :truck_license, placeholder: "XX 123 XX", label: 'Patente' %>
           </div>
         </div>
         <div class="form-row white-box">
-          <div class="form-group">
+          <div class="form-group col-md-6">
             <%= f.input :driver_name, placeholder: "Roberto Bolaños", label: 'Conductor' %>
           </div>
-        </div>
-        <div class="form-row white-box">
-          <div class="form-group">
+          <div class="form-group col-md-6">
             <%= f.input :driver_license, placeholder: "xxxxxxx", label: 'Licencia' %>
           </div>
         </div>
         <div class="form-row white-box">
-          <div class="form-group">
+          <div class="form-group col-md-6">
             <%= f.input :capacity, placeholder: "84", label: 'Capacidad (m3)' %>
           </div>
-        </div>
-        <div class="form-row white-box">
-          <div class="form-group">
+          <div class="form-group col-md-6">
             <%= f.input :price_per_km, placeholder: "100", label: 'Tarifa por km ($/km)' %>
           </div>
         </div>
         <div class="form-row white-box">
-          <div class="form-group">
+          <div class="form-group col-md-4">
             <%= f.association :truck_category, label_method: :description %>
           </div>
-        </div>
-        <div class="form-row white-box">
-          <div class="form-group">
+          <div class="form-group col-md-4">
             <%= f.label "Load category" %>
             <%= f.fields_for :truck_load_categories, @truck_load_category do |t| %>
               <%= t.collection_select(:id, LoadCategory.all, :id, :description,  {:prompt => "Selecciona una categoría"}, {:multiple => true}) %>
             <% end %>
           </div>
-        </div>
-        <div class="form-row white-box">
-          <div class="form-group">
+          <div class="form-group col-md-4">
             <%= f.input :photo, as: :file, label: 'Imagen del camión', placeholder: "Imagen del camión" %>
           </div>
         </div>
         <div class="form-row d-flex justify-content-center">
-          <%= f.button :submit, "Confirmar alta", class: "button green-button"%>
+          <%= f.button :submit, "Crear camión 🚚", class: "button green-button"%>
         </div>
       <% end %>
     </div>

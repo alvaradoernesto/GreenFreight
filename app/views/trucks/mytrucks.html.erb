@@ -6,33 +6,33 @@
     <table class="table table-hover white-box">
       <thead>
         <tr>
-          <th scope="col">Identificación</th>
-          <th scope="col">Precio por m</th>
-          <th scope="col">Capacidad</th>
-          <th scope="col">Conductor</th>
-          <th scope="col">Licencia conductor</th>
-          <th scope="col">Patente</th>
-          <th scope="col">Categoría</th>
-          <th scope="col">Cargas aceptadas</th>
-          <th scope="col">Imagen</th>
+          <th class="align-middle" scope="col">Identificación</th>
+          <th class="align-middle" scope="col">Precio por m</th>
+          <th class="align-middle" scope="col">Capacidad</th>
+          <th class="align-middle" scope="col">Conductor</th>
+          <th class="align-middle" scope="col">Licencia conductor</th>
+          <th class="align-middle" scope="col">Patente</th>
+          <th class="align-middle" scope="col">Categoría</th>
+          <th class="align-middle" scope="col">Cargas aceptadas</th>
+          <th class="align-middle" scope="col">Imagen</th>
         </tr>
       </thead>
       <tbody>
         <% @trucks.each do |truck| %>
           <tr>
-            <td><%= truck.truck_name %></td>
-            <td><%= truck.price_per_km %></td>
-            <td><%= truck.capacity %></td>
-            <td><%= truck.driver_name %></td>
-            <td><%= truck.driver_license %></td>
-            <td><%= truck.truck_license %></td>
-            <td><%= truck.truck_category.description %>
-            <td>
+            <td class="align-middle"><%= truck.truck_name %></td>
+            <td class="align-middle"><%= truck.price_per_km %></td>
+            <td class="align-middle"><%= truck.capacity %></td>
+            <td class="align-middle"><%= truck.driver_name %></td>
+            <td class="align-middle"><%= truck.driver_license %></td>
+            <td class="align-middle"><%= truck.truck_license %></td>
+            <td class="align-middle"><%= truck.truck_category.description %>
+            <td class="align-middle">
             <% truck.load_categories.each do |cat| %>
               <%= cat.description %>
             <% end %>
             </td>
-            <td>
+            <td class="align-middle">
               <% if truck.photo.present? %>
                 <%= cl_image_tag truck.photo.key, height: 60, width: 80, crop: :fill %>
               <% else %>
