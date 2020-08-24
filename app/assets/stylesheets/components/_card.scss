@@ -3,15 +3,20 @@
   margin-right: 15px;
   margin-bottom: 0px;
   margin-left: 15px;
-  background-color: #edfded;
+  background-color: #FFFFFF;
   border-radius: 15px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
   overflow: hidden;
 }
+
+.card:hover {
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
 .card .card-info {
   margin: 15px 30px;
   height: 220px;
 }
+
 .card h1 {
   font-size: 20px;
   opacity: 0.9;
@@ -34,8 +39,11 @@
 .small-card {
   margin: 10px 15px;
   border-radius: 15px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
   background-color: white;
+}
+
+.small-card:hover {
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
 .small-card img {
@@ -56,7 +64,7 @@
 .small-card p {
   font-size: 16px;
   color: grey;
-  text-align: center;
+  padding: 10px;
 }
 
 .small-card .card-info {

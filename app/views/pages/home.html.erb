@@ -1,7 +1,7 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= image_path 'banner.png' %>');" >
   <div class="container">
     <div class="col-6">
-      <h2 class="text-left">La manera segura y eficiente de transportar tus pertenencias ayudando al medioambiente</h2>
+      <h1 class="text-left">La manera segura y eficiente de transportar tus pertenencias ayudando al medioambiente</h1>
     </div>
     <br>
     <br>
@@ -9,20 +9,21 @@
     <br>
     <div class="container">
       <p>Obtené un estimado de tu Green Freight</p>
-      <form action="/cotizacion" class="form-inline d-flex" id="input-styling-address"  method="GET" >
-        <div>
-          <label for="inputOrigin" class="sr-only">Origen</label>
-          <input name="inputOrigin" id="inputOrigin" placeholder="Origen">
-        </div>
-        <div>
-          <label for="inputDestino" class="sr-only">Destino</label>
-          <input name="inputDestino" id="inputDestino" placeholder="Destino">
-        </div>
-        <div class="form-group ml-1">
-          <button type="submit" class="btn btn-success font-weight-bold">Cotizá</button>
-        </div>
-      </form>
-    </div>
+      <div class="cotizacion d-flex justify-content-around" id="input-styling-address">
+        <form action="/cotizacion" class="form-inline p-1"  method="GET" >
+          <div class="form-group w-40 input-styling-address p-1">
+            <label for="inputOrigin" class="sr-only">Origen</label>
+            <input name="inputOrigin" id="inputOrigin" placeholder="Origen">
+          </div>
+          <div class="form-group w-40 input-styling-address p-1">
+            <label for="inputDestino" class="sr-only">Destino</label>
+            <input name="inputDestino" id="inputDestino" placeholder="Destino">
+          </div>
+          <div class="form-group p-10">
+            <button type="submit" class="button green-button font-weight-bold">Cotizá</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>
@@ -34,29 +35,29 @@
 <div class="container">
   <div class="row cards">
     <div class="col">
-      <div class="card">
+      <div class="card w3-hover-shadow w3-padding-64">
         <img src="<%= asset_path('save-money.jpg') %>" alt="">
         <div class="card-info">
-          <h1>Ahorrá dinero</h1>
-          <p>Mediante el sistema de cargas compartidas, podes comparar las distintas tarifas disponibles para transportar tu carga.</p>
+          <h1 class="text-center">Ahorrá dinero</h1>
+          <p class="text-justify">Mediante el sistema de cargas compartidas, podes comparar las distintas tarifas disponibles para transportar tu carga.</p>
         </div>
       </div>
     </div>
      <div class="col">
-       <div class="card">
+       <div class="card w3-hover-shadow w3-padding-64">
          <img src="<%= asset_path('save-planet.jpg') %>" alt="">
          <div class="card-info">
-           <h1>Cuidá el planeta</h1>
-           <p>Compartiendo tu Green Freight con otros solicitantes ayudas a disminuir considerablemente la huella de carbono y el impacto ambiental.</p>
+           <h1 class="text-center">Cuidá el planeta</h1>
+           <p class="text-justify">Compartiendo tu Green Freight con otros solicitantes ayudas a disminuir considerablemente la huella de carbono y el impacto ambiental.</p>
          </div>
        </div>
      </div>
       <div class="col">
-        <div class="card">
+        <div class="card w3-hover-shadow w3-padding-64">
           <img src="<%= asset_path('save-time.jpg') %>" alt="">
           <div class="card-info">
-            <h1>Ahorrá tiempo</h1>
-            <p>En segundos podras comparar las tarifas y matchear tu carga con los transportes disponibles en la fecha solicitada.</p>
+            <h1 class="text-center">Ahorrá tiempo</h1>
+            <p class="text-justify">En segundos podras comparar las tarifas y matchear tu carga con los transportes disponibles en la fecha solicitada.</p>
           </div>
         </div>
       </div>
@@ -68,40 +69,41 @@
   </div>
   <div class="row">
     <div class="col">
-      <div class="small-card">
+      <div class="small-card w3-hover-shadow w3-padding-64">
         <img src="<%= asset_path('loader-paso1.png') %>" alt="">
         <div class="card-info">
-          <h2>Agrega tu carga</h2>
-          <p>Sumá todas las cosas que necesites transportar</p>
+          <h2 class="text-center">Agrega tu carga</h2>
+          <p class="text-justify align-top">Sumá todas las cosas que necesites transportar y detalla tus requerimientos</p>
         </div>
       </div>
     </div>
     <div class="col">
-      <div class="small-card">
+      <div class="small-card w3-hover-shadow w3-padding-64">
         <img src="<%= asset_path('loader-paso2.png') %>" alt="">
         <div class="card-info">
-          <h2>Compara opciones</h2>
-          <p>Con nuestro amplio rango de transportitas</p>
+          <h2 class="text-center">Compara opciones</h2>
+          <p class="text-justify align-top">Con nuestro amplio rango de transportitas</p>
         </div>
       </div>
     </div>
     <div class="col">
-      <div class="small-card">
+      <div class="small-card w3-hover-shadow w3-padding-64">
         <img src="<%= asset_path('loader-paso3.png') %>" alt="">
         <div class="card-info">
-          <h2>Reserva tu GreenFreight</h2>
-          <p>A través de nuestra plataforma de pagos 100% seguros</p>
+          <h2 class="text-center">Reserva</h2>
+          <p class="text-justify align-top">Reserva tu GreenFreight a través de nuestra plataforma de pagos 100% seguros</p>
         </div>
       </div>
     </div>
     <div class="col">
-      <div class="small-card">
+      <div class="small-card w3-hover-shadow w3-padding-64">
         <img src="<%= asset_path('loader-paso4.png') %>" alt="">
         <div class="card-info">
-          <h2>Segui tu viaje</h2>
-          <p>Y asegurate de que todas tus cosas lleguen a destino</p>
+          <h2 class="text-center">Segui tu viaje</h2>
+          <p class="text-justify align-top">Da seguimiento a tu viaje en línea y asegurate de que todas tus cosas lleguen a destino</p>
         </div>
       </div>
     </div>
   </div>
 </div>
+
