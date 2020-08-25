@@ -53,7 +53,7 @@ class LoadsController < ApplicationController
   end
 
   def myloads
-    @load = Load.where(user: current_user)
+    @loads = Load.where(user: current_user)
   end
 
   def update
