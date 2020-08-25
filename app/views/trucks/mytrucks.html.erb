@@ -7,7 +7,7 @@
       <thead>
         <tr>
           <th class="align-middle" scope="col">Identificación</th>
-          <th class="align-middle" scope="col">Precio por m</th>
+          <th class="align-middle" scope="col">Precio por km</th>
           <th class="align-middle" scope="col">Capacidad</th>
           <th class="align-middle" scope="col">Conductor</th>
           <th class="align-middle" scope="col">Licencia conductor</th>
@@ -21,16 +21,16 @@
         <% @trucks.each do |truck| %>
           <tr>
             <td class="align-middle"><%= truck.truck_name %></td>
-            <td class="align-middle"><%= truck.price_per_km %></td>
+            <td class="align-middle"><%= number_to_currency truck.price_per_km %></td>
             <td class="align-middle"><%= truck.capacity %></td>
             <td class="align-middle"><%= truck.driver_name %></td>
             <td class="align-middle"><%= truck.driver_license %></td>
             <td class="align-middle"><%= truck.truck_license %></td>
-            <td class="align-middle"><%= truck.truck_category.description %>
+            <td class="align-middle"><%= truck.truck_category.description %></td>
             <td class="align-middle">
-            <% truck.load_categories.each do |cat| %>
-              <%= cat.description %>
-            <% end %>
+              <% truck.load_categories.each do |cat| %>
+                <%= cat.description %>
+              <% end %>
             </td>
             <td class="align-middle">
               <% if truck.photo.present? %>

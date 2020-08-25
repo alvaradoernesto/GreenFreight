@@ -7,7 +7,7 @@
       <%= simple_form_for @load do |f| %>
         <div class="form-row white-box">
           <div class="form-group col-md-6">
-            <%= f.input :start_date, placeholder: "Fecha inicio", label: "Fecha inicio:" %>
+            <%= f.input :start_date, placeholder: "Fecha de inicio", label: "Fecha de inicio:" %>
           </div>
           <div class="form-group col-md-6">
             <%= f.input :end_date, placeholder: "Fecha de llegada", label: "Fecha de llegada:" %>
@@ -27,21 +27,21 @@
         </div>
         <div class="form-row white-box">
           <div class="form-group col-md-4">
-            <%= f.input :hour_range, collection: [["7:00-12:00"], ["12:00-17:00"], ["17:00-22:00"]], selected: "Mañana", label: "Rango horario:" %>
+            <%= f.input :hour_range, collection: [["7:00-12:00"], ["12:00-17:00"], ["17:00-22:00"]], selected: "7:00-12:00", label: "Rango horario:" %>
           </div>
           <div class="form-group col-md-4">
-            <%= f.input :weight, placeholder: "1..5000", label: "Peso aproximado:" %>
+            <%= f.input :weight, placeholder: "10..25000", label: "Peso aproximado:" %>
           </div>
           <div class="form-group col-md-4">
-            <%= f.input :volume, placeholder: "1..300", label: "Volumen aproximado:" %>
+            <%= f.input :volume, placeholder: "1..130", label: "Volumen aproximado:" %>
           </div>
         </div>
         <div class="form-row white-box">
           <div class="form-group col-md-4">
-            <%= f.input :load_category_id, collection: LoadCategory.all, label_method: :description, label: "Categoria:" %>
+            <%= f.input :load_category_id, collection: LoadCategory.all, label_method: :description, label: "Categoría:" %>
           </div>
           <div class="form-group col-md-4">
-            <%= f.input :special_requirement_id, collection: SpecialRequirement.all, label_method: :description, label: "Requerimiento especiales:" %>
+            <%= f.input :special_requirement_id, collection: SpecialRequirement.all, label_method: :description, label: "Requerimientos especiales:" %>
           </div>
           <div class="form-group col-md-4">
             <%= f.input :photo, as: :file, label: 'Imagen de la carga', placeholder: "Imagen de la carga" %>

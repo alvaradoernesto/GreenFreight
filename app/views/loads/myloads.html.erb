@@ -10,15 +10,23 @@
           <th class="align-middle" scope="col">Origen</th>
           <th class="align-middle" scope="col">Destino</th>
           <th class="align-middle" scope="col">Estado</th>
+          <th class="align-middle" scope="col">Imagen</th>
         </tr>
       </thead>
       <tbody>
-        <% @load.each do |loads| %>
+        <% @loads.each do |load| %>
           <tr>
-            <td class="align-middle"><%= loads.start_date.strftime("%d.%m.%y") %></td>
-            <td class="align-middle"><%= loads.start_point.location %></td>
-            <td class="align-middle"><%= loads.end_point.location %></td>
-            <td class="align-middle"><%= loads.status %></td>
+            <td class="align-middle"><%= load.start_date.strftime("%d.%m.%y") %></td>
+            <td class="align-middle"><%= load.start_point.location %></td>
+            <td class="align-middle"><%= load.end_point.location %></td>
+            <td class="align-middle"><%= load.status %></td>
+            <td class="align-middle">
+              <% if load.photo.present? %>
+                <%= cl_image_tag load.photo.key, height: 60, width: 80, crop: :fill %>
+              <% else %>
+                <%= image_tag "default-load.png", height: 60, width: 80, crop: :fill %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>
