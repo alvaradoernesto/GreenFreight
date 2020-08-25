@@ -1,6 +1,10 @@
 <!-- app/views/flats/_info_window.html.erb -->
-
-<h2><%= load.user.name %></h2>
+<h3><%= load.user.name %></h3>
 <p>Start location: <%= load.start_point.location %></p>
 <p>Start date: <%= load.start_date %></p>
 <p>Time range: <%= load.hour_range %></p>
+<% unless @freight.loads.ids.include?(load.id) %>
+  <%= link_to "Tomar carga",  method: :add_load, remote: true, class: 'badge badge-success' %>
+<% else %>
+  <span class="badge badge-secondary">Carga agregada</span>
+<% end %>
