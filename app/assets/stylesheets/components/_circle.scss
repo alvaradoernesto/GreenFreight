@@ -1,0 +1,22 @@
+.circle {
+  background-color: #8ACC6F;
+  border-radius:50%;
+  color: white;
+  display:table;
+  height: 200px;
+  font-weight: bold;
+  font-size: 1.2em;
+  box-shadow:0 40px 15px -15px rgba(0, 0, 0, 0.2), inset 0 -50px 20px -20px rgba(0, 0, 0, 0.2);
+  width: auto;
+  margin:0 auto;
+  padding: 2px
+}
+
+.circle_text {
+  display:table-cell;
+  vertical-align:middle;
+  height:200px;
+  width:200px;
+  text-align:center;
+  padding: 0 15px;
+}

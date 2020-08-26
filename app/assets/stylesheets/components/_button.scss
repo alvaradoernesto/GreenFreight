@@ -24,6 +24,7 @@
   background: #FFFFFF;
   color: #46AF44;
   border-color: #46AF44;
+  font-weight: bolder;
 }
 
 #buttons {
@@ -39,7 +40,12 @@
 }
 
 .check-button:hover {
+<<<<<<< HEAD
   color: grey;
+=======
+  color: #FFFFFF;
+  font-weight: bolder;
+>>>>>>> master
 }
 
 .green-button a {
@@ -48,4 +54,26 @@
   line-height: 1.5;
   filter: drop-shadow(rgba(0, 0, 0, 0.25) 0px 4px 4px);
   border-style: hidden;
+}
+
+.btn-ghost {
+  color: #4A4A4A;
+  border: 1px solid #4A4A4A;
+  padding: 8px 24px;
+  border-radius: 15px;
+  font-weight: lighter;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+  width: 150px;
+}
+
+.btn-ghost:hover {
+  opacity: 1;
+  font-weight: bolder;
+}
+
+a:hover {
+  color: #46AF44;
+  font-weight: bolder;
+  text-decoration: none;
 }

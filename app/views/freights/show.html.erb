@@ -75,27 +75,27 @@
     <table class="table table-hover white-box">
       <thead>
         <tr>
-          <th scope="col">Carga</th>
-          <th scope="col">Origen</th>
-          <th scope="col">Destino</th>
-          <th scope="col">Volumen</th>
-          <th scope="col">Peso</th>
-          <th scope="col">Precio Total</th>
-          <th scope="col">Estado</th>
-          <th scope="col">Imagen</th>
+          <th class="align-middle" scope="col">Carga</th>
+          <th class="align-middle" scope="col">Origen</th>
+          <th class="align-middle" scope="col">Destino</th>
+          <th class="align-middle" scope="col">Volumen</th>
+          <th class="align-middle" scope="col">Peso</th>
+          <th class="align-middle" scope="col">Precio Total</th>
+          <th class="align-middle" scope="col">Estado</th>
+          <th class="align-middle" scope="col">Imagen</th>
         </tr>
       </thead>
       <tbody>
         <% @freight.loads.each_with_index do |load, i| %>
           <tr>
-            <td><%= i + 1 %></td>
-            <td><%= load.start_point.location %></td>
-            <td><%= load.end_point.location %></td>
-            <td><%= load.volume %></td>
-            <td><%= load.weight %></td>
-            <td><%= load.price %></td>
-            <td><%= load.status %></td>
-            <td>
+            <td class="align-middle"><%= i + 1 %></td>
+            <td class="align-middle"><%= load.start_point.location %></td>
+            <td class="align-middle"><%= load.end_point.location %></td>
+            <td class="align-middle"><%= load.volume %></td>
+            <td class="align-middle"><%= load.weight %></td>
+            <td class="align-middle"><%= load.price %></td>
+            <td class="align-middle"><%= load.status %></td>
+            <td class="align-middle">
               <% if load.photo.present? %>
                 <%= cl_image_tag load.photo.key, height: 60, width: 80, crop: :fill %>
               <% else %>

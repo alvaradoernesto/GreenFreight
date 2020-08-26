@@ -1,44 +1,52 @@
-<div class="container">
-  <h2>Sign up</h2>
+<div class="container mt-4 col-6">
+  <h2 class="black-shadow">Nuevo usuario</h2>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
 
-    <div class="form-inputs">
-      <%= f.input :email,
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "email" }%>
-      <%= f.input :password,
-                  label: 'Contraseña',
-                  required: true,
-                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :password_confirmation,
-                  label: 'Confirma tu contraseña',
-                  required: true,
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :address,
-                  label: 'Dirección',
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "address" }%>
-      <%= f.input :role,
-                  label: '¿Sos transportista o cargador?',
-                  :collection => ["Transportista", "Cargador"],
-                  :selected => "Cargador",
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "role" }%>
-      <%= f.input :avatar, as: :file %>
-      <%= link_to "Nuevo camión", new_truck_path, class: "btn btn-warning" %>
-    </div>
-
-    <div class="form-actions">
-      <%= f.button :submit, "Sign up" %>
-    </div>
-    <div class="form-actions">
-      <%= render "devise/shared/links" %>
+    <div class="form-inputs form-box">
+      <div class="form-group">
+        <%= f.input :email,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "email" }%>
+      </div>
+      <div class="form-group">
+        <%= f.input :password,
+                      label: 'Contraseña',
+                      required: true,
+                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                      input_html: { autocomplete: "new-password" } %>
+      </div>
+      <div class="form-group">
+        <%= f.input :password_confirmation,
+                      label: 'Confirma tu contraseña',
+                      required: true,
+                      input_html: { autocomplete: "new-password" } %>
+      </div>
+      <div class="form-group">
+        <%= f.input :address,
+                      label: 'Dirección',
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "address" }%>
+      </div>
+      <div class="form-group">
+        <%= f.input :role,
+                      label: '¿Sos transportista o cargador?',
+                      :collection => ["Transportista", "Cargador"],
+                      :selected => "Cargador",
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "role" }%>
+      </div>
+      <div class="form-group">
+        <%= f.input :avatar, as: :file %>
+      </div>
+      <br>
+      <div class="form-row d-flex justify-content-center px-10">
+        <%= f.button :submit, "Crear cuenta", class: "button green-button" %>
+      </div>
     </div>
   <% end %>
 </div>

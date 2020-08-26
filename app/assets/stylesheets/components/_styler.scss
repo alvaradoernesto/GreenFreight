@@ -3,10 +3,33 @@
 }
 
 .white-rec {
-  background-color: #edfded;
+  background-color: #FFFFFF;
   height:300px;
 }
 
 .white-rec h1 {
   color: #46AF44;
+}
+
+#banner-text {
+  font-size: 40px;
+}
+
+td {
+  font-size: small;
+}
+
+td a {
+  font-size: 11px;
+}
+
+label {
+  line-height: 1;
+  color: #46AF44;
+}
+
+input {
+  line-height: 1;
+  color: #939393;
+  border-style: hidden;
 }

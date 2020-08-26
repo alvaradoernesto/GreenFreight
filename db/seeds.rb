@@ -58,7 +58,7 @@ tran_mauricio.save!
 cargador_mauricio = User.new(
   email: "mauriciocargador@gmail.com",
   password: "mauricio1234",
-  address: "Falucho 995, Mar del Plata, Provincia de Buenos Aires",
+  address: "Francia 981, Luján, Provincia de Buenos Aires",
   name: "Mauricio Cargador",
   role: "Cargador"
 )
@@ -69,7 +69,7 @@ cargador_mauricio.save!
 tran_nadia = User.new(
   email: "transportenadia@gmail.com",
   password: "nadia1234",
-  address: "Arévalo 2279, Buenos Aires",
+  address: "Rueda 755, Rosario, Provincia de Santa Fe",
   name: "Transporte Nadia",
   role: "Transportista"
 )
@@ -80,7 +80,7 @@ tran_nadia.save!
 cargador_nadia = User.new(
   email: "nadiacargador@gmail.com",
   password: "nadia1234",
-  address: "Rueda 755, Rosario, Provincia de Santa Fe",
+  address: "Av. Victorica 660, Moreno, Provincia de Buenos Aires",
   name: "Nadia Cargador",
   role: "Cargador"
 )
@@ -126,38 +126,28 @@ HOUR_RANGES = ["7:00-12:00", "12:00-17:00", "17:00-22:00"]
 puts "Creating Load End Points"
 
 LOAD_END_POINTS = [
-  "Francia 981, Luján, Provincia de Buenos Aires",
   "San Martín 2152, Campana, Provincia de Buenos Aires",
   "Av. San Martín 1747, Baradero, Provincia de Buenos Aires",
-  "Rauch, Provincia de Buenos Aires",
   "Undiano 264, Bahía Blanca, Provincia de Buenos Aires",
-  "Provincia de Chubut",
-  "Luis Maspero 158, Remedios de Escalada, Provincia de Buenos Aires",
   "Pasteur 220, Mar del Plata, Provincia de Buenos Aires",
-  "Rosario, Provincia de Santa Fe",
-  "Moreno, Provincia de Buenos Aires"
-]
-
-LOAD_START_POINTS = [
-  "Olivos, Provincia de Buenos Aires",
-  "Moreno 490, Buenos Aires",
   "San Luis 542, Rosario, Provincia de Santa Fe",
-  "Yrigoyen 625, Pehuajó, Provincia de Buenos Aires",
-  "Comodoro Rivadavia, Chubut",
-  "Tupungato 54, La Rioja",
-  "Pedro Luro 6681, Mar del Plata, Provincia de Buenos Aires",
-  "Urquiza 345, Santiago del Estero",
-  "Puerto Madryn, Chubut",
-  "Luján de Cuyo, Provincia de Mendoza"
+  "Victor Vergani 860, Pilar, Provincia de Buenos Aires",
+  "Av. Hipólito Yrigoyen 511, Córdoba, Provincia de Córdoba",
+  "Mitre 1099, San Pedro, Provincia de Buenos Aires",
+  "Av. Carlos Pellegrini 431, Quilmes, Provincia de Buenos Aires"
 ]
 
 puts "Creating Truck Names"
 
-TRUCK_NAMES = ["Scania", "Daf Trucks", "Man", "Mercedes", "Iveco", "Volvo", "Renault", "Isuzu", "Nissan"]
+TRUCK_NAMES = ["Scania", "Daf", "Man", "Mercedes", "Iveco", "Volvo", "Renault", "Isuzu", "Nissan"]
 
 puts "Creating Truck Capacities"
 
 TRUCK_CAPACITIES = [20, 40, 70, 130]
+
+puts "Creating Truck Drivers´ Names"
+
+TRUCK_DRIVER_NAMES = ['Raul Moya', 'Miguel Gay', 'Alejandro Fuentes', 'Francisco Garcia', 'Rafael Quintero', 'Albert Lopez', 'Javier Martinez', 'Manuel Sola', 'Cesar Rodriguez', 'Pablo Gaspar', 'Alfonso Canales', 'Juan Gonzalez', 'Carlos Andrade', 'angel Rodriguez', 'Adrian Huerta', 'Francisco Javier Miro', 'Jose Luis Lopez', 'Juan Jose Oliva', 'Jaime Sotelo', 'Jose Antonio Garcia', 'Manuel Esteban', 'Jaime Estevez', 'Jesus Luque', 'Raul Morales', 'Sergio Paredes', 'Francisco Varela', 'Jose Manuel Hidalgo', 'Antonio Guasch', 'Pilar Miguel', 'Maria Luisa Chavez', 'Maria Carmen Hernandez', 'Elena Gutierrez', 'Lucia Criado', 'Maria Rodriguez', 'Maria Teresa Gonzalez', 'Manuel Quevedo', 'Jose Manuel Garcia', 'Jose Manuel Gonzalez', 'Pilar Jodar', 'Rafael Navarro', 'Alejandro Galindo', 'Jose Larraniaga', 'Isabel Maria aguila']
 
 puts "Creating Trucks"
 
@@ -168,33 +158,35 @@ puts "Creating Trucks"
       capacity: TRUCK_CAPACITIES.sample,
       user: tran,
       truck_category: TruckCategory.all.sample,
-      driver_name: Faker::Name.name,
-      driver_license: Faker::IDNumber.spanish_citizen_number,
-      truck_license: Faker::Vehicle.license_plate,
+      driver_name: TRUCK_DRIVER_NAMES.sample,
+      driver_license: "C-#{rand(10..45)}#{rand(999)}#{rand(999)}",
+      truck_license: "#{["AA", "AB", "AC", "AD", "AE"].sample}#{rand(999)}#{["AF", "EJ", "IH", "OK", "UY"].sample}",
     )
-    truck.truck_name = "#{TRUCK_NAMES.sample} - #{rand(99)}",
+    truckname = TRUCK_NAMES.sample
+    truck.photo.attach(io: File.open("app/assets/images/Camion#{truckname}.jpg"), filename: "#{truckname}.png", content_type: 'image/png')
+    truck.truck_name = "#{truckname} - #{truck.capacity}m3"
     truck.save!
   end
 end
 
-puts "Creating Loads"
+puts "Creating Loads - Status: 'Nueva'"
 
 [cargador_ernesto, cargador_mauricio, cargador_nadia].each do |loader|
   10.times do
     oneload = Load.new(
       user: loader,
-      start_date: Date.today-rand(30),
-      end_date: Date.today+rand(30),
+      start_date: Date.today+rand(1..10),
+      end_date: Date.today+rand(11..20),
       hour_range: HOUR_RANGES.sample,
       load_category_id: LoadCategory.pluck(:id).sample,
       special_requirement_id: SpecialRequirement.pluck(:id).sample,
       weight: Faker::Number.between(from: 10, to: 25000),
       volume: Faker::Number.between(from: 1, to: 130),
-      price: Faker::Number.number(digits: 3),
-      status: LOAD_STATUS.sample,
+      status: "Nueva",
     )
+    oneload.photo.attach(io: File.open("app/assets/images/LC#{LoadCategory.find_by(id: oneload.load_category_id).description}.jpg"), filename: "#{LoadCategory.find_by(id: oneload.load_category_id).description}.png", content_type: 'image/png')
     oneload.save!
-    start_point = StartPoint.new(load: oneload, location: LOAD_START_POINTS.sample)
+    start_point = StartPoint.new(load: oneload, location: oneload.user.address)
     end_point  = EndPoint.new(load: oneload, location: LOAD_END_POINTS.sample)
     start_point.save!
     end_point.save!
@@ -204,22 +196,150 @@ end
 puts "Creating Truck Load Categories"
 
 Truck.all.each do |truck|
-     truck_load_category = TruckLoadCategory.new(truck: truck,
-     load_category: LoadCategory.all.sample)
-     truck_load_category.save
+ truck_load_category = TruckLoadCategory.new(truck: truck, load_category: LoadCategory.all.sample)
+ truck_load_category.save
 end
 
-puts "Creating Freights"
+puts "Creating Freights - Status: 'Nuevo'"
 
-5.times do
-  ruta = Freight.new
-  ruta.truck = Truck.all.sample
-  ruta.status = FREIGHT_STATUS.sample
-  ruta.save!
-  rand(2..3).times do
-    Load.where(freight_id: nil).sample.update(freight_id: ruta.id)
+Truck.all.each do |truck|
+  freight = Freight.new(
+    truck: truck,
+    status: "Nuevo",
+  )
+  freight.save!
+  freight_cap = 0
+  load_cap = 0
+  unless freight_cap > truck.capacity
+    load_cap = Faker::Number.between(from: 1, to: truck.capacity.to_i)
+    freight_cap += load_cap
+    oneload = Load.new(
+      user: [cargador_ernesto, cargador_mauricio, cargador_nadia].sample,
+      start_date: Date.today+rand(1..3),
+      end_date: Date.today+rand(4..6),
+      hour_range: HOUR_RANGES.sample,
+      load_category: truck.load_categories.first,
+      special_requirement_id: SpecialRequirement.pluck(:id).sample,
+      weight: Faker::Number.between(from: 10, to: 25000),
+      volume: load_cap,
+      status: "Asignada",
+    )
+    oneload.photo.attach(io: File.open("app/assets/images/LC#{LoadCategory.find_by(id: oneload.load_category_id).description}.jpg"), filename: "#{LoadCategory.find_by(id: oneload.load_category_id).description}.png", content_type: 'image/png')
+    oneload.freight_id = freight.id
+    oneload.save!
+    start_point = StartPoint.new(load: oneload, location: oneload.user.address)
+    end_point  = EndPoint.new(load: oneload, location: LOAD_END_POINTS.sample)
+    start_point.save!
+    end_point.save!
   end
-  ruta.save!
+  freight.save!
+end
+
+puts "Creating Freights - Status: 'En tránsito'"
+
+Truck.all.each do |truck|
+  freight = Freight.new(
+    truck: truck,
+    status: "En tránsito",
+  )
+  freight.save!
+  freight_cap = 0
+  load_cap = 0
+  unless freight_cap > truck.capacity
+    load_cap = Faker::Number.between(from: 1, to: truck.capacity.to_i)
+    freight_cap += load_cap
+    oneload = Load.new(
+      user: [cargador_ernesto, cargador_mauricio, cargador_nadia].sample,
+      start_date: Date.today,
+      end_date: Date.today+1,
+      hour_range: HOUR_RANGES.sample,
+      load_category: truck.load_categories.first,
+      special_requirement_id: SpecialRequirement.pluck(:id).sample,
+      weight: Faker::Number.between(from: 10, to: 25000),
+      volume: load_cap,
+      status: "En tránsito",
+    )
+    oneload.photo.attach(io: File.open("app/assets/images/LC#{LoadCategory.find_by(id: oneload.load_category_id).description}.jpg"), filename: "#{LoadCategory.find_by(id: oneload.load_category_id).description}.png", content_type: 'image/png')
+    oneload.freight_id = freight.id
+    oneload.save!
+    start_point = StartPoint.new(load: oneload, location: oneload.user.address)
+    end_point  = EndPoint.new(load: oneload, location: LOAD_END_POINTS.sample)
+    start_point.save!
+    end_point.save!
+  end
+  freight.save!
+end
+
+puts "Creating Freights - Status: 'Finalizado'"
+
+Truck.all.each do |truck|
+  15.times do
+    freight = Freight.new(
+      truck: truck,
+      status: "Finalizado",
+    )
+    freight.save!
+    freight_cap = 0
+    load_cap = 0
+    unless freight_cap > truck.capacity
+      load_cap = Faker::Number.between(from: 1, to: truck.capacity.to_i)
+      freight_cap += load_cap
+      oneload = Load.new(
+        user: [cargador_ernesto, cargador_mauricio, cargador_nadia].sample,
+        start_date: Date.today-rand(21..40),
+        end_date: Date.today-rand(0..20),
+        hour_range: HOUR_RANGES.sample,
+        load_category: truck.load_categories.first,
+        special_requirement_id: SpecialRequirement.pluck(:id).sample,
+        weight: Faker::Number.between(from: 10, to: 25000),
+        volume: load_cap,
+        status: "Entregada",
+      )
+      oneload.photo.attach(io: File.open("app/assets/images/LC#{LoadCategory.find_by(id: oneload.load_category_id).description}.jpg"), filename: "#{LoadCategory.find_by(id: oneload.load_category_id).description}.png", content_type: 'image/png')
+      oneload.freight_id = freight.id
+      oneload.save!
+      start_point = StartPoint.new(load: oneload, location: oneload.user.address)
+      end_point  = EndPoint.new(load: oneload, location: LOAD_END_POINTS.sample)
+      start_point.save!
+      end_point.save!
+    end
+    freight.save!
+  end
+end
+
+puts "Creating Freights - Status: 'Cancelado'"
+
+Truck.all.each do |truck|
+  freight = Freight.new(
+    truck: truck,
+    status: "Cancelado",
+  )
+  freight.save!
+  freight_cap = 0
+  load_cap = 0
+  unless freight_cap > truck.capacity
+    load_cap = Faker::Number.between(from: 1, to: truck.capacity.to_i)
+    freight_cap += load_cap
+    oneload = Load.new(
+      user: [cargador_ernesto, cargador_mauricio, cargador_nadia].sample,
+      start_date: Date.today-rand(21..40),
+      end_date: Date.today-rand(0..20),
+      hour_range: HOUR_RANGES.sample,
+      load_category: truck.load_categories.first,
+      special_requirement_id: SpecialRequirement.pluck(:id).sample,
+      weight: Faker::Number.between(from: 10, to: 25000),
+      volume: load_cap,
+      status: "Cancelada",
+    )
+    oneload.photo.attach(io: File.open("app/assets/images/LC#{LoadCategory.find_by(id: oneload.load_category_id).description}.jpg"), filename: "#{LoadCategory.find_by(id: oneload.load_category_id).description}.png", content_type: 'image/png')
+    oneload.freight_id = freight.id
+    oneload.save!
+    start_point = StartPoint.new(load: oneload, location: oneload.user.address)
+    end_point  = EndPoint.new(load: oneload, location: LOAD_END_POINTS.sample)
+    start_point.save!
+    end_point.save!
+  end
+  freight.save!
 end
 
 puts "Creating support channel"

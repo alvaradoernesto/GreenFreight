@@ -6,54 +6,47 @@
     <div class="form-box col">
       <%= simple_form_for @load do |f| %>
         <div class="form-row white-box">
-          <div class="form-group">
-            <%= f.input :start_date, placeholder: "Fecha inicio", label: "Fecha inicio:" %>
+          <div class="form-group col-md-6">
+            <%= f.input :start_date, placeholder: "Fecha de inicio", label: "Fecha de inicio:" %>
           </div>
-        </div>
-        <div class="form-row white-box">
-          <div class="form-group">
+          <div class="form-group col-md-6">
             <%= f.input :end_date, placeholder: "Fecha de llegada", label: "Fecha de llegada:" %>
           </div>
         </div>
         <div class="form-row white-box">
-          <div class="form-group">
+          <div class="form-group col-md-6">
             <%= f.simple_fields_for :start_point do |spf| %>
-            <%= spf.input :location, placeholder: "Mi ubicacion...", label: "Lugar de carga:" %>
+            <%= spf.input :location, placeholder: "¿Desde donde sale?", label: "Lugar de carga:" %>
             <% end %>
           </div>
-        </div>
-        <div class="form-row white-box">
-          <div class="form-group">
+        <div class="form-group col-md-6">
             <%= f.simple_fields_for :end_point do |epf| %>
-            <%= epf.input :location, placeholder: "Destino...", label: "Lugar de entrega:" %>
+            <%= epf.input :location, placeholder: "¿A donde llega?", label: "Lugar de entrega:" %>
             <% end %>
           </div>
         </div>
         <div class="form-row white-box">
-          <div class="form-group">
-            <%= f.input :hour_range, collection: [["7:00-12:00"], ["12:00-17:00"], ["17:00-22:00"]], selected: "Mañana", label: "Rango horario:" %>
+          <div class="form-group col-md-4">
+            <%= f.input :hour_range, collection: [["7:00-12:00"], ["12:00-17:00"], ["17:00-22:00"]], selected: "7:00-12:00", label: "Rango horario:" %>
+          </div>
+          <div class="form-group col-md-4">
+            <%= f.input :weight, placeholder: "10..25000", label: "Peso aproximado:" %>
+          </div>
+          <div class="form-group col-md-4">
+            <%= f.input :volume, placeholder: "1..130", label: "Volumen aproximado:" %>
           </div>
         </div>
         <div class="form-row white-box">
-          <div class="form-group">
-            <%= f.input :weight, placeholder: "1..5000", label: "Peso aproximado:" %>
+          <div class="form-group col-md-4">
+            <%= f.input :load_category_id, collection: LoadCategory.all, label_method: :description, label: "Categoría:" %>
           </div>
-        </div>
-        <div class="form-row white-box">
-          <div class="form-group">
-            <%= f.input :volume, placeholder: "1..300", label: "Volumen aproximado:" %>
+          <div class="form-group col-md-4">
+            <%= f.input :special_requirement_id, collection: SpecialRequirement.all, label_method: :description, label: "Requerimientos especiales:" %>
           </div>
-        </div>
-        <div class="form-row white-box">
-          <div class="form-group">
-            <%= f.input :load_category_id, collection: LoadCategory.all, label_method: :description, label: "Categoria:" %>
+          <div class="form-group col-md-4">
+            <%= f.input :photo, as: :file, label: 'Imagen de la carga', placeholder: "Imagen de la carga" %>
           </div>
-        </div>
-        <div class="form-row white-box">
-          <div class="form-group">
-            <%= f.input :special_requirement_id, collection: SpecialRequirement.all, label_method: :description, label: "Requerimiento especiales:" %>
-          </div>
-        </div>
+        </div class="form-group">
         <div class="form-row d-flex justify-content-center">
           <%= f.button :submit, "Crear Carga  🚚", class: "button green-button"%>
         </div>
