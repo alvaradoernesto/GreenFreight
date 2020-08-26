@@ -57,12 +57,12 @@
           <label>Precio total</label>
           <p class="text-center"><%= number_to_currency @freight.price %></p>
         </div>
-        <div class="col-sm" id="buttons">
-          <div class="row">
-            <button class="button green-button align-middle"><%= link_to "Confirmar viaje", my_freights_path %></button>
+        <div class="col-sm align-middle justify-content-center" id="buttons">
+          <div class="row align-middle justify-content-center">
+            <%= link_to "Confirmar viaje", my_freights_path, class: "button green-button align-middle" %>
           </div>
-          <div class="row">
-            <button class="button green-button align-middle"><%= link_to "Agregar cargas", loads_path %></button>
+          <div class="row align-middle justify-content-center">
+            <%= link_to "Agregar cargas", loads_path, class: "button green-button align-middle" %>
           </div>
         </div>
       </div>

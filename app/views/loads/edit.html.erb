@@ -1,22 +1,58 @@
 <div class="container">
-  <div class="form">
-    <%= simple_form_for @load do |f| %>
-      <%= f.input :start_date, placeholder: "Fecha inicio", label: "Fecha inicio:" %>
-      <%= f.input :end_date, placeholder: "Fecha de llegada", label: "Fecha de llegada:" %>
-      <%= f.simple_fields_for :start_point do |spf| %>
-      <%= spf.input :location, placeholder: "Mi ubicacion...", label: "Lugar de carga:" %>
+  <br>
+  <h1 class="black-shadow">Editar Carga</h1>
+  <br>
+  <div class="container row">
+    <div class="form-box col">
+      <%= simple_form_for @load do |f| %>
+        <div class="form-row white-box">
+          <div class="form-group col-md-6">
+            <%= f.input :start_date, placeholder: "Fecha de inicio", label: "Fecha de inicio:" %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= f.input :end_date, placeholder: "Fecha de llegada", label: "Fecha de llegada:" %>
+          </div>
+        </div>
+        <div class="form-row white-box">
+          <div class="form-group col-md-6">
+            <%= f.simple_fields_for :start_point do |spf| %>
+            <%= spf.input :location, placeholder: "¿Desde donde sale?", label: "Lugar de carga:" %>
+            <% end %>
+          </div>
+        <div class="form-group col-md-6">
+            <%= f.simple_fields_for :end_point do |epf| %>
+            <%= epf.input :location, placeholder: "¿A donde llega?", label: "Lugar de entrega:" %>
+            <% end %>
+          </div>
+        </div>
+        <div class="form-row white-box">
+          <div class="form-group col-md-4">
+            <%= f.input :hour_range, collection: [["7:00-12:00"], ["12:00-17:00"], ["17:00-22:00"]], selected: "7:00-12:00", label: "Rango horario:" %>
+          </div>
+          <div class="form-group col-md-4">
+            <%= f.input :weight, placeholder: "10..25000", label: "Peso aproximado:" %>
+          </div>
+          <div class="form-group col-md-4">
+            <%= f.input :volume, placeholder: "1..130", label: "Volumen aproximado:" %>
+          </div>
+        </div>
+        <div class="form-row white-box">
+          <div class="form-group col-md-4">
+            <%= f.input :load_category_id, collection: LoadCategory.all, label_method: :description, label: "Categoría:" %>
+          </div>
+          <div class="form-group col-md-4">
+            <%= f.input :special_requirement_id, collection: SpecialRequirement.all, label_method: :description, label: "Requerimientos especiales:" %>
+          </div>
+          <div class="form-group col-md-4">
+            <%= f.input :photo, as: :file, label: 'Imagen de la carga', placeholder: "Imagen de la carga" %>
+          </div>
+        </div class="form-group">
+        <div class="form-row d-flex justify-content-center p-1">
+          <div class="p-1 h-2">
+            <%= f.button :submit, "Guardar cambios", class: "button green-button align-middle"%>
+          </div>
+        </div>
       <% end %>
-      <%= f.simple_fields_for :end_point do |epf| %>
-      <%= epf.input :location, placeholder: "Rosario...", label: "Lugar de entrega:" %>
-      <% end %>
-      <%= f.input :hour_range, collection: [["Mañana"],["Tarde"],["Noche"]], selected: "Mañana", label: "Rango horario:" %>
-      <%= f.input :weight, placeholder: "1..5000", label: "Peso aproximado:" %>
-      <%= f.input :volume, placeholder: "1..300", label: "Volumen aproximado:" %>
-      <%= f.button :submit, "Guardar cambios", class: "btn btn-primary"%>
-      <%= link_to "Borrar #{@load.id}",
-            loads_path(@load),
-            method: :destroy,
-            data: { confirm: "Estas seguro?" } %>
-    <% end %>
+    </div>
   </div>
 </div>

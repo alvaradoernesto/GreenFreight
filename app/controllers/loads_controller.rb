@@ -57,10 +57,12 @@ class LoadsController < ApplicationController
   end
 
   def update
-    @load.find(params[:id])
-    @load.update(load_params)
-    @load.save
-    redirect_to load_path(@load)
+    @load = Load.find(params[:id])
+    if @load.update(load_params)
+      redirect_to load_path(@load)
+    else
+      render :edit
+    end
   end
 
   def destroy
