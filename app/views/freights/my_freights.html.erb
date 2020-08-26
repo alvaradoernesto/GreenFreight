@@ -13,7 +13,7 @@
           <th class="align-middle" scope="col">Camión asignado</th>
           <th class="align-middle" scope="col">Conductor</th>
           <th class="align-middle" scope="col">Distancia</th>
-          <th class="align-middle" scope="col">Capacidad</th>
+          <th class="align-middle" scope="col">Utilización</th>
           <th class="align-middle" scope="col">Estado</th>
           <th class="align-middle" scope="col">Detalle</th>
         </tr>
@@ -30,18 +30,24 @@
             <td class="align-middle"><%= number_with_delimiter(freight.distance.round(0), delimiter: ".") %></td>
             <td class="align-middle"><%= number_to_percentage(freight.capacity, precision: 0) %></td>
             <td class="align-middle"><%= freight.status %></td>
-            <td class="align-middle">
-              <button class="button green-button align-middle w-100"><%= link_to "Ver detalle", freight_path(freight) %></button>
-              <button class="button green-button align-middle w-100"><a href="#">Cambiar estado</a></button>
+            <td class="align-middle justify-content-center">
+              <%= link_to "Detalle", freight_path(freight), class: "button green-button align-middle" %>
+              <a class="button green-button align-middle" href="#">Estado</a>
             </td>
           </tr>
         <% end %>
       </tbody>
     </table>
-    <div class="form-row d-flex justify-content-center px-10">
-      <button class="button green-button align-middle"><%= link_to "Nuevo camión", new_truck_path %></button>
-      <button class="button green-button align-middle"><%= link_to "Nuevo viaje", loads_path %></button>
-      <button class="button green-button align-middle"><%= link_to "Estadísticas", users_path %></button>
+    <div class="form-row d-flex justify-content-center p-1">
+      <div class="p-1">
+        <%= link_to "Nuevo camión", new_truck_path, class: "button green-button align-middle" %>
+      </div>
+      <div class="p-1">
+        <%= link_to "Nuevo viaje", loads_path, class: "button green-button align-middle" %>
+      </div>
+      <div class="p-1">
+        <%= link_to "Estadísticas", users_path, class: "button green-button align-middle" %>
+      </div>
     </div>
   </div>
 </div>
