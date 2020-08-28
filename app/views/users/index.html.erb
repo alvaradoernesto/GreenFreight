@@ -1,10 +1,6 @@
 <div class="container">
-  <br>
-  <h1 class="black-shadow">Nombre: <%= @user.name %></h1>
-  <h1 class="black-shadow">Email: <%= @user.email %></h1>
-  <br>
   <div class="black-shadow row justify-content-center m-2">
-    <h2>Mis Estadisticas</h2>
+    <h1>Mis Estadisticas</h1>
   </div>
 
   <div class="cards">
@@ -12,22 +8,46 @@
 <body>
 
 <div class="circle">
-      <div class="circle_text black-shadow">Viajes Realizados: <%= @user.loads.count %></div>
+      <div class="circle_text black-shadow">
+        <i class="fas fa-truck-moving"></i>
+        <p>Viajes realizados</p>
+        <h3><%= @user.loads.count %></h3>
+      </div>
 </div>
 <div class="circle">
-      <div class="circle_text black-shadow">Kms recorridos: 4536</div>
+      <div class="circle_text black-shadow">
+        <i class="fas fa-road"></i>
+        <p>Kms recorridos</p>
+        <h3>4536</h3>
+      </div>
 </div>
 <div class="circle">
-      <div class="circle_text black-shadow">Emisiones evitadas: 1856</div>
+      <div class="circle_text black-shadow">
+        <i class="fas fa-smog"></i>
+        <p>Emisiones evitadas</p>
+        <h3>1856</h3>
+    </div>
 </div>
 <div class="circle">
-      <div class="circle_text black-shadow">Capacidad utilizada: 3265</div>
+      <div class="circle_text black-shadow">
+        <i class="fas fa-box-open"></i>
+        <p>Capacidad utilizada</p>
+        <h3>3265</h3>
+  </div>
 </div>
 <div class="circle">
-      <div class="circle_text black-shadow"> Ahorros: $12565</div>
+      <div class="circle_text black-shadow">
+        <i class="far fa-money-bill-alt"></i>
+        <p>Ahorros</p>
+        <h3>$12565</h3>
+   </div>
 </div>
 <div class="circle">
-      <div class="circle_text black-shadow">Reseñas: 2</div>
+      <div class="circle_text black-shadow">
+      <i class="far fa-comments"></i>
+      <p>Reseñas</p>
+      <h3>2</h3>
+    </div>
 </div>
 </body>
 </div>
