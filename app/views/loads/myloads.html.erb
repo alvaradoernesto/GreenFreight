@@ -11,6 +11,7 @@
           <th class="align-middle" scope="col">Destino</th>
           <th class="align-middle" scope="col">Estado</th>
           <th class="align-middle" scope="col">Imagen</th>
+          <th class="align-middle" scope="col">Detalle</th>
         </tr>
       </thead>
       <tbody>
@@ -27,12 +28,20 @@
                 <%= image_tag "default-load.png", height: 60, width: 80, crop: :fill %>
               <% end %>
             </td>
+            <td class="align-middle justify-content-center">
+              <%= link_to "Detalle", load_path(load), class: "button green-button align-middle" %>
+            </td>
           </tr>
         <% end %>
       </tbody>
     </table>
-    <div class="form-row d-flex justify-content-center px-10">
-      <button class="button green-button align-middle"><%= link_to "Nueva carga", new_load_path %></button>
+    <div class="form-row d-flex justify-content-center p-1">
+      <div class="p-1">
+        <%= link_to "Nueva carga", new_load_path, class: "button green-button align-middle" %>
+      </div>
+      <div class="p-1">
+        <%= link_to "Estadísticas", users_path, class: "button green-button align-middle" %>
+      </div>
     </div>
   </div>
 </div>

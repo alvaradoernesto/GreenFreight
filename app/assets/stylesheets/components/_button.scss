@@ -1,6 +1,4 @@
 .button {
-  width: 169px;
-  height: 45px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   background: #46AF44;
   border-radius: 4px;
@@ -11,6 +9,8 @@
   line-height: 18px;
   align-items: center;
   text-align: center;
+  vertical-align: middle;
+  padding: 0.7rem 0.7rem;
 }
 
 .green-button {
@@ -18,6 +18,15 @@
   color: #FFFFFF;
   border-color: #46AF44;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  vertical-align: middle;
+  padding: 0.7rem 0.7rem;
+}
+
+.green-button:hover {
+  background: #FFFFFF;
+  color: #46AF44;
+  border-color: #46AF44;
+  font-weight: bolder;
 }
 
 .button:hover {
@@ -31,25 +40,19 @@
   align-items: center;
   display: inline-grid;
   text-align: center;
+  vertical-align: middle;
 }
 
 .check-button {
   background: none;
   text-decoration: none;
   color: #004801;
+  vertical-align: middle;
 }
 
 .check-button:hover {
   color: #FFFFFF;
   font-weight: bolder;
-}
-
-.green-button a {
-  color: rgb(255, 255, 255);
-  width: 100%;
-  line-height: 1.5;
-  filter: drop-shadow(rgba(0, 0, 0, 0.25) 0px 4px 4px);
-  border-style: hidden;
 }
 
 .btn-ghost {
@@ -61,6 +64,7 @@
   opacity: 0.6;
   transition: opacity 0.3s ease;
   width: 150px;
+  vertical-align: middle;
 }
 
 .btn-ghost:hover {
@@ -68,8 +72,15 @@
   font-weight: bolder;
 }
 
+a {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: flex;
+}
+
 a:hover {
-  color: #46AF44;
+  text-decoration:none;
+  border-color: #46AF44;
   font-weight: bolder;
-  text-decoration: none;
+  border: 1px solid transparent;
 }
