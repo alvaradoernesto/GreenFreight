@@ -15,13 +15,13 @@
                 <div class="form-group col-md-6">
                   <label>Origen</label>
                   <div>
-                  <%= f.search_field :start_point_location_i_cont, class: 'form-control input-sm' %>
+                  <%= f.search_field :start_point_location_i_cont, class: 'form-control input-sm border' %>
                   </div>
                 </div>
                 <div class="form-group col-md-6">
                   <label>Destino</label>
                   <div>
-                    <%= f.search_field :end_point_location_i_cont, class: 'form-control input-sm' %>
+                    <%= f.search_field :end_point_location_i_cont, class: 'form-control input-sm border' %>
                   </div>
                 </div>
               </div>
@@ -31,12 +31,12 @@
                 <div class="form-group col-md-6 input-daterange" id="datepicker">
                   <label>Fecha máxima</label>
                   <div class="input-daterange" id="datepicker">
-                    <%= f.date_field :start_date_gteq, class: 'form-control input-sm', 'datepicker' => true %>
+                    <%= f.date_field :start_date_gteq, class: 'form-control input-sm border', 'datepicker' => true %>
                   </div>
                 </div>
                 <div class="form-group col-md-6">
                   <label>Fecha mínima</label>
-                  <%= f.date_field :end_date_lt, class: 'form-control input-sm','datepicker' => true %>
+                  <%= f.date_field :end_date_lt, class: 'form-control input-sm border','datepicker' => true %>
                 </div>
               </div>
             </div>
@@ -62,7 +62,7 @@
             </div>
           </div>
           <div class="d-flex justify-content-center">
-            <%= f.submit 'Seleccionar cargas', class: "button green-button"%>
+            <%= f.submit 'Seleccionar cargas', class: "btn button green-button"%>
           </div>
         <% end %>
       </div>

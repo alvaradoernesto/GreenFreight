@@ -19,6 +19,9 @@
       <% if user_signed_in? && current_user.role == "Transportista" %>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
+            <%= link_to "Buscar cargas", "/home_loads", class: "nav-link" %>
+          </li>
+          <li class="nav-item">
             <%= link_to "Nuevo viaje", "/loads", class: "nav-link" %>
           </li>
           <li class="nav-item">

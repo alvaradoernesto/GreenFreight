@@ -32,7 +32,6 @@ class LoadsController < ApplicationController
 
   def home_loads
     @q = Load.where(status: "Nueva").joins(:start_point, :end_point).ransack(params[:q])
-    console
     @loads = @q.result(distinct: true)
     if @loads.empty?
       @loads = Load.where(status: "Nueva")

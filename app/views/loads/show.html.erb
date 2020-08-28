@@ -83,9 +83,9 @@
   <br>
   <div class="form-box">
     <% if @load.freight_id == nil %>
-      <p style="font-size:160%;">Tu carga aún no ha sido asignada a ningún transporte</p>
+      <p class="font-grey" style="font-size:160%;">Tu carga aún no ha sido asignada a ningún transporte</p>
     <% else %>
-      <p style="font-size:160%;">Tu carga ha sido asignada al transporte: <%= @load.freight.truck.user.name %></p>
+      <p class="font-grey" style="font-size:160%;">Tu carga ha sido asignada al transporte: <%= @load.freight.truck.user.name %></p>
       <div class="row align-items-center">
           <div class="load-card col-11">
             <% if @load.freight.truck.photo.present? %>

@@ -4,97 +4,95 @@
     <h1 class="black-shadow">Selecciona tus cargas</h1>
     <br>
     <div class="d-flex" id="loads-selection">
-        <div class="col-8 px-0">
-          <div class="row align-items-center">
-            <% @loads.each do |load| %>
-              <div class="col-6 align-items-stretch">
-                <div class="card mx-auto my-1" style="width: 94%;">
-                  <% if load.photo.present? %>
-                    <%= cl_image_tag load.photo.key, class: "card-img-top", height: 300, width: 400, crop: :fill %>
-                  <% else %>
-                    <%= image_tag "default-load.png", class: "card-img-top", height: 300, width: 400, crop: :fill %>
+      <div class="col-8 px-0">
+        <div class="row align-items-center">
+          <% @loads.each do |load| %>
+            <div class="col-6 align-items-stretch">
+              <div class="card mx-auto my-1" style="width: 94%;">
+                <% if load.photo.present? %>
+                  <%= cl_image_tag load.photo.key, class: "card-img-top", height: 300, width: 400, crop: :fill %>
+                <% else %>
+                  <%= image_tag "default-load.png", class: "card-img-top", height: 300, width: 400, crop: :fill %>
+                <% end %>
+                <div class="movement justify-content-end align-items-center">
+                  Click para seleccionar
+                  <%= link_to "#", class: "add-load check-button ml-1 mr-2", data: {id: load.id} do %>
+                    <i class="fas fa-check-square fa-2x"></i>
+                    <i class="far fa-square fa-2x"></i>
                   <% end %>
-                  <div class="movement justify-content-end align-items-center">
-                    Click para seleccionar
-                    <%= link_to "#", class: "add-load check-button ml-1 mr-2", data: {id: load.id} do %>
-                      <i class="fas fa-check-square fa-2x"></i>
-                      <i class="far fa-square fa-2x"></i>
-                    <% end %>
-                  </div>
-                    <div class="card-body">
-                      <div class="d-flex justify-content-between">
-                        <div class="white-box m-1">
-                          <h5 class="card-title">Origen</h5>
-                          <h6 class="card-subtitle mb-2 text-muted"><%= load.start_point.location %></h6>
-                        </div>
-                        <div class="white-box m-1">
-                          <h5 class="card-title">Destino</h5>
-                          <h6 class="card-subtitle mb-2 text-muted"><%= load.end_point.location %></h6>
-                        </div>
-                      </div>
-
-                      <div class="d-flex justify-content-between">
-                        <div class="white-box m-1">
-                          <h5 class="card-title">Fecha mínima</h5>
-                          <h6 class="card-subtitle mb-2 text-muted"><%= load.start_date %></h6>
-                        </div>
-                        <div class="white-box m-1">
-                          <h5 class="card-title">Fecha máxima</h5>
-                          <h6 class="card-subtitle mb-2 text-muted"><%= load.end_date %></h6>
-                        </div>
-                        <div class="white-box m-1">
-                          <h5 class="card-title">Rango horario</h5>
-                          <h6 class="card-subtitle mb-2 text-muted"><%= load.hour_range %></h6>
-                        </div>
-                      </div>
-
-                      <div class="d-flex justify-content-between">
-                        <div class="white-box m-1">
-                          <h5 class="card-title">Requerimientos</h5>
-                          <h6 class="card-subtitle mb-2 text-muted"><%= load.special_requirement.description %></h6>
-                        </div>
-                        <div class="white-box m-1">
-                          <h5 class="card-title">Tipo de carga</h5>
-                          <h6 class="card-subtitle mb-2 text-muted"><%= load.load_category.description %></h6>
-                        </div>
-                        <div class="white-box m-1">
-                          <h5 class="card-title">Volumen(m3)</h5>
-                          <h6 class="card-subtitle mb-2 text-muted"><%= load.volume %></h6>
-                        </div>
-                      </div>
-                    </div>
                 </div>
+                <div class="card-body">
+                  <div class="d-flex justify-content-between">
+                    <div class="white-box m-1">
+                      <h5 class="card-title">Origen</h5>
+                      <h6 class="card-subtitle mb-2 text-muted"><%= load.start_point.location %></h6>
+                    </div>
+                    <div class="white-box m-1">
+                      <h5 class="card-title">Destino</h5>
+                      <h6 class="card-subtitle mb-2 text-muted"><%= load.end_point.location %></h6>
+                    </div>
+                  </div>
+
+                  <div class="d-flex justify-content-between">
+                    <div class="white-box m-1">
+                      <h5 class="card-title">Fecha mínima</h5>
+                      <h6 class="card-subtitle mb-2 text-muted"><%= load.start_date %></h6>
+                    </div>
+                    <div class="white-box m-1">
+                      <h5 class="card-title">Fecha máxima</h5>
+                      <h6 class="card-subtitle mb-2 text-muted"><%= load.end_date %></h6>
+                    </div>
+                    <div class="white-box m-1">
+                      <h5 class="card-title">Rango horario</h5>
+                      <h6 class="card-subtitle mb-2 text-muted"><%= load.hour_range %></h6>
+                    </div>
+                  </div>
+
+                  <div class="d-flex justify-content-between">
+                    <div class="white-box m-1">
+                      <h5 class="card-title">Requerimientos</h5>
+                      <h6 class="card-subtitle mb-2 text-muted"><%= load.special_requirement.description %></h6>
+                    </div>
+                    <div class="white-box m-1">
+                      <h5 class="card-title">Tipo de carga</h5>
+                      <h6 class="card-subtitle mb-2 text-muted"><%= load.load_category.description %></h6>
+                    </div>
+                    <div class="white-box m-1">
+                      <h5 class="card-title">Volumen(m3)</h5>
+                      <h6 class="card-subtitle mb-2 text-muted"><%= load.volume %></h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-4 p-0 mt-1 ml-3 white-box" id="mapbox">
+        <div class="container py-4">
+          <div class="justify-content-center text-center">
+            <p class="py-2" id="border-none">Asigna el camión para este viaje</p>
+            <%= simple_form_for @freight do |f| %>
+              <div>
+                <%= f.association :truck, collection: Truck.where(user: current_user), prompt: 'Seleccioná tu camión', label_method: :truck_name, label: false %>
+              </div>
+              <div class="d-none">
+                <%= simple_fields_for :loads do |l|%>
+                  <%= l.input :ids, collection: @loads, input_html: {multiple: true} %>
+                <% end %>
+              </div>
+              <div class="justify-content-center">
+                <%= f.submit 'Crear viaje', class: "btn button green-button"%>
               </div>
             <% end %>
           </div>
-
         </div>
-        <div class="col-4 p-0 mt-1 ml-3 white-box" id="mapbox">
-          <div class="container">
-            <div class="justify-content-center form-box text-center">
-            <p class="black-shadow">Asigna el camión para este viaje</p>
-              <%= simple_form_for @freight do |f| %>
-                <div class="white-box">
-                  <%= f.association :truck, collection: Truck.where(user: current_user), prompt: 'Seleccioná tu camión', label_method: :truck_name, label: false %>
-                </div>
-                <div class="d-none">
-                  <%= simple_fields_for :loads do |l|%>
-                    <%= l.input :ids, collection: @loads, input_html: {multiple: true} %>
-                  <% end %>
-                </div>
-                <%= f.submit 'Crear viaje', class: "button green-button"%>
-              <% end %>
-            </div>
-          </div>
-          <div id="map2"
-               style="width: 100%; height: 97vh;"
-               data-markers="<%= @markers.to_json %>"
-               data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-               </div>
-            <%= f.submit 'Crear viaje', class: "btn button green-button"%>
-          <% end %>
-
+        <div id="map2"
+             style="width: 100%; height: 97vh;"
+             data-markers="<%= @markers.to_json %>"
+             data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
         </div>
+      </div>
     </div>
   </div>
 </div>
