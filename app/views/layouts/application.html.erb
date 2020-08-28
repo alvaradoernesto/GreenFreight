@@ -7,30 +7,33 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
   <body>
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
-    <%= yield %>
-    <br>
-    <br>
+    <div id="page-container">
+      <div id="content-wrap">
+        <%= render 'shared/navbar' %>
+        <%= render 'shared/flashes' %>
+        <%= yield %>
+        <br>
+        <br>
+      </div>
+      <footer class="footer" id="footer">
+        <div class="footer-links">
+          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <div>
+          <h1 class="logo black-shadow">Green Freight</h1>
+        </div>
+        <div class="footer-copyright">
+          © GreenFreight 2020. We <i class="fas fa-heart"></i> our users!
+        </div>
+      </footer>
+    </div>
   </body>
-  <footer class="footer">
-    <div class="footer-links">
-      <a href="#"><i class="fab fa-github"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-facebook"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
-      <a href="#"><i class="fab fa-linkedin"></i></a>
-    </div>
-    <div>
-      <h1 class="logo black-shadow">Green Freight</h1>
-    </div>
-    <div class="footer-copyright">
-      © GreenFreight 2020. We <i class="fas fa-heart"></i> our users!
-    </div>
-  </footer>
 </html>
