@@ -1,6 +1,38 @@
 class LoadsController < ApplicationController
   def index
+    # @q = Load.where(status: "Nueva").joins(:start_point, :end_point).ransack(params[:q])
+    # @loads = @q.result(distinct: true)
+    # if @loads.empty?
+    #   @loads = Load.where(status: "Nueva")
+    # end
+    # @freight = Freight.new
+    # @markers = @loads.map do |load|
+    #   unless load.start_point.latitude.nil? && load.start_point.longitude.nil?
+    #   {
+    #     lat: load.start_point.latitude,
+    #     lng: load.start_point.longitude,
+    #     infoWindow: render_to_string(partial: "info_window", locals: { load: load, freight: @freight})
+    #   }
+    #   end
+    # end
+    # @markers.reject! { |x| x.nil? }
+    home_loads
+  end
+
+  def show
+    @load = Load.find(params[:id])
+    @addresses = [@load.start_point, @load.end_point]
+    @markers = @addresses.map do |address|
+      {
+        lat: address.latitude,
+        lng: address.longitude
+      }
+    end
+  end
+
+  def home_loads
     @q = Load.where(status: "Nueva").joins(:start_point, :end_point).ransack(params[:q])
+    console
     @loads = @q.result(distinct: true)
     if @loads.empty?
       @loads = Load.where(status: "Nueva")
@@ -16,17 +48,6 @@ class LoadsController < ApplicationController
       end
     end
     @markers.reject! { |x| x.nil? }
-  end
-
-  def show
-    @load = Load.find(params[:id])
-    @addresses = [@load.start_point, @load.end_point]
-    @markers = @addresses.map do |address|
-      {
-        lat: address.latitude,
-        lng: address.longitude
-      }
-    end
   end
 
   def add_load
