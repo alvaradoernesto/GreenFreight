@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'myloads', to: 'loads#myloads'
   get 'home_loads', to: 'loads#home_loads'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
   resources :loads, only: [:new, :create, :new, :index, :show] do
     member do
         patch :add_load

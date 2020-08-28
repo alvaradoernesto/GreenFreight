@@ -43,9 +43,13 @@
         <% end %>
       </tbody>
     </table>
-    <div class="form-row d-flex justify-content-center px-10">
-      <button class="button green-button align-middle"><%= link_to "Nuevo viaje", loads_path %></button>
-      <button class="button green-button align-middle"><%= link_to "Estadísticas", users_path %></button>
+    <div class="form-row d-flex justify-content-center p-1">
+      <div class="p-1">
+        <%= link_to "Nuevo viaje", loads_path, class: "button green-button align-middle" %>
+      </div>
+      <div class="p-1">
+        <%= link_to "Estadísticas", users_path, class: "button green-button align-middle" %>
+      </div>
     </div>
   </div>
 </div>
