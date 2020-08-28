@@ -5,17 +5,17 @@ class LoadsController < ApplicationController
     if @loads.empty?
       @loads = Load.where(status: "Nueva")
     end
+    @freight = Freight.new
     @markers = @loads.map do |load|
       unless load.start_point.latitude.nil? && load.start_point.longitude.nil?
       {
         lat: load.start_point.latitude,
         lng: load.start_point.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { load: load })
+        infoWindow: render_to_string(partial: "info_window", locals: { load: load, freight: @freight})
       }
       end
     end
     @markers.reject! { |x| x.nil? }
-    @freight = Freight.new
   end
 
   def show
@@ -27,6 +27,12 @@ class LoadsController < ApplicationController
         lng: address.longitude
       }
     end
+  end
+
+  def add_load
+    raise
+    @load = Load.find(params[:id])
+    @freight.loads << @load
   end
 
   def new

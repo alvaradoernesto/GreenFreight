@@ -10,7 +10,13 @@ Rails.application.routes.draw do
   get 'transportist', to: 'pages#transportist'
   get 'myloads', to: 'loads#myloads'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :loads
+
+  resources :loads, only: [:new, :create, :new, :index, :show] do
+    member do
+        patch :add_load
+        put :add_load
+    end
+  end
   resources :trucks, only: [:new, :create]
   resources :freights
   resources :pickings, only: [:new, :create, :index]
