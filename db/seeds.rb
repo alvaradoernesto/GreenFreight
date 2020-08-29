@@ -273,7 +273,7 @@ end
 puts "Creating Freights - Status: 'Finalizado'"
 
 Truck.all.each do |truck|
-  15.times do
+  2.times do
     freight = Freight.new(
       truck: truck,
       status: "Finalizado",
@@ -346,5 +346,269 @@ puts "Creating support channel"
 
 channel = Chatroom.new(name: :soporte)
 channel.save!
+
+puts "Creating PITCH STORY"
+
+puts "Creating LOADER STORY"
+
+cargador_francisco = User.new(
+    email: "francisco@gmail.com",
+    password: "francisco1234",
+    address: "Salto, Provincia de Buenos Aires",
+    name: "Herrería Salto",
+    role: "Cargador"
+  )
+  file = URI.open('https://images-na.ssl-images-amazon.com/images/I/71wFlc9LrvL._AC_SX522_.jpg')
+  cargador_francisco.avatar.attach(io: file, filename: "#{cargador_francisco.name}.png", content_type: 'image/png')
+  cargador_francisco.save!
+
+load1 = Load.new(
+  user: cargador_francisco,
+  start_date: Date.today-21,
+  end_date: Date.today-21,
+  hour_range: "12:00-17:00",
+  load_category_id: 4,
+  special_requirement_id: 3,
+  weight: 20,
+  volume: 3,
+  status: "Entregada",
+)
+load1.photo.attach(io: File.open("app/assets/images/Carga1.jpeg"), filename: "RepisasFlotantes.png", content_type: 'image/png')
+load1.save!
+start_point = StartPoint.new(load: load1, location: load1.user.address)
+end_point  = EndPoint.new(load: load1, location: "Lujan, Provincia de Buenos Aires")
+start_point.save!
+end_point.save!
+
+load2 = Load.new(
+  user: cargador_francisco,
+  start_date: Date.today-21,
+  end_date: Date.today-21,
+  hour_range: "12:00-17:00",
+  load_category_id: 4,
+  special_requirement_id: 3,
+  weight: 60,
+  volume: 6,
+  status: "Entregada",
+)
+load2.photo.attach(io: File.open("app/assets/images/Carga2.jpg"), filename: "RepisasFlotantes.png", content_type: 'image/png')
+load2.save!
+start_point = StartPoint.new(load: load2, location: load2.user.address)
+end_point  = EndPoint.new(load: load2, location: "San Justo, Provincia de Buenos Aires")
+start_point.save!
+end_point.save!
+
+load3 = Load.new(
+  user: cargador_francisco,
+  start_date: Date.today-14,
+  end_date: Date.today-14,
+  hour_range: "12:00-17:00",
+  load_category_id: 4,
+  special_requirement_id: 3,
+  weight: 80,
+  volume: 8,
+  status: "Entregada",
+)
+load3.photo.attach(io: File.open("app/assets/images/Carga3.jpg"), filename: "RepisasEstatica.png", content_type: 'image/png')
+load3.save!
+start_point = StartPoint.new(load: load3, location: load3.user.address)
+end_point  = EndPoint.new(load: load3, location: "Olivos, Provincia de Buenos Aires")
+start_point.save!
+end_point.save!
+
+load4 = Load.new(
+  user: cargador_francisco,
+  start_date: Date.today-14,
+  end_date: Date.today-14,
+  hour_range: "12:00-17:00",
+  load_category_id: 4,
+  special_requirement_id: 3,
+  weight: 100,
+  volume: 10,
+  status: "Entregada",
+)
+load4.photo.attach(io: File.open("app/assets/images/Carga4.jpg"), filename: "Faroles.png", content_type: 'image/png')
+load4.save!
+start_point = StartPoint.new(load: load4, location: load4.user.address)
+end_point  = EndPoint.new(load: load4, location: "Caballito, Buenos Aires")
+start_point.save!
+end_point.save!
+
+load5 = Load.new(
+  user: cargador_francisco,
+  start_date: Date.today,
+  end_date: Date.today,
+  hour_range: "12:00-17:00",
+  load_category_id: 4,
+  special_requirement_id: 3,
+  weight: 120,
+  volume: 16,
+  status: "En tránsito",
+)
+load5.photo.attach(io: File.open("app/assets/images/Carga5.jpg"), filename: "Escritorio.png", content_type: 'image/png')
+load5.save!
+start_point = StartPoint.new(load: load5, location: load5.user.address)
+end_point  = EndPoint.new(load: load5, location: "Pilar, Provincia de Buenos Aires")
+start_point.save!
+end_point.save!
+
+load6 = Load.new(
+  user: cargador_francisco,
+  start_date: Date.today+7,
+  end_date: Date.today+9,
+  hour_range: "12:00-17:00",
+  load_category_id: 4,
+  special_requirement_id: 3,
+  weight: 120,
+  volume: 16,
+  status: "Nueva",
+)
+load6.photo.attach(io: File.open("app/assets/images/Carga6.jpg"), filename: "Escritorio.png", content_type: 'image/png')
+load6.save!
+start_point = StartPoint.new(load: load6, location: load6.user.address)
+end_point  = EndPoint.new(load: load6, location: "Palermo, Buenos Aires")
+start_point.save!
+end_point.save!
+
+load7 = Load.new(
+  user: cargador_francisco,
+  start_date: Date.today+12,
+  end_date: Date.today+14,
+  hour_range: "12:00-17:00",
+  load_category_id: 4,
+  special_requirement_id: 3,
+  weight: 120,
+  volume: 18,
+  status: "Nueva",
+)
+load7.photo.attach(io: File.open("app/assets/images/Carga7.png"), filename: "Faroles.png", content_type: 'image/png')
+load7.save!
+start_point = StartPoint.new(load: load7, location: load7.user.address)
+end_point  = EndPoint.new(load: load7, location: "Villa Urquiza, Buenos Aires")
+start_point.save!
+end_point.save!
+
+load8 = Load.new(
+  user: cargador_francisco,
+  start_date: Date.today+7,
+  end_date: Date.today+9,
+  hour_range: "12:00-17:00",
+  load_category_id: 4,
+  special_requirement_id: 3,
+  weight: 100,
+  volume: 14,
+  status: "Nueva",
+)
+load8.photo.attach(io: File.open("app/assets/images/Carga8.png"), filename: "Faroles.png", content_type: 'image/png')
+load8.save!
+start_point = StartPoint.new(load: load8, location: load8.user.address)
+end_point  = EndPoint.new(load: load8, location: "Ezeiza, Provincia de Buenos Aires")
+start_point.save!
+end_point.save!
+
+load9 = Load.new(
+  user: cargador_francisco,
+  start_date: Date.today+12,
+  end_date: Date.today+14,
+  hour_range: "12:00-17:00",
+  load_category_id: 4,
+  special_requirement_id: 3,
+  weight: 30,
+  volume: 3,
+  status: "Nueva",
+)
+load9.photo.attach(io: File.open("app/assets/images/Carga9.png"), filename: "Faroles.png", content_type: 'image/png')
+load9.save!
+start_point = StartPoint.new(load: load9, location: load9.user.address)
+end_point  = EndPoint.new(load: load9, location: "Caseros, Provincia de Buenos Aires")
+start_point.save!
+end_point.save!
+
+load10 = Load.new(
+  user: cargador_francisco,
+  start_date: Date.today+12,
+  end_date: Date.today+14,
+  hour_range: "12:00-17:00",
+  load_category_id: 4,
+  special_requirement_id: 3,
+  weight: 200,
+  volume: 22,
+  status: "Nueva",
+)
+load10.photo.attach(io: File.open("app/assets/images/Carga10.png"), filename: "Faroles.png", content_type: 'image/png')
+load10.save!
+start_point = StartPoint.new(load: load10, location: load10.user.address)
+end_point  = EndPoint.new(load: load10, location: "Martinez, Provincia de Buenos Aires")
+start_point.save!
+end_point.save!
+
+puts "Creating TRANSPORTIST STORY"
+
+tran_pilar = User.new(
+  email: "transportedelpilar@gmail.com",
+  password: "transporte1234",
+  address: "Pilar, Provincia de Buenos Aires",
+  name: "Transportes del Pilar",
+  role: "Transportista"
+)
+file = URI.open('https://png.pngtree.com/png-vector/20190826/ourlarge/pngtree-truck-transportation-logo-png-image_1693082.jpg')
+tran_pilar.avatar.attach(io: file, filename: "#{tran_pilar.name}.png", content_type: 'image/png')
+tran_pilar.save!
+
+truck1 = Truck.new(
+  price_per_km: 65,
+  capacity: 25,
+  user: tran_pilar,
+  truck_category_id: 2,
+  driver_name: "Santiago Villar",
+  driver_license: "C-28325650",
+  truck_license: "AB327EF",
+  truck_name: "Iveco 25m3"
+)
+truck1.photo.attach(io: File.open("app/assets/images/CamionIvecoUsuario.jpeg"), filename: "Iveco25m3.png", content_type: 'image/png')
+truck1.save!
+truck_load_category = TruckLoadCategory.new(truck: truck1, load_category_id: 4)
+truck_load_category.save
+
+truck2 = Truck.new(
+  price_per_km: 65,
+  capacity: 25,
+  user: tran_pilar,
+  truck_category_id: 2,
+  driver_name: "Carlos Ortiz",
+  driver_license: "C-35346751",
+  truck_license: "AA428UX",
+  truck_name: "Ford 25m3"
+)
+truck2.photo.attach(io: File.open("app/assets/images/CamionFordUsuario.jpg"), filename: "Ford25m3.png", content_type: 'image/png')
+truck2.save!
+truck_load_category = TruckLoadCategory.new(truck: truck2, load_category_id: 4)
+truck_load_category.save
+
+freight1 = Freight.new(
+    truck: truck1,
+    status: "Finalizado",
+  )
+freight1.save!
+load1.freight_id = freight1.id
+load2.freight_id = freight1.id
+freight1.save!
+
+freight2 = Freight.new(
+    truck: truck2,
+    status: "Finalizado",
+  )
+freight2.save!
+load3.freight_id = freight2.id
+load4.freight_id = freight2.id
+freight2.save!
+
+freight3 = Freight.new(
+    truck: truck1,
+    status: "En tránsito",
+  )
+freight3.save!
+load5.freight_id = freight3.id
+freight3.save!
 
 puts "Finished"
