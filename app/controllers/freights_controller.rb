@@ -6,15 +6,22 @@ class FreightsController < ApplicationController
   def create
     @freight = Freight.new(freight_params)
     @freight.status = "Nuevo"
-    @freight.save!
-    loads = Load.where(id: loads_params[:ids])
-    loads.each do |load|
-      load.freight = @freight
-      load.save!
+    if @freight.save
+      loads = Load.where(id: loads_params[:ids])
+      if loads.empty?
+        redirect_to loads_path
+      else
+        loads.each do |load|
+          load.freight = @freight
+          load.save
+        end
+      #@freight.routing!
+      @freight.save
+      redirect_to freight_path(@freight)
+      end
+    else
+      redirect_to loads_path
     end
-    #@freight.routing!
-    @freight.save!
-    redirect_to freight_path(@freight)
   end
 
   def show

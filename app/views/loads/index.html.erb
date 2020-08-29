@@ -78,7 +78,7 @@
               </div>
               <div class="d-none">
                 <%= simple_fields_for :loads do |l|%>
-                  <%= l.input :ids, collection: @loads, input_html: {multiple: true} %>
+                  <%= l.input :ids, collection: @loads, input_html: {multiple: true}, selected: :none %>
                 <% end %>
               </div>
               <div class="justify-content-center">

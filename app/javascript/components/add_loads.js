@@ -28,5 +28,3 @@ const addLoads = () => {
 }
 
 export {addLoads}
-
-
