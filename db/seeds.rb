@@ -592,6 +592,8 @@ freight1 = Freight.new(
 freight1.save!
 load1.freight_id = freight1.id
 load2.freight_id = freight1.id
+load1.save!
+load2.save!
 freight1.save!
 
 freight2 = Freight.new(
@@ -601,6 +603,8 @@ freight2 = Freight.new(
 freight2.save!
 load3.freight_id = freight2.id
 load4.freight_id = freight2.id
+load3.save!
+load4.save!
 freight2.save!
 
 freight3 = Freight.new(
@@ -609,6 +613,7 @@ freight3 = Freight.new(
   )
 freight3.save!
 load5.freight_id = freight3.id
+load5.save!
 freight3.save!
 
 puts "Finished"
