@@ -14,14 +14,12 @@
               <div class="form-row white-box">
                 <div class="form-group col-md-6">
                   <label>Origen</label>
-                  <div>
-                  <%= f.search_field :start_point_location_i_cont, class: 'form-control input-sm border' %>
-                  </div>
+                  <%= f.search_field :start_point_location_i_cont, class: 'form-control input-sm border', id: 'inputOrigin' %>
                 </div>
                 <div class="form-group col-md-6">
                   <label>Destino</label>
                   <div>
-                    <%= f.search_field :end_point_location_i_cont, class: 'form-control input-sm border' %>
+                    <%= f.search_field :end_point_location_i_cont, class: 'form-control input-sm border', id: 'inputDestino' %>
                   </div>
                 </div>
               </div>
