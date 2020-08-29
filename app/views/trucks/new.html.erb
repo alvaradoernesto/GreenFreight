@@ -7,23 +7,23 @@
       <%= simple_form_for @truck do |f| %>
         <div class="form-row white-box">
           <div class="form-group col-md-6">
-            <%= f.input :truck_name, placeholder: "Diesel 1", label: 'Nombre identificador', class: 'border' %>
+            <%= f.input :truck_name, placeholder: "Nombre de camión", label: 'Nombre identificador', class: 'border' %>
           </div>
           <div class="form-group col-md-6">
-            <%= f.input :truck_license, placeholder: "XX 123 XX", label: 'Patente' %>
-          </div>
-        </div>
-        <div class="form-row white-box">
-          <div class="form-group col-md-6">
-            <%= f.input :driver_name, placeholder: "Roberto Bolaños", label: 'Conductor' %>
-          </div>
-          <div class="form-group col-md-6">
-            <%= f.input :driver_license, placeholder: "xxxxxxx", label: 'Licencia' %>
+            <%= f.input :truck_license, placeholder: "XXX-123-XXX", label: 'Patente' %>
           </div>
         </div>
         <div class="form-row white-box">
           <div class="form-group col-md-6">
-            <%= f.input :capacity, placeholder: "84", label: 'Capacidad (m3)' %>
+            <%= f.input :driver_name, placeholder: "Roberto Perez", label: 'Conductor' %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= f.input :driver_license, placeholder: "xx-xxx-xx", label: 'Licencia' %>
+          </div>
+        </div>
+        <div class="form-row white-box">
+          <div class="form-group col-md-6">
+            <%= f.input :capacity, placeholder: "85", label: 'Capacidad (m3)' %>
           </div>
           <div class="form-group col-md-6">
             <%= f.input :price_per_km, placeholder: "100", label: 'Tarifa por km ($/km)' %>
@@ -36,7 +36,7 @@
           <div class="form-group col-md-4">
             <%= f.label "Load category" %>
             <%= f.fields_for :truck_load_categories, @truck_load_category do |t| %>
-              <%= t.collection_select(:id, LoadCategory.all, :id, :description,  {:prompt => "Selecciona una categoría"}, {:multiple => true}) %>
+              <%= t.collection_select(:id, LoadCategory.all, :id, :description,  {:prompt => "Selecciona una categor"}, {:multiple => true}) %>
             <% end %>
           </div>
           <div class="form-group col-md-4">
@@ -50,4 +50,3 @@
     </div>
   </div>
 </div>
-
