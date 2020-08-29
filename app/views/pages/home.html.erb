@@ -8,22 +8,40 @@
     <div class="container">
       <p>Obtené un estimado de tu Green Freight</p>
       <div class="cotizacion d-flex justify-content-around" id="input-styling-address">
-        <form action="/cotizacion" class="form-inline p-1"  method="GET" >
-          <div class="form-group w-40 input-styling-address p-1">
-            <label for="inputOrigin" class="sr-only">Origen</label>
-            <input name="inputOrigin" id="inputOrigin" placeholder="Origen">
-          </div>
-          <div class="form-group w-40 input-styling-address p-1">
-            <label for="inputDestino" class="sr-only">Destino</label>
-            <input name="inputDestino" id="inputDestino" placeholder="Destino">
-          </div>
-          <div class="form-group p-10">
-            <button type="submit" class="button green-button font-weight-bold">Cotizá</button>
-          </div>
-        </form>
+        <div>
+          <form action="/cotizacion" class="form-inline p-1"  method="GET" >
+            <div class="form-group w-40 input-styling-address p-1">
+              <label for="inputOrigin" class="sr-only">Origen</label>
+              <input name="inputOrigin" id="inputOrigin" placeholder="Origen">
+            </div>
+            <div class="form-group w-40 input-styling-address p-1">
+              <label for="inputDestino" class="sr-only">Destino</label>
+              <input name="inputDestino" id="inputDestino" placeholder="Destino">
+            </div>
+            <div class="form-group w-100 p-10">
+              <button type="submit" class="button green-button font-weight-bold w-100">Cotizá</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
+      <div id="carouselContent" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner" role="listbox">
+              <div class="carousel-item active text-right p-4">
+                   <p class="text-right font-italic">"El 40% de los km recorridos por los camiones se realizan sin carga"</p>
+              </div>
+              <div class="carousel-item text-right p-4">
+                  <p class="text-right font-italic">"El desequilibro entre los vehículos utilizados y los requisitos de espacio para las cargas transportadas"</p>
+              </div>
+              <div class="carousel-item text-right p-4">
+                  <p class="text-right font-italic">"El 80% de la oferta son pymes como menos de 5 camiones"</p>
+              </div>
+              <div class="carousel-item text-right p-4">
+                  <p class="text-right font-italic">"La Argentina está dentro de los 30 paises que más contaminan"</p>
+              </div>
+          </div>
+      </div>
 </div>
 <div class="white-rec">
   <br>
@@ -80,7 +98,7 @@
         <img src="<%= asset_path('loader-paso2.png') %>" alt="">
         <div class="card-info">
           <h2 class="text-center p-1">Compara opciones</h2>
-          <p class="text-justify align-top">Con nuestro amplio rango de transportitas</p>
+          <p class="text-center align-top">Con nuestro amplio rango de transportitas</p>
         </div>
       </div>
     </div>
@@ -89,7 +107,7 @@
         <img src="<%= asset_path('loader-paso1.png') %>" alt="">
         <div class="card-info">
           <h2 class="text-center p-1">Agrega tu carga</h2>
-          <p class="text-justify align-top">Sumá todas las cosas que necesites transportar y detalla tus requerimientos</p>
+          <p class="text-center align-top">Sumá todas las cosas que necesites transportar y detalla tus requerimientos</p>
         </div>
       </div>
     </div>
@@ -98,7 +116,7 @@
         <img src="<%= asset_path('loader-paso3.png') %>" alt="">
         <div class="card-info">
           <h2 class="text-center p-1">Reserva</h2>
-          <p class="text-justify align-top">Reserva tu GreenFreight y nosotros nos ocupamos de asignarle un transporte</p>
+          <p class="text-center align-top">Reserva tu GreenFreight y nosotros nos ocupamos de asignarle un transporte</p>
         </div>
       </div>
     </div>
@@ -107,7 +125,7 @@
         <img src="<%= asset_path('loader-paso4.png') %>" alt="">
         <div class="card-info">
           <h2 class="text-center p-1">Segui tu viaje</h2>
-          <p class="text-justify align-top">Da seguimiento a tu viaje en línea y asegurate de que todas tus cosas lleguen a destino</p>
+          <p class="text-center align-top">Da seguimiento a tu viaje en línea y asegurate de que todas tus cosas lleguen a destino</p>
         </div>
       </div>
     </div>
